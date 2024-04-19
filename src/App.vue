@@ -1,30 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import Menu from "./components/menu.vue";
+import Contacto from "./components/contacto.vue";
 // import { Email } from './assets/smtp/smtp.js'
 
 const anio = ref(new Date().getFullYear());
-
-const nombre = ref('')
-const telefono = ref('')
-const email = ref('')
-const servicio = ref('')
-const mensaje = ref('')
-
-const onSubmit = () =>{
-  const form = {
-    nombre: nombre.value,
-    telefono: telefono.value,
-    email: email.value,
-    servicio: servicio.value,
-    mensaje: mensaje.value,
-  }
-  // Email.send({
-  //   secureToken:
-  // })
-}
-
-
 </script>
 
 <template>
@@ -362,93 +342,7 @@ const onSubmit = () =>{
       </div>
     </section>
     <!-- Contáctanos -->
-    <section class="container py-12">
-      <div class="md:w-2/3 md:mx-auto">
-      <h2 class="text-3xl font-bold md:text-4xl text-center mb-10">
-        Contáctanos
-      </h2>
-      <form @submit.prevent="onSubmit()">
-        <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
-          <input
-            v-model.trim="nombre"
-            type="text"
-            id="fname"
-            name="fname"
-            placeholder="Nombre *"
-            class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
-          />
-          <input
-            v-model.trim="telefono"
-            type="text"
-            id="ftelefono"
-            name="ftelefono"
-            placeholder="Teléfono *"
-            class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
-          />
-          <div class="md:col-span-2">
-            <input
-              v-model.trim="email"
-              type="email"
-              id="email"
-              name="email"
-              placeholder="E-mail"
-              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
-            />
-          </div>
-          <div class="md:col-span-2">
-            <label
-              for="subject"
-              class="float-left block font-normal text-gray-400 text-lg"
-              >En que podemos apoyarte:</label
-            >
-            <select
-              v-model="servicio"
-              id="subject"
-              name="subject"
-              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
-            >
-              <option value="" disabled selected>
-                Seleccionar...
-              </option>
-              <option value="Option-2">Publicidad Digital</option>
-              <option value="Option-3">Contenido</option>
-              <option value="Option-4">Marketing Digital</option>
-              <option value="Option-5">Emailing</option>
-              <option value="Option-7">Video</option>
-              <option value="Option-8">Deseño UX</option>
-              <option value="Option-9">Consultoria</option>
-            </select>
-          </div>
-
-          <div class="md:col-span-2">
-            <textarea
-              v-model.trim="mensaje"
-              name="message"
-              rows="5"
-              cols=""
-              placeholder="Mensaje *"
-              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
-            ></textarea>
-          </div>
-          <div class="md:col-span-2">
-            <button
-              class="py-3 text-base font-medium rounded text-white bg-[#2bd0d0] w-full hover:bg-[#49ebeb] transition duration-300"
-            >
-              Enviar
-            </button>
-          </div>
-          <pre>
-            nombre: {{ nombre }}
-            telefono: {{ telefono }}
-            email: {{ email }}
-            servicio: {{ servicio }}
-            mensaje: {{ mensaje }}
-          </pre>
-        </div>
-        <!-- Grid End -->
-      </form>
-    </div>
-    </section>
+    <Contacto></Contacto>
   </main>
     <!-- Footer -->
   <footer class="w-full text-gray-700 bg-gray-100">
