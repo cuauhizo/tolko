@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Futura';
+    src: url('fonts/futura-medium-bt4e762c29ef7b44ca51cb.eot');
+    src: url('fonts/futura-medium-bt4e762c29ef7b44ca51cb.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futura-medium-bt4e762c29ef7b44ca51cb.woff2') format('woff2'),
+         url('fonts/futura-medium-bt4e762c29ef7b44ca51cb.woff') format('woff'),
+         url('fonts/futura-medium-bt4e762c29ef7b44ca51cb.ttf')  format('truetype'),
+         url('fonts/futura-medium-bt4e762c29ef7b44ca51cb.svg#Futura') format('svg');
+}
