@@ -16,7 +16,7 @@ const anio = ref(new Date().getFullYear());
         class="container grid gap-8 justify-items-center items-center py-12 md:grid-cols-2 md:py-24"
       >
         <img
-          src="./img/illustration-working.svg"
+          src="./assets/img/illustration-working.svg"
           alt=""
           class="w-full max-w-lg md:order-1"
         />
@@ -39,7 +39,7 @@ const anio = ref(new Date().getFullYear());
     <section
       class="container grid gap-5 justify-items-center items-center py-12 md:grid-cols-2"
     >
-      <img src="./img/illustration-working.svg" alt="" />
+      <img src="./assets/img/illustration-working.svg" alt="" />
       <article class="text-center space-y-6 md:text-left md:space-y-8">
         <h2 class="text-3xl font-bold md:text-4xl">Proceso</h2>
         <p>
@@ -123,7 +123,7 @@ const anio = ref(new Date().getFullYear());
           >
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-brand-recognition.svg"
+                src="./assets/img/icon-brand-recognition.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -131,7 +131,7 @@ const anio = ref(new Date().getFullYear());
             </li>
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-detailed-records.svg"
+                src="./assets/img/icon-detailed-records.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -139,7 +139,7 @@ const anio = ref(new Date().getFullYear());
             </li>
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-fully-customizable.svg"
+                src="./assets/img/icon-fully-customizable.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -147,7 +147,7 @@ const anio = ref(new Date().getFullYear());
             </li>
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-brand-recognition.svg"
+                src="./assets/img/icon-brand-recognition.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -155,7 +155,7 @@ const anio = ref(new Date().getFullYear());
             </li>
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-fully-customizable.svg"
+                src="./assets/img/icon-fully-customizable.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -163,7 +163,7 @@ const anio = ref(new Date().getFullYear());
             </li>
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-detailed-records.svg"
+                src="./assets/img/icon-detailed-records.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -171,7 +171,7 @@ const anio = ref(new Date().getFullYear());
             </li>
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-brand-recognition.svg"
+                src="./assets/img/icon-brand-recognition.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -179,7 +179,7 @@ const anio = ref(new Date().getFullYear());
             </li>
             <li class="flex items-center flex-col">
               <img
-                src="./img/icon-fully-customizable.svg"
+                src="./assets/img/icon-fully-customizable.svg"
                 alt=""
                 class="w-16 h-16"
               />
@@ -200,7 +200,7 @@ const anio = ref(new Date().getFullYear());
         <div class="bg-white rounded-lg border p-4">
           <div class="py-5">
             <img
-              src="./img/atm.webp"
+              src="./assets/img/atm.webp"
               alt="Placeholder Image"
               class="md:max-h-20 lg:max-h-none mx-auto"
             />
@@ -219,7 +219,7 @@ const anio = ref(new Date().getFullYear());
         <div class="bg-white rounded-lg border p-4">
           <div class="py-5">
             <img
-              src="./img/bluediamond.webp"
+              src="./assets/img/bluediamond.webp"
               alt="Placeholder Image"
               class="md:max-h-20 lg:max-h-none mx-auto"
             />
@@ -239,7 +239,7 @@ const anio = ref(new Date().getFullYear());
         <div class="bg-white rounded-lg border p-4">
           <div class="py-5">
             <img
-              src="./img/continental.webp"
+              src="./assets/img/continental.webp"
               alt="Placeholder Image"
               class="md:max-h-20 lg:max-h-none mx-auto"
             />
@@ -258,7 +258,7 @@ const anio = ref(new Date().getFullYear());
         <div class="bg-white rounded-lg border p-4">
           <div class="py-5">
             <img
-              src="./img/party-city.webp"
+              src="./assets/img/party-city.webp"
               alt="Placeholder Image"
               class="md:max-h-20 lg:max-h-none mx-auto"
             />
@@ -285,42 +285,42 @@ const anio = ref(new Date().getFullYear());
         >
           <div class="">
             <img
-              src="./img/certificaciones/01.png"
+              src="./assets/img/certificaciones/01.png"
               alt="Placeholder Image"
               class="lg:max-h-none mx-auto"
             />
           </div>
           <div class="">
             <img
-              src="./img/certificaciones/02.png"
+              src="./assets/img/certificaciones/02.png"
               alt="Placeholder Image"
               class="lg:max-h-none mx-auto"
             />
           </div>
           <div class="">
             <img
-              src="./img/certificaciones/03.png"
+              src="./assets/img/certificaciones/03.png"
               alt="Placeholder Image"
               class="lg:max-h-none mx-auto"
             />
           </div>
           <div class="">
             <img
-              src="./img/certificaciones/04.png"
+              src="./assets/img/certificaciones/04.png"
               alt="Placeholder Image"
               class="lg:max-h-none mx-auto"
             />
           </div>
           <div class="">
             <img
-              src="./img/certificaciones/05.png"
+              src="./assets/img/certificaciones/05.png"
               alt="Placeholder Image"
               class="lg:max-h-none mx-auto"
             />
           </div>
           <div class="">
             <img
-              src="./img/certificaciones/06.png"
+              src="./assets/img/certificaciones/06.png"
               alt="Placeholder Image"
               class="lg:max-h-none mx-auto"
             />
@@ -335,7 +335,7 @@ const anio = ref(new Date().getFullYear());
           Nuestra Presencia
         </h2>
         <img
-          src="./img/presencia.webp"
+          src="./assets/img/presencia.webp"
           alt="Placeholder Image"
           class="lg:max-h-none mx-auto"
         />
@@ -349,7 +349,7 @@ const anio = ref(new Date().getFullYear());
     <div class="container grid grid-cols-1 md:grid-cols-4 gap-4 px-5 py-12 mx-auto md:items-center md:py-12 lg:items-start">
         <div class="mx-auto text-center md:mx-0 md:text-left">
             <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
-                <img src="./img/logo-tolko.png" alt="">
+                <img src="./assets/img/logo-tolko.png" alt="">
             </a>
             <!-- Social Icons -->
             <div class="mt-4">

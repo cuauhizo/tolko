@@ -1,11 +1,14 @@
 const express = require('express')
+const cors = require('cors')
 const nodemailer = require('nodemailer')
 const path = require('path')
 require('dotenv').config()
 
 const app = express()
+const port = process.env.PORT || 3000
 
-app.use('/', express.static(path.join(__dirname, 'public')))
+// app.use('/', express.static(path.join(__dirname, 'public')))
+app.use(cors())
 app.use(express.urlencoded({extended: false}))
 
 const transporter = nodemailer.createTransport({
@@ -48,4 +51,4 @@ app.post('/', async (req, res) => {
   }
 })
 
-app.listen(3000, () => console.log('escuchando desde http://localhost:3000'))
+app.listen(port, () => console.log(`escuchando desde http://localhost:${port}`))
