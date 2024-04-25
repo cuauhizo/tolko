@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios';
 
+
 const nombre = ref('')
 const telefono = ref('')
 const email = ref('')
@@ -16,9 +17,10 @@ const onSubmit = async () => {
   email: email.value,
   mensaje: mensaje.value
 };
-  // console.log(form);
+
   try {
-    await axios.post('http://localhost:3001/send-email', form)
+    await axios.post('http://localhost:3001/emails', form)
+    // console.log(form);
     alert('Correo electrónico enviado con éxito');
     // Limpiar el formulario después del envío exitoso
     nombre.value = '';
@@ -69,7 +71,7 @@ const onSubmit = async () => {
           </div>
           <div class="md:col-span-2">
             <label
-              for="subject"
+              for="servicio"
               class="float-left block font-normal text-gray-400 text-lg"
               >En que podemos apoyarte:</label
             >
@@ -109,16 +111,7 @@ const onSubmit = async () => {
               Enviar
             </button>
           </div>
-          <pre v-if="nombre != '' || telefono != '' || email != '' || servicio != '' || mensaje != ''">
-            nombre: {{ nombre }}
-            telefono: {{ telefono }}
-            email: {{ email }}
-            servicio: {{ servicio }}
-            mensaje: {{ mensaje }}
-          </pre>
         </div>
-        <!-- Grid End -->
-        <!-- Grid End -->
       </form>
     </div>
     </section>

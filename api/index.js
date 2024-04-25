@@ -1,85 +1,27 @@
-const express = require('express')
-const cors = require('cors')
-const nodemailer = require('nodemailer')
-const path = require('path')
-require('dotenv').config()
+import express from 'express'
+import dotenv from 'dotenv'
+import cors from 'cors'
+import emails from './routes/emails.js'
 
-// import express from 'express'
-// import cors from 'cors'
-// import nodemailer from 'nodemailer'
-// import path from 'path'
-// import dotenv from 'dotenv'
-
+// Variables de entorno
+dotenv.config();
 
 // Configurar la app
-const app = express()
-// app.use('/', express.static(path.join(__dirname, 'public')))
-app.use(cors())
-// app.use(express.urlencoded({extended: false}))
-app.use(express.json())
-
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 // Definir una ruta
-app.get('/', async (req, res) => {
-  res.send('Hola')
-})
+// app.use('/', async (req, res) => {
+//   res.send('Hola')
+// })
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.TRASNSPORTER_USER,
-    pass: process.env.TRASNSPORTER_PASS
-  }
-})
-
-app.post('/send-email', async (req, res) => {
-console.log('desde back');
-console.log(req.body);
-  try {
-    const { nombre, telefono, email, servicio, mensaje } = req.body;
-
-    // Aquí puedes construir el contenido del correo electrónico usando los datos recibidos del formulario
-    const content = `
-      <h2>Mensaje de Contacto</h2>
-      <p><strong>Nombre:</strong> ${nombre}</p>
-      <p><strong>Teléfono:</strong> ${telefono}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Servicio:</strong> ${servicio}</p>
-      <p><strong>Mensaje:</strong> ${mensaje}</p>
-    `;
-
-    // Aquí envías el correo electrónico utilizando Nodemailer
-    const info = await transporter.sendMail({
-      // from: process.env.TRASNSPORTER_USER, // Usa tu correo aquí
-      // from: 'Mensaje recibido de la página web',
-      // from: `${nombre} "se a contactado"`, // Usa tu correo aquí
-      from: 'info@tolkogroup.com', // Usa tu correo aquí
-      to: 'frodriguez@tolkogroup.com, cuauhizo@gmail.com', // Cambia esto al correo al que quieres enviar los mensajes
-      subject: 'Nuevo mensaje de contacto',
-      html: content
-    });
-
-    if (!info) {
-      // Envía una respuesta al cliente
-      res.send('Mensaje enviado correctamente');
-    } else {
-      console.log(info.error);
-      res.send(info.error);
-    }
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error al enviar el mensaje');
-  }
-})
-
-// transporter.verify().then(() => console.log('Listo para enviar correo'))
-
+app.use('/emails', emails);
 
 // Definir puerto
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 // Arrancar app
-app.listen(PORT, () => console.log(`escuchando desde http://localhost:${PORT}`))
+app.listen(PORT, () =>
+  console.log(`escuchando desde http://localhost:${PORT}`)
+);
