@@ -1,24 +1,36 @@
 <script setup>
 import { ref } from 'vue'
+import axios from 'axios';
+
 const nombre = ref('')
 const telefono = ref('')
 const email = ref('')
 const servicio = ref('')
 const mensaje = ref('')
 
-const onSubmit = () =>{
+const onSubmit = async () => {
   const form = {
-    nombre: nombre.value,
-    telefono: telefono.value,
-    email: email.value,
-    servicio: servicio.value,
-    mensaje: mensaje.value,
+  nombre: nombre.value,
+  telefono: telefono.value,
+  servicio: servicio.value,
+  email: email.value,
+  mensaje: mensaje.value
+};
+  // console.log(form);
+  try {
+    await axios.post('http://localhost:3001/send-email', form)
+    alert('Correo electrónico enviado con éxito');
+    // Limpiar el formulario después del envío exitoso
+    nombre.value = '';
+    telefono.value = '';
+    email.value = '';
+    servicio.value = '';
+    mensaje.value = '';
+  } catch (error) {
+    alert('Error al enviar el correo electrónico');
+    console.error(error);
   }
-  console.log(form);
-  // Email.send({
-  //   secureToken:
-  // })
-}
+};
 </script>
 
 <template>
@@ -32,16 +44,16 @@ const onSubmit = () =>{
           <input
             v-model.trim="nombre"
             type="text"
-            id="fname"
-            name="fname"
+            id="nombre"
+            name="nombre"
             placeholder="Nombre *"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
           />
           <input
             v-model.trim="telefono"
             type="text"
-            id="ftelefono"
-            name="ftelefono"
+            id="telefono"
+            name="telefono"
             placeholder="Teléfono *"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
           />
@@ -63,8 +75,8 @@ const onSubmit = () =>{
             >
             <select
               v-model="servicio"
-              id="subject"
-              name="subject"
+              id="servicio"
+              name="servicio"
               class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
             >
               <option value="" disabled selected>
@@ -83,7 +95,7 @@ const onSubmit = () =>{
           <div class="md:col-span-2">
             <textarea
               v-model.trim="mensaje"
-              name="message"
+              name="mensaje"
               rows="5"
               cols=""
               placeholder="Mensaje *"
