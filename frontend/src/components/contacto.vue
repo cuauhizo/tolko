@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import axios from 'axios';
+import axios from 'axios'
+import { reset } from '@formkit/vue'
 
 
 const nombre = ref('')
@@ -23,16 +24,13 @@ const onSubmit = async () => {
     // console.log(form);
     alert('Correo electrónico enviado con éxito');
     // Limpiar el formulario después del envío exitoso
-    nombre.value = '';
-    telefono.value = '';
-    email.value = '';
-    servicio.value = '';
-    mensaje.value = '';
+    reset('frmContacto')
   } catch (error) {
     alert('Error al enviar el correo electrónico');
     console.error(error);
   }
 };
+
 </script>
 
 <template>
@@ -41,78 +39,99 @@ const onSubmit = async () => {
       <h2 class="text-3xl font-bold md:text-4xl text-center mb-10">
         Contáctanos
       </h2>
-      <form @submit.prevent="onSubmit()">
+      <FormKit
+        type="form"
+        id="frmContacto"
+        :actions="false"
+        incomplete-message="No se pudo enviar, revisa las notificaciones"
+        @submit="onSubmit"
+      >
         <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
-          <input
+          <FormKit
             v-model.trim="nombre"
             type="text"
             id="nombre"
             name="nombre"
             placeholder="Nombre *"
-            class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
+            validation="required|nombre"
+            :validation-messages="{
+                required: 'El nombre es obligatorio'
+            }"
+            class=""
           />
-          <input
+          <FormKit
             v-model.trim="telefono"
             type="text"
             id="telefono"
             name="telefono"
             placeholder="Teléfono *"
+            validation="required|telefono"
+            :validation-messages="{
+                required: 'El telefono es obligatorio'
+            }"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
           />
           <div class="md:col-span-2">
-            <input
+            <FormKit
               v-model.trim="email"
               type="email"
               id="email"
               name="email"
-              placeholder="E-mail"
+              placeholder="E-mail *"
+              validation="required|email"
+              :validation-messages="{
+                  required: 'El Email es obligatorio',
+                  email: 'Email no válido'
+              }"
               class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
             />
           </div>
           <div class="md:col-span-2">
-            <label
-              for="servicio"
-              class="float-left block font-normal text-gray-400 text-lg"
-              >En que podemos apoyarte:</label
-            >
-            <select
+            <FormKit
               v-model="servicio"
+              type="select"
+              label="En que podemos apoyarte:"
+              placeholder="Seleccione una opción *"
               id="servicio"
               name="servicio"
+              :options="[
+                'Publicidad Digital',
+                'Contenido',
+                'Marketing Digital',
+                'Emailing',
+                'Video',
+                'Deseño UX',
+                'Consultoria',
+                'Tuvalu',
+              ]"
+              validation="required"
+              :validation-messages="{
+                required: 'Seleccione una opción'
+              }"
               class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
-            >
-              <option value="" disabled selected>
-                Seleccionar...
-              </option>
-              <option>Publicidad Digital</option>
-              <option>Contenido</option>
-              <option>Marketing Digital</option>
-              <option>Emailing</option>
-              <option>Video</option>
-              <option>Deseño UX</option>
-              <option>Consultoria</option>
-            </select>
+            />
           </div>
-
           <div class="md:col-span-2">
-            <textarea
+            <FormKit
               v-model.trim="mensaje"
               name="mensaje"
+              type="textarea"
               rows="5"
               cols=""
               placeholder="Mensaje *"
+              maxlength="250"
+              validation="required"
+              :validation-messages="{
+                required: 'Mensaje requerido'
+              }"
               class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
-            ></textarea>
+            />
           </div>
           <div class="md:col-span-2">
-            <button
-              class="py-3 text-base font-medium rounded text-white bg-[#2bd0d0] w-full hover:bg-[#49ebeb] transition duration-300"
-            >
-              Enviar
-            </button>
+            <FormKit type="submit">Enviar</FormKit>
           </div>
         </div>
-      </form>
+      </FormKit>
     </div>
     </section>
 </template>

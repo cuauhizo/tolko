@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
       // from: process.env.TRASNSPORTER_USER, // Usa tu correo aquí
       // from: 'Mensaje recibido de la página web',
       // from: `${nombre} "se a contactado"`, // Usa tu correo aquí
-      from: "info@tolkogroup.com", // Usa tu correo aquí
+      from: "Tolko Group <info@tolkogroup.com>", // Usa tu correo aquí
       to: "frodriguez@tolkogroup.com, cuauhizo@gmail.com", // Cambia esto al correo al que quieres enviar los mensajes
       subject: "Nuevo mensaje de contacto",
       html: content,
