@@ -57,7 +57,6 @@ const onSubmit = async () => {
             :validation-messages="{
                 required: 'El nombre es obligatorio'
             }"
-            class=""
           />
           <FormKit
             v-model.trim="telefono"
@@ -69,7 +68,6 @@ const onSubmit = async () => {
             :validation-messages="{
                 required: 'El telefono es obligatorio'
             }"
-            class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
           />
           <div class="md:col-span-2">
             <FormKit
@@ -80,10 +78,9 @@ const onSubmit = async () => {
               placeholder="E-mail *"
               validation="required|email"
               :validation-messages="{
-                  required: 'El Email es obligatorio',
+                  required: 'El email es obligatorio',
                   email: 'Email no válido'
               }"
-              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
             />
           </div>
           <div class="md:col-span-2">
@@ -108,7 +105,6 @@ const onSubmit = async () => {
               :validation-messages="{
                 required: 'Seleccione una opción'
               }"
-              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
             />
           </div>
           <div class="md:col-span-2">
@@ -124,7 +120,6 @@ const onSubmit = async () => {
               :validation-messages="{
                 required: 'Mensaje requerido'
               }"
-              class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-[#2bd0d0]"
             />
           </div>
           <div class="md:col-span-2">

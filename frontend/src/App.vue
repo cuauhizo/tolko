@@ -1,10 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import Menu from "./components/menu.vue";
-import Contacto from "./components/contacto.vue";
-// import { Email } from './assets/smtp/smtp.js'
+import Menu from './components/menu.vue'
+import Contacto from './components/contacto.vue'
 
-const anio = ref(new Date().getFullYear());
+const anio = ref(new Date().getFullYear())
 </script>
 
 <template>
