@@ -9,14 +9,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "principal": ['"Josefin Sans"', 'sans-serif']
+        "principal": ['"Josefin Sans"', 'sans-serif'],
+        "Black": ['"Franie-Black"', 'sans-serif'],
+        "Light": ['"Franie-Light"', 'sans-serif'],
+        "SemiBold": ['"Franie-SemiBold"', 'sans-serif'],
+        "SemiBoldItalic": ['"Franie-SemiBoldItalic"', 'sans-serif']
+        
       },
       colors: {
         "tolko-red": "rgb(204, 0, 50)"
       },
       backgroundImage: {
-        "close-menu": "url('../img/icon-close.svg')",
-        "open-menu": "url('../img/icon-hamburger.svg')"
+        "close-menu": "url('../assets/img/icon-close.svg')",
+        "open-menu": "url('../assets/img/icon-hamburger.svg')"
       }
     },
   },

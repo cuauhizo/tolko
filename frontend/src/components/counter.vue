@@ -1,0 +1,115 @@
+<template>
+  <div
+    class="grid grid-cols-1 text-center sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 counter-container"
+  >
+    <div class="div-counter">
+      <span ref="counter1">{{ contador1 }}</span>
+      <h3>years of existence</h3>
+    </div>
+    <div class="div-counter">
+      <span>+</span><span ref="counter2">{{ contador2 }}</span>
+      <h3>customers</h3>
+    </div>
+    <div class="div-counter">
+      <span>+</span
+      ><span ref="counter2">{{
+        vueNumberFormat(contador3, {
+          prefix: "",
+          suffix: "",
+          decimal: ".",
+          thousand: ",",
+          precision: 0,
+          acceptNegative: true,
+          isInteger: false,
+        })
+      }}</span>
+      <h3>communication strategies and projects</h3>
+    </div>
+    <div class="div-counter">
+      <span>+</span><span ref="counter2">{{ vueNumberFormat(contador4, {
+          prefix: "",
+          suffix: "",
+          decimal: ".",
+          thousand: ",",
+          precision: 0,
+          acceptNegative: true,
+          isInteger: false,
+        }) }}</span>
+      <h3>communication materials developed</h3>
+    </div>
+    <div class="div-counter">
+      <span>+</span><span ref="counter2">{{ contador5 }}</span
+      ><span>%</span>
+      <h3>ROI for our customers</h3>
+    </div>
+    <div class="div-counter">
+      <span>+</span><span ref="counter2">{{ contador6 }}</span>
+      <h3>countries receive the communication we make</h3>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from "vue";
+
+// Contadores
+const contador1 = ref(0);
+const contador2 = ref(0);
+const contador3 = ref(0);
+const contador4 = ref(119000);
+const contador5 = ref(0);
+const contador6 = ref(0);
+
+const incrementarContador = (contador, limite) => {
+  if (contador.value < limite) {
+    contador.value++;
+  }
+};
+
+// Observador de intersección
+const observarContadores = () => {
+  const contadorContainer = document.querySelector(".counter-container");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const intervalo = setInterval(() => {
+            incrementarContador(contador1, 10);
+            incrementarContador(contador2, 100);
+            incrementarContador(contador3, 1000);
+            incrementarContador(contador4, 120000);
+            incrementarContador(contador5, 300);
+            incrementarContador(contador6, 30);
+          }, 0.01);
+          // Limpiar el intervalo cuando el contador alcance el límite
+          if (
+            contador1.value >= 10 &&
+            contador2.value >= 100 &&
+            contador3.value >= 1000 &&
+            contador4.value >= 120000 &&
+            contador5.value >= 300 &&
+            contador6.value >= 30
+          ) {
+            clearInterval(intervalo);
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(contadorContainer);
+};
+
+onMounted(observarContadores);
+</script>
+
+<style scoped>
+.div-counter span {
+  font-size: 3rem;
+}
+.div-counter h3 {
+  font-size: 1.5rem;
+}
+</style>

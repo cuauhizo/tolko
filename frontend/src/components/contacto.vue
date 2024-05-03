@@ -34,10 +34,10 @@ const onSubmit = async () => {
 </script>
 
 <template>
-    <section class="container py-12">
+    <section id="section4" class="container py-12">
       <div class="md:w-2/3 md:mx-auto">
       <h2 class="text-3xl font-bold md:text-4xl text-center mb-10">
-        Contáctanos
+        Get in touch with us
       </h2>
       <FormKit
         type="form"
