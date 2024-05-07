@@ -1,17 +1,103 @@
 <script setup>
-import { ref } from "vue";
-import Menu from "./components/menu.vue";
+// import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from "vue";
+// import Menu from "./components/menu.vue";
 import Counter from "./components/counter.vue";
 import Contacto from "./components/contacto.vue";
-import "animate.css";
 
 const anio = ref(new Date().getFullYear());
+
+// onMounted(() => {
+//   AOS.init();
+// })
+
+const showScrollTopButton = ref(false);
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+const handleScroll = () => {
+  const scrollTop = window.scrollY;
+  showScrollTopButton.value = scrollTop > 0;
+};
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+
+const scrollToSection = (index) => {
+  const element = document.getElementById(`section${index}`);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 </script>
 
 <template>
   <!-- Header -->
   <header>
-    <Menu></Menu>
+    <!-- <Menu></Menu> -->
+    <div class="fixed md:absolute z-30 w-full px-5">
+    <nav
+      class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white"
+    >
+      <a href="./" class="w-1/3 max-w-[60px]">
+        <img
+          src="./assets/img/logo-tolko.svg"
+          alt="Logo tolko"
+          class="w-full"
+        />
+      </a>
+      <input type="checkbox" id="menu" class="peer hidden" />
+      <label
+        for="menu"
+        class="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-10 md:hidden"
+      ></label>
+      <div
+        class="fixed inset-0 bg-gradient-to-b  from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none"
+      >
+        <ul
+          class="absolute inset-x-0 top-24 p-10 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-5 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white"
+        >
+          <li><a href="#about" @click="scrollToSection(1)">About Us</a></li>
+          <li>
+            <a href="#services" @click="scrollToSection(2)">Our services</a>
+          </li>
+          <li><a href="#" @click="scrollToSection(3)">Join our time!</a></li>
+          <li>
+            <a href="#contact" class="btn btn-red text-white" @click="scrollToSection(4)"
+              >Get in touch with us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <button @click="scrollToTop" v-show="showScrollTopButton">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m4.5 18.75 7.5-7.5 7.5 7.5"
+      />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m4.5 12.75 7.5-7.5 7.5 7.5"
+      />
+    </svg>
+  </button>
   </header>
   <div class="homepage-header-wrapper">
     <video autoplay="autoplay" muted="muted" loop="loop" playsinline="">
@@ -19,23 +105,16 @@ const anio = ref(new Date().getFullYear());
       <source src="./assets/video/TLK_MainHeader.mp4" type="video/mp4" />
     </video>
   </div>
-
   <main>
-    <!-- Proceso -->
-    <section
-      id="section1"
-      class="container grid gap-5 justify-items-center items-center py-12 md:grid-cols-2"
-    >
+    <section id="section1" class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2" >
       <!-- <img src="./assets/img/illustration-working.svg" alt="" /> -->
       <div>
-        <h2 class="text-3xl md:text-5xl font-SemiBoldItalic texto-con-bordes">
+        <h1 class="text-3xl md:text-5xl font-SemiBoldItalic texto-con-bordes ml-3" data-aos="fade-right">
           At Tolko, we create unique communication for people.
-        </h2>
+        </h1>
       </div>
-      <article class="text-center space-y-6 md:text-left md:space-y-8">
-        <ul
-          class="mt-5 text-2xl mx-auto text-left font-medium leading-none md:mr-0"
-        >
+      <article class="text-center space-y-6 md:text-left md:space-y-8" data-aos="fade-left">
+        <ul class="mt-5 text-2xl mx-auto text-left font-medium leading-none md:mr-0">
           <li>
             <p
               class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
@@ -64,16 +143,6 @@ const anio = ref(new Date().getFullYear());
                 class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
               ></span>
               Digital Communications
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Magni deleniti alias
             </p>
           </li>
           <li>
@@ -154,56 +223,55 @@ const anio = ref(new Date().getFullYear());
       </article>
     </section> -->
     <!-- Especializaciones -->
-    <p id="section2" class="container md:text-4xl pt-4 text-center  max-w-5xl">
-          We help you through <span class="font-SemiBoldItalic text-tolko-red text-5xl">360°</span>-full communication support in one team
-        </p>
-    <section
-      
-      class="container grid gap-5 justify-items-center items-center py-12 md:grid-cols-2"
-    >
-
-      <div class="max-w-sm rounded overflow-hidden shadow-lg bg-[#181818]">
-        <div class="px-6 py-4">
-          <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
-            Your Extended Team
+    
+    <section id="section2">
+      <p class="container md:text-4xl pt-4 text-center max-w-5xl" data-aos="fade-up">
+        We help you through <span class="font-SemiBoldItalic text-tolko-red text-5xl">360° - Full</span> communication support in one team
+      </p>
+      <div class="container grid grid-cols-1 gap-5 justify-items-center items-center py-12 md:grid-cols-2" data-aos="fade-up">
+        <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red">
+          <div class="px-6 py-4 flex-1">
+            <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
+              Your Extended Team
+            </div>
+            <p class="text-base">
+              We are your Communications extended team, a group of talented
+              professionals laser-focused on creating the best strategies and
+              executing them with excellence daily.
+            </p>
           </div>
-          <p class="text-base">
-            We are your Communications extended team, a group of talented
-            professionals laser-focused on creating the best strategies and
-            executing them with excellence daily.
-          </p>
         </div>
-      </div>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg bg-[#181818]">
-        <div class="px-6 py-4">
-          <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
-            Making Your Life Easier and Growing Your Business
+        <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-tolko-red  h-full flex flex-col">
+          <div class="px-6 py-4 flex-1">
+            <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
+              Making Your Life Easier and Growing Your Business
+            </div>
+            <p class="text-base">
+              With us, you will have a tailor-made solution and a group of consultants committed to further anticipating your communication needs to grow your business and strengthen your reputation.
+            </p>
           </div>
-          <p class="text-base">
-            With us, you will have a tailor-made solution and a group of consultants committed to further anticipating your communication needs to grow your business and strengthen your reputation.
-          </p>
         </div>
-      </div>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg bg-[#181818]">
-        <div class="px-6 py-4">
-          <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes-red">
-            Strategic Vision, Excelence in Execution
+        <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818]  h-full flex flex-col">
+          <div class="px-6 py-4 flex-1">
+            <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes-red">
+              Strategic Vision, Excellence in Execution
+            </div>
+            <p class="text-base">
+              Tolko means “unique”, and that is how we work on each project, treat each customer, and get involved with each company culture. We are based in Mexico and have an international perspective and reach. We create global projects.
+            </p>
           </div>
-          <p class="text-base">
-            Tolko means “unique”, and that is how we work on each project, treat each customer, and get involved with each company culture. We are based in Mexico and have an international perspective and reach. We create global projects.
-          </p>
         </div>
-      </div>
-      <div class="max-w-sm rounded overflow-hidden shadow-lg bg-[#181818]">
-        <div class="px-6 py-4">
-          <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes-red">
-            Knowledge and Experience-Based Methodology
+        <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818]  h-full flex flex-col">
+          <div class="px-6 py-4 flex-1">
+            <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes-red">
+              Knowledge and Experience-Based Methodology
+            </div>
+            <p class="text-base">
+              We aim and enjoy creating alternative and innovative communication solutions based on our experience and an immersive approach to each company.
+            </p>
           </div>
-          <p class="text-base">
-            We aim and enjoy creating alternative and innovative communication solutions based on our experience and an immersive approach to each company.
-          </p>
         </div>
-      </div>
+    </div>
     </section>
     <!-- Nuestras soluciones -->
     <!-- <div class="bg-slate-100 text-black">
@@ -433,7 +501,7 @@ const anio = ref(new Date().getFullYear());
     </section>
     <!-- Presencia -->
     <section class="bg-black">
-      <div class="container py-8">
+      <div class="container py-8" data-aos="fade-up">
         <h2 class="text-3xl font-bold text-white text-center md:text-4xl">
           Our Presence
         </h2>
@@ -545,19 +613,19 @@ const anio = ref(new Date().getFullYear());
       </div>
       <div class="mx-auto text-center md:pl-20 md:text-left">
         <h2
-          class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
+          class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font"
         >
-          About
+          Company
         </h2>
         <nav class="mb-10 list-none">
           <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Company</a
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200" @click="scrollToSection(1)"
+              >About Us</a
             >
           </li>
           <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Careers</a
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200" @click="scrollToSection(2)"
+              >Our services</a
             >
           </li>
           <li class="mt-3">
@@ -567,48 +635,43 @@ const anio = ref(new Date().getFullYear());
       </div>
       <div class="mx-auto text-center md:text-left">
         <h2
-          class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
+          class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font"
         >
-          Support
+        Location
         </h2>
         <nav class="mb-10 list-none">
           <li class="mt-3">
             <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Contact Support</a
+              >Workshop: Manizales #184, CDMX, Mexico</a
             >
           </li>
           <li class="mt-3">
             <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Help Resources</a
-            >
-          </li>
-          <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Release Updates</a
+              >Corporate: Av. Río San Joaquín #436, CDMX, Mexico</a
             >
           </li>
         </nav>
       </div>
       <div class="mx-auto text-center md:text-left">
         <h2
-          class="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
+          class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font"
         >
           Contact
         </h2>
         <nav class="mb-10 list-none">
           <li class="mt-3">
             <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Send a Message</a
+              >climon@tolkogroup.com</a
             >
           </li>
           <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200"
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200" @click="scrollToSection(4)"
               >Request a Quote</a
             >
           </li>
           <li class="mt-3">
             <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >+123-456-7890</a
+              >+52 56 3952 8383</a
             >
           </li>
         </nav>
@@ -616,9 +679,8 @@ const anio = ref(new Date().getFullYear());
     </div>
 
       <div class="container px-5 py-4 mx-auto">
-        <p class="text-sm text-white capitalize xl:text-center">
-          © {{ anio }} TOLKO GROUP. ALL RIGHTS RESERVED. TOLKO and the Logo are
-          registered trademarks of Tolko Group.
+        <p class="text-sm text-white xl:text-center">
+          © {{ anio }} TOLKO GROUP. All rights reserved.
         </p>
       </div>
 
@@ -637,5 +699,33 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+nav {
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Estilos opcionales para el botón de ir arriba */
+button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #cc0032;
+  border: 1px solid #000;
+  padding: 15px;
+  z-index: 50;
+  border-radius: 50%;
+}
+.btn {
+  padding: 10px;
+  border-radius: 15px;
+}
+.btn:hover {
+  opacity: .8;
+}
+.btn-red {
+  background-color: #cc0032;
+  border: 1px solid #ba0331;
 }
 </style>

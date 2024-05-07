@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-1 text-center sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 counter-container"
+    class="grid grid-cols-1 text-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 counter-container"
   >
     <div class="div-counter">
       <span ref="counter1">{{ contador1 }}</span>

@@ -34,15 +34,16 @@ const onSubmit = async () => {
 </script>
 
 <template>
-    <section id="section4" class="container py-12 text-black">
+    <section id="section4" class="container py-12">
       <div class="md:w-2/3 md:mx-auto">
-      <h2 class="text-white text-3xl font-bold md:text-4xl text-center mb-10">
+      <h2 class="text-3xl font-bold md:text-4xl text-center mb-10">
         Get in touch with us
       </h2>
       <FormKit
         type="form"
         id="frmContacto"
         :actions="false"
+        incomplete-message="No se pudo enviar, revisa las notificaciones"
         @submit="onSubmit"
       >
         <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
@@ -51,16 +52,22 @@ const onSubmit = async () => {
             type="text"
             id="nombre"
             name="nombre"
-            placeholder="Name *"
-            validation="required|name"
+            placeholder="Nombre *"
+            validation="required|nombre"
+            :validation-messages="{
+                required: 'El nombre es obligatorio'
+            }"
           />
           <FormKit
             v-model.trim="telefono"
             type="text"
             id="telefono"
             name="telefono"
-            placeholder="telephone *"
+            placeholder="Teléfono *"
             validation="required|telefono"
+            :validation-messages="{
+                required: 'El telefono es obligatorio'
+            }"
           />
           <div class="md:col-span-2">
             <FormKit
@@ -70,26 +77,34 @@ const onSubmit = async () => {
               name="email"
               placeholder="E-mail *"
               validation="required|email"
+              :validation-messages="{
+                  required: 'El email es obligatorio',
+                  email: 'Email no válido'
+              }"
             />
           </div>
           <div class="md:col-span-2">
             <FormKit
               v-model="servicio"
               type="select"
-              label="How we can support you:"
-              placeholder="Select an option *"
+              label="En que podemos apoyarte:"
+              placeholder="Seleccione una opción *"
               id="servicio"
               name="servicio"
               :options="[
-                'Digital Advertising',
-                'Content',
+                'Publicidad Digital',
+                'Contenido',
                 'Marketing Digital',
                 'Emailing',
                 'Video',
-                'UX Design',
-                'Consultancy'
+                'Deseño UX',
+                'Consultoria',
+                'Tuvalu',
               ]"
               validation="required"
+              :validation-messages="{
+                required: 'Seleccione una opción'
+              }"
             />
           </div>
           <div class="md:col-span-2">
@@ -99,13 +114,16 @@ const onSubmit = async () => {
               type="textarea"
               rows="5"
               cols=""
-              placeholder="Message *"
+              placeholder="Mensaje *"
               maxlength="250"
               validation="required"
+              :validation-messages="{
+                required: 'Mensaje requerido'
+              }"
             />
           </div>
           <div class="md:col-span-2">
-            <FormKit type="submit">Send</FormKit>
+            <FormKit type="submit">Enviar</FormKit>
           </div>
         </div>
       </FormKit>

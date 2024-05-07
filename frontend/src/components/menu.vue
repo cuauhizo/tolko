@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute z-30 w-full px-5">
+  <div class="fixed md:absolute z-30 w-full px-5">
     <nav
       class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white"
     >
@@ -16,12 +16,11 @@
         class="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-10 md:hidden"
       ></label>
       <div
-        class="fixed inset-0 bg-gradient-to-b  from-white/70 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none"
+        class="fixed inset-0 bg-gradient-to-b  from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none"
       >
         <ul
-          class="absolute inset-x-0 top-24 p-12 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-5 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white"
+          class="absolute inset-x-0 top-24 p-10 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-5 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white"
         >
-          <li><a href="#">Home</a></li>
           <li><a href="#about" @click="scrollToSection(1)">About Us</a></li>
           <li>
             <a href="#services" @click="scrollToSection(2)">Our services</a>
@@ -58,7 +57,7 @@
   </button>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 const showScrollTopButton = ref(false);
 
