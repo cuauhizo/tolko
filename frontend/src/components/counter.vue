@@ -4,11 +4,11 @@
   >
     <div class="div-counter">
       <span ref="counter1">{{ contador1 }}</span>
-      <h3>years of existence</h3>
+      <h3>Years of existence</h3>
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ contador2 }}</span>
-      <h3>customers</h3>
+      <h3>Customers</h3>
     </div>
     <div class="div-counter">
       <span>+</span
@@ -23,7 +23,7 @@
           isInteger: false,
         })
       }}</span>
-      <h3>communication strategies and projects</h3>
+      <h3>Communication strategies and projects</h3>
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ vueNumberFormat(contador4, {
@@ -35,7 +35,7 @@
           acceptNegative: true,
           isInteger: false,
         }) }}</span>
-      <h3>communication materials developed</h3>
+      <h3>Communication materials developed</h3>
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ contador5 }}</span
@@ -44,7 +44,7 @@
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ contador6 }}</span>
-      <h3>countries receive the communication we make</h3>
+      <h3>Countries receive the communication we make</h3>
     </div>
   </div>
 </template>
@@ -108,6 +108,7 @@ onMounted(observarContadores);
 <style scoped>
 .div-counter span {
   font-size: 3rem;
+  font-family: 'Franie-SemiBold';
 }
 .div-counter h3 {
   font-size: 1.5rem;

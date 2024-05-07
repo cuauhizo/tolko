@@ -62,13 +62,13 @@ const scrollToSection = (index) => {
         class="fixed inset-0 bg-gradient-to-b  from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none"
       >
         <ul
-          class="absolute inset-x-0 top-24 p-10 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-5 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white"
+          class="absolute inset-x-0 top-24 p-10 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white"
         >
           <li><a href="#about" @click="scrollToSection(1)">About Us</a></li>
           <li>
             <a href="#services" @click="scrollToSection(2)">Our services</a>
           </li>
-          <li><a href="#" @click="scrollToSection(3)">Join our time!</a></li>
+          <li><a href="#" @click="scrollToSection(3)">Join our team!</a></li>
           <li>
             <a href="#contact" class="btn btn-red text-white" @click="scrollToSection(4)"
               >Get in touch with us</a>
@@ -109,12 +109,12 @@ const scrollToSection = (index) => {
     <section id="section1" class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2" >
       <!-- <img src="./assets/img/illustration-working.svg" alt="" /> -->
       <div>
-        <h1 class="text-3xl md:text-5xl font-SemiBoldItalic texto-con-bordes ml-3" data-aos="fade-right">
+        <h1 class="text-3xl md:text-6xl font-SemiBoldItalic texto-con-bordes ml-3" data-aos="fade-right">
           At Tolko, we create unique communication for people.
         </h1>
       </div>
       <article class="text-center space-y-6 md:text-left md:space-y-8" data-aos="fade-left">
-        <ul class="mt-5 text-2xl mx-auto text-left font-medium leading-none md:mr-0">
+        <ul class="mt-5 text-xl mx-auto text-right font-medium leading-none md:mr-0">
           <li>
             <p
               class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
@@ -142,6 +142,16 @@ const scrollToSection = (index) => {
               <span
                 class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
               ></span>
+              Marketing Campaigns
+            </p>
+          </li>
+          <li>
+            <p
+              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
+            >
+              <span
+                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
+              ></span>
               Digital Communications
             </p>
           </li>
@@ -160,7 +170,7 @@ const scrollToSection = (index) => {
               class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
             >
               <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
+                class="mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
               ></span>
               Audiovisual production, animation and video editing
             </p>
@@ -226,10 +236,10 @@ const scrollToSection = (index) => {
     
     <section id="section2">
       <p class="container md:text-4xl pt-4 text-center max-w-5xl" data-aos="fade-up">
-        We help you through <span class="font-SemiBoldItalic text-tolko-red text-5xl">360° - Full</span> communication support in one team
+        We help you through <br><span class="font-SemiBoldItalic text-tolko-red text-5xl">Full 360° communication support</span><br> in one team
       </p>
       <div class="container grid grid-cols-1 gap-5 justify-items-center items-center py-12 md:grid-cols-2" data-aos="fade-up">
-        <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red">
+        <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
               Your Extended Team
@@ -253,7 +263,7 @@ const scrollToSection = (index) => {
         </div>
         <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818]  h-full flex flex-col">
           <div class="px-6 py-4 flex-1">
-            <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes-red">
+            <div class="text-3xl mb-5 font-SemiBoldItalic">
               Strategic Vision, Excellence in Execution
             </div>
             <p class="text-base">
@@ -263,7 +273,7 @@ const scrollToSection = (index) => {
         </div>
         <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818]  h-full flex flex-col">
           <div class="px-6 py-4 flex-1">
-            <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes-red">
+            <div class="text-3xl mb-5 font-SemiBoldItalic">
               Knowledge and Experience-Based Methodology
             </div>
             <p class="text-base">
@@ -493,7 +503,7 @@ const scrollToSection = (index) => {
     <!-- Counter -->
     <section class="bg-tolko-red py-10">
       <div class="container py-3">
-        <h2 class="text-3xl md:text-5xl text-center mb-10 texto-con-bordes">
+        <h2 class="text-3xl md:text-5xl text-center mb-10 font-SemiBoldItalic texto-con-bordes">
           OUR RESULTS
         </h2>
         <Counter />

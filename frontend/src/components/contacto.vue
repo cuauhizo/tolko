@@ -76,18 +76,17 @@ const onSubmit = async () => {
             <FormKit
               v-model="servicio"
               type="select"
-              label="How we can support you:"
+              label="How can we support you?"
               placeholder="Select an option *"
               id="servicio"
               name="servicio"
               :options="[
-                'Digital Advertising',
-                'Content',
-                'Marketing Digital',
-                'Emailing',
-                'Video',
-                'UX Design',
-                'Consultancy'
+                'I want a specific quotation',
+                'I want Tolko to work on my projects',
+                'I want to know more about Tolko',
+                'I want to work for Tolko',
+                'I want more information about a service',
+                'Other'
               ]"
               validation="required"
             />
