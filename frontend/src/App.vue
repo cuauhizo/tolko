@@ -1,6 +1,6 @@
 <script setup>
 // import { ref } from 'vue';
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
 // import Menu from "./components/menu.vue";
 import Counter from "./components/counter.vue";
 import Contacto from "./components/contacto.vue";
@@ -35,6 +35,10 @@ const scrollToSection = (index) => {
     element.scrollIntoView({ behavior: "smooth" });
   }
 };
+
+const username = ref('Sofia')
+const imgUrl = ref("./src/assets/img/certificaciones/01.png");
+
 
 </script>
 
@@ -100,12 +104,27 @@ const scrollToSection = (index) => {
   </button>
   </header>
   <div class="homepage-header-wrapper">
-    <video autoplay="autoplay" muted="muted" loop="loop" playsinline="">
+    <video v-if="$i18n.locale === 'en'" autoplay="autoplay" muted="muted" loop="loop" playsinline="">
       <!-- <source src="./assets/video/TLK_MainHeader.webm" type="video/webm" /> -->
       <source src="./assets/video/TLK_MainHeader.mp4" type="video/mp4" />
     </video>
+    <video v-else-if="$i18n.locale === 'es'" autoplay="autoplay" muted="muted" loop="loop" playsinline="">
+      <!-- <source src="./assets/video/TLK_MainHeader.webm" type="video/webm" /> -->
+      <source src="./assets/img/certificaciones/01.png" type="video/mp4" />
+    </video>
   </div>
   <main>
+    <section class="container">
+      <div>
+        <select v-model="$i18n.locale" class="bg-transparent">
+          <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale" class="bg-transparent">{{ locale }}</option>
+        </select>
+      </div>
+      <h1>{{ $t("messages.hello", {name:username}) }}</h1>
+      <p>{{ $t("messages.content") }}</p>
+      <img v-if="$i18n.locale === 'es'" src="./assets/img/certificaciones/01.png" alt="">
+      <img v-else-if="$i18n.locale === 'en'" src="./assets/img/certificaciones/02.png" alt="">
+    </section>
     <section id="section1" class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2" >
       <!-- <img src="./assets/img/illustration-working.svg" alt="" /> -->
       <div>
