@@ -1,17 +1,59 @@
 <script setup>
-// import { ref } from 'vue';
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, reactive } from "vue";
 // import Menu from "./components/menu.vue";
 import Counter from "./components/counter.vue";
 import Contacto from "./components/contacto.vue";
+import Modal from "./components/modal.vue";
 
 const anio = ref(new Date().getFullYear());
-
-// onMounted(() => {
-//   AOS.init();
-// })
-
 const showScrollTopButton = ref(false);
+const servicio = [
+  {
+    id: 1,
+    titulo: 'Internal Communications',
+    descipcion: 'We connect companies and employees (administrative and operative teams), align the group to the business goals, build the culture, and enhance associates’ engagement.'
+  },
+  {
+    id: 2,
+    titulo: 'Public Relations',
+    descipcion: 'We build and strengthen your reputation by connecting your company with critical audiences, such as mass media, opinion leaders, communities, authorities, and NGOs.'
+  },
+  {
+    id: 3,
+    titulo: 'Marketing Campaigns',
+    descipcion: 'We create strategic initiatives to promote products, services, or brands to achieve business goals and win in the market.'
+  },
+  {
+    id: 4,
+    titulo: 'Digital Communications',
+    descipcion: 'We build and strengthen your digital footprint, from webpages to your social media strategy, creating communities and communication according to your goals.'
+  },
+  {
+    id: 5,
+    titulo: 'Graphic Design and Creativity',
+    descipcion: 'We turn your ideas into visual communication and creative concepts that reach your audience and strategically connect with them.'
+  },
+  {
+    id: 6,
+    titulo: 'Audiovisual production, animation and video editing',
+    descipcion: 'We create multimedia content that connects with your audiences through sound, visuals, and effects, effectively conveying messages or stories.'
+  },
+  {
+    id: 7,
+    titulo: 'Streaming production',
+    descipcion: 'We help you reach your audience anywhere, in real-time, through high-quality and tailor-made streamings in one or many languages, using a wide variety of platforms.'
+  },
+  {
+    id: 8,
+    titulo: 'Leadership Positioning and Thought Leadership',
+    descipcion: 'We design and execute positioning strategies for top leaders, turning them into authorities in a particular field by providing valuable insights and innovative ideas for shaping the conversation.'
+  },
+  {
+    id: 9,
+    titulo: 'Production and BTL activations',
+    descipcion: 'We turn communication into tangible materials, from flyers, magazines, or brochures to big-scale printing, videos, stands, or activations.'
+  }
+]
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -35,6 +77,26 @@ const scrollToSection = (index) => {
     element.scrollIntoView({ behavior: "smooth" });
   }
 };
+
+// ================== Modal ================
+const modal = reactive({
+  mostrar: false,
+  animar: false
+})
+
+const mostrarModal = (servicio) => {
+  modal.mostrar = true
+  modal.servicio = servicio;
+  setTimeout(() => {
+    modal.animar = true
+  }, 300)
+}
+const ocultarModal = () => {
+  modal.animar = false
+  setTimeout(() => {
+    modal.mostrar = false
+  }, 300)
+}
 
 </script>
 
@@ -106,137 +168,36 @@ const scrollToSection = (index) => {
     </video>
   </div>
   <main>
-    <section id="section1" class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2" >
-      <!-- <img src="./assets/img/illustration-working.svg" alt="" /> -->
-      <div>
-        <h1 class="text-3xl md:text-6xl font-SemiBoldItalic texto-con-bordes ml-3" data-aos="fade-right">
+    <section id="section1" class="container grid gap-5 items-center py-12 lg:grid-cols-2" >
+      <div class="">
+        <h1 class="text-3xl md:text-4xl xl:text-6xl font-SemiBoldItalic texto-con-bordes ml-3" data-aos="fade-right">
           At Tolko, we create unique communication for people.
         </h1>
       </div>
-      <article class="text-center space-y-6 md:text-left md:space-y-8" data-aos="fade-left">
-        <ul class="mt-5 text-xl mx-auto text-right font-medium leading-none md:mr-0">
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Internal Communications
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Public Relations
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Marketing Campaigns
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Digital Communications
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Graphic Design and Creativity
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Audiovisual production, animation and video editing
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Streaming production
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Leadership Positioning and Thought Leadership
-            </p>
-          </li>
-          <li>
-            <p
-              class="py-3.5 w-full flex items-center sm:justify-center md:justify-end"
-            >
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"
-              ></span>
-              Production and BTL activations
+      <Modal
+        v-if="modal.mostrar"
+        @ocultar-modal="ocultarModal"
+        :modal="modal"
+        :servicio="modal.servicio"
+      />
+      <article class="space-y-6 md:space-y-8" data-aos="fade-left">
+        <ul class="mt-5 text-base mx-auto text-left font-medium leading-none md:mr-0 md:text-left">
+          <li v-for="(servicio, index) in servicio" :key="index">
+            <p class="py-3.5 w-full flex items-center  md:justify-end">
+              <span class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"></span>
+              <span class="cursor-pointer hover:text-tolko-red" @click="mostrarModal(servicio)">
+                {{ servicio.titulo }}
+              </span>
             </p>
           </li>
         </ul>
       </article>
     </section>
+
     <!-- Especializaciones -->
-    <!-- <section id="section2"
-      class="container grid gap-5 justify-items-center items-center py-12"
-    >
-      <article class="text-center space-y-6 md:space-y-8">
-        <h2 class="text-3xl font-bold md:text-4xl">Especializaciones</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit Earum dolor
-          eveniet amet nesciunt sequi libero ab corrupti.
-        </p>
-        <div
-          class="mt-5 text-2xl grid grid-cols-1 gap-4 md:grid-cols-4 justify-center items-center"
-        >
-          <p>Hic voluptate voluptas</p>
-          <p>Consectetur adipisicing</p>
-          <p>Aperiam soluta illum nobis</p>
-          <p>Magni deleniti alias</p>
-          <p>Fugiat impedit unde</p>
-          <p>Sit amet consectetur</p>
-          <p>Animi sapiente aliquid excepturi</p>
-          <p>Laudantium pariatur eveniet</p>
-        </div>
-      </article>
-    </section> -->
-    <!-- Especializaciones -->
-    
     <section id="section2">
       <p class="container md:text-4xl pt-4 text-center max-w-5xl" data-aos="fade-up">
-        We help you through <br><span class="font-SemiBoldItalic text-tolko-red text-5xl">Full 360° communication support</span><br> in one team
+        We help you through <br><span class="font-SemiBoldItalic text-tolko-red text-3xl md:text-5xl">Full 360° communication support</span><br> in one team
       </p>
       <div class="container grid grid-cols-1 gap-5 justify-items-center items-center py-12 md:grid-cols-2" data-aos="fade-up">
         <div class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
@@ -283,223 +244,6 @@ const scrollToSection = (index) => {
         </div>
     </div>
     </section>
-    <!-- Nuestras soluciones -->
-    <!-- <div class="bg-slate-100 text-black">
-      <section id="section3"
-        class="container grid gap-5 justify-items-center items-center py-12"
-      >
-        <article class="text-center space-y-6 md:space-y-8">
-          <h2 class="text-3xl font-bold md:text-4xl">Nuestras soluciones</h2>
-          <ul
-            class="grid grid-cols-2 gap-8 p-3 text-2xl sm:grid-cols-3 sm:gap-24 md:grid-cols-4"
-          >
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-brand-recognition.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibold mt-3">Alex</h5>
-            </li>
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-detailed-records.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibold mt-3">Sarah</h5>
-            </li>
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-fully-customizable.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibold mt-3">Jericho</h5>
-            </li>
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-brand-recognition.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibold mt-3">Dianna</h5>
-            </li>
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-fully-customizable.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibol">Bernard</h5>
-            </li>
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-detailed-records.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibold mt-3">Francis</h5>
-            </li>
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-brand-recognition.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibold mt-3">Edna</h5>
-            </li>
-            <li class="flex items-center flex-col">
-              <img
-                src="./assets/img/icon-fully-customizable.svg"
-                alt=""
-                class="w-16 h-16"
-              />
-              <h5 class="font-semibold mt-3">Carson</h5>
-            </li>
-          </ul>
-        </article>
-      </section>
-    </div> -->
-    <!-- Casos Destacados -->
-    <!-- <section class="container py-12">
-      <h2 class="text-3xl font-bold md:text-4xl text-center mb-10">
-        Casos Destacados
-      </h2>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4"
-      >
-        <div class="bg-white rounded-lg border p-4">
-          <div class="py-5">
-            <img
-              src="./assets/img/atm.webp"
-              alt="Placeholder Image"
-              class="md:max-h-20 lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="px-1 py-4">
-            <div class="text-center font-bold text-xl mb-2">
-              Lorem ipsum dolor
-            </div>
-            <p class="text-center text-gray-700 text-base">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-              corporis aliquam distinctio, enim asperiores, quo hic voluptates
-              sed fugiat culpa
-            </p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg border p-4">
-          <div class="py-5">
-            <img
-              src="./assets/img/bluediamond.webp"
-              alt="Placeholder Image"
-              class="md:max-h-20 lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="px-1 py-4">
-            <div class="text-center font-bold text-xl mb-2">
-              Veniam minima nihil ratione
-            </div>
-            <p class="text-center text-gray-700 text-base">
-              Veniam minima nihil, amet consectetur adipisicing elit. ratione
-              expedita dolorem dignissimos, officiis quod sed recusandae a eum
-              consectetur. Dolorem expedita earum quas molestias, voluptatibus
-              dolorum vero!
-            </p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg border p-4">
-          <div class="py-5">
-            <img
-              src="./assets/img/continental.webp"
-              alt="Placeholder Image"
-              class="md:max-h-20 lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="px-1 py-4">
-            <div class="text-center font-bold text-xl mb-2">
-              Alias reiciendis eos eaque esse
-            </div>
-            <p class="text-center text-gray-700 text-base">
-              Adipisicing elit. Labore molestiae quisquam nostrum ea corrupti,
-              consectetur porro, itaque facilis pariatur reiciendis eos eaque
-              esse.
-            </p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg border p-4">
-          <div class="py-5">
-            <img
-              src="./assets/img/party-city.webp"
-              alt="Placeholder Image"
-              class="md:max-h-20 lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="px-1 py-4">
-            <div class="text-center font-bold text-xl mb-2">
-              Illum ducimus molestiae voluptas
-            </div>
-            <p class="text-center text-gray-700 text-base">
-              Ipsum dolor, sit amet consectetur adipisicing elit. Distinctio
-              tempora odio commodi, voluptas, quam corporis doloremque
-              aspernatur aliquam pariatur asperiores natus, quidem nulla
-              suscipit nemo nobis?
-            </p>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- Certificados -->
-    <!-- <section id="section5" class="bg-tolko-red">
-      <div class="container py-3">
-        <div
-          class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
-        >
-          <div class="">
-            <img
-              src="./assets/img/certificaciones/01.png"
-              alt="Placeholder Image"
-              class="lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="">
-            <img
-              src="./assets/img/certificaciones/02.png"
-              alt="Placeholder Image"
-              class="lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="">
-            <img
-              src="./assets/img/certificaciones/03.png"
-              alt="Placeholder Image"
-              class="lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="">
-            <img
-              src="./assets/img/certificaciones/04.png"
-              alt="Placeholder Image"
-              class="lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="">
-            <img
-              src="./assets/img/certificaciones/05.png"
-              alt="Placeholder Image"
-              class="lg:max-h-none mx-auto"
-            />
-          </div>
-          <div class="">
-            <img
-              src="./assets/img/certificaciones/06.png"
-              alt="Placeholder Image"
-              class="lg:max-h-none mx-auto"
-            />
-          </div>
-        </div>
-      </div>
-    </section> -->
     <!-- Counter -->
     <section class="bg-tolko-red py-10">
       <div class="container py-3">
@@ -689,7 +433,7 @@ const scrollToSection = (index) => {
     </div>
 
       <div class="container px-5 py-4 mx-auto">
-        <p class="text-sm text-white xl:text-center">
+        <p class="text-sm text-white text-center">
           © {{ anio }} TOLKO GROUP. All rights reserved.
         </p>
       </div>
