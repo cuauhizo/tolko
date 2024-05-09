@@ -7,6 +7,10 @@
     @apply w-[90%] mx-auto overflow-hidden max-w-screen-xl
   }
 
+  .bg-gradient-radial {
+    background: radial-gradient(145.19% 74.62% at 56.02% 43.56%, rgba(234, 0, 41, 0.64) 0%, rgba(24, 24, 24, 0.64) 100%);
+  }
+
 }
 
 @font-face {
