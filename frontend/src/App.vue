@@ -68,14 +68,19 @@ const imgUrl = ref("./src/assets/img/certificaciones/01.png");
         <ul
           class="absolute inset-x-0 top-24 p-10 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white"
         >
-          <li><a href="#about" @click="scrollToSection(1)">About Us</a></li>
+          <li><a href="#about" @click="scrollToSection(1)">{{ $t("menu.about_us") }}</a></li>
           <li>
-            <a href="#services" @click="scrollToSection(2)">Our services</a>
+            <a href="#services" @click="scrollToSection(2)">{{ $t("menu.our_services") }}</a>
           </li>
-          <li><a href="#" @click="scrollToSection(3)">Join our team!</a></li>
+          <li><a href="#" @click="scrollToSection(3)">{{ $t("menu.join_our_team") }}</a></li>
           <li>
             <a href="#contact" class="btn btn-red text-white" @click="scrollToSection(4)"
-              >Get in touch with us</a>
+              >{{ $t("menu.get_in_touch_with_us") }}</a>
+          </li>
+          <li>
+            <select v-model="$i18n.locale" class="bg-transparent">
+              <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale" class="bg-transparent">{{ locale }}</option>
+            </select>
           </li>
         </ul>
       </div>
@@ -129,7 +134,7 @@ const imgUrl = ref("./src/assets/img/certificaciones/01.png");
       <!-- <img src="./assets/img/illustration-working.svg" alt="" /> -->
       <div>
         <h1 class="text-3xl md:text-6xl font-SemiBoldItalic texto-con-bordes ml-3" data-aos="fade-right">
-          At Tolko, we create unique communication for people.
+          {{ $t("section1.at_tolko_we_create_unique_communication_for_people") }}
         </h1>
       </div>
       <article class="text-center space-y-6 md:text-left md:space-y-8" data-aos="fade-left">
