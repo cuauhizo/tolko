@@ -4,11 +4,15 @@
   >
     <div class="div-counter">
       <span ref="counter1">{{ contador1 }}</span>
-      <h3>Years of existence</h3>
+      <h3>
+        {{ $t("section3.count1") }}
+      </h3>
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ contador2 }}</span>
-      <h3>Customers</h3>
+      <h3>
+        {{ $t("section3.count2") }}
+      </h3>
     </div>
     <div class="div-counter">
       <span>+</span
@@ -23,7 +27,9 @@
           isInteger: false,
         })
       }}</span>
-      <h3>Communication strategies and projects</h3>
+      <h3>
+        {{ $t("section3.count3") }}
+      </h3>
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ vueNumberFormat(contador4, {
@@ -35,16 +41,22 @@
           acceptNegative: true,
           isInteger: false,
         }) }}</span>
-      <h3>Communication materials developed</h3>
+      <h3>
+        {{ $t("section3.count4") }}
+      </h3>
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ contador5 }}</span
       ><span>%</span>
-      <h3>ROI for our customers</h3>
+      <h3>
+        {{ $t("section3.count5") }}
+      </h3>
     </div>
     <div class="div-counter">
       <span>+</span><span ref="counter2">{{ contador6 }}</span>
-      <h3>Countries receive the communication we make</h3>
+      <h3>
+        {{ $t("section3.count6") }}
+      </h3>
     </div>
   </div>
 </template>

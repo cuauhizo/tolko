@@ -37,7 +37,7 @@ const onSubmit = async () => {
     <section id="section4" class="container py-12 text-black">
       <div class="md:w-2/3 md:mx-auto">
       <h2 class="text-white text-3xl font-bold md:text-4xl text-center mb-10">
-        Get in touch with us
+        {{ $t("section5.title") }}
       </h2>
       <FormKit
         type="form"
