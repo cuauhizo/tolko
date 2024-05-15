@@ -1,7 +1,7 @@
 <script setup>
   import { ref, watch } from 'vue';
   import axios from 'axios';
-  import { reset } from '@formkit/vue';
+  import { reset, changeLocale } from '@formkit/vue';
   import { useI18n } from 'vue-i18n';
 
   const { locale } = useI18n();
@@ -44,6 +44,10 @@
       // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
     }
   );
+  watch(idioma, () => {
+    // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
+    reset('frmContacto');
+  });
 </script>
 
 <template>
