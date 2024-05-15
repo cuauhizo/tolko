@@ -1,69 +1,65 @@
 <script setup>
-  import { ref, onMounted, onUnmounted, reactive } from 'vue';
-  // import Menu from "./components/menu.vue";
+  import { ref, onMounted, onUnmounted, reactive, watch } from 'vue';
+  // import Menu from './components/menu.vue';
   import Counter from './components/counter.vue';
   import Contacto from './components/contacto.vue';
   import Modal from './components/modal.vue';
   import Lenguaje from './components/lenguaje.vue';
+  import LenguajeTest from './components/lenguajeTest.vue';
+  import { useI18n } from 'vue-i18n';
 
+  const { t, locale } = useI18n();
   const anio = ref(new Date().getFullYear());
   const showScrollTopButton = ref(false);
-  const servicios = [
+  const idioma = ref(locale);
+
+  const servicios = reactive([
     {
       id: 1,
-      titulo: 'Internal Communications',
-      descipcion:
-        'We connect companies and employees (administrative and operative teams), align the group to the business goals, build the culture, and enhance associates’ engagement.',
+      titulo: t('section1.list.list1.title'),
+      descipcion: t('section1.list.list1.description'),
     },
     {
       id: 2,
-      titulo: 'Public Relations',
-      descipcion:
-        'We build and strengthen your reputation by connecting your company with critical audiences, such as mass media, opinion leaders, communities, authorities, and NGOs.',
+      titulo: t('section1.list.list2.title'),
+      descipcion: t('section1.list.list2.description'),
     },
     {
       id: 3,
-      titulo: 'Marketing Campaigns',
-      descipcion:
-        'We create strategic initiatives to promote products, services, or brands to achieve business goals and win in the market.',
+      titulo: t('section1.list.list3.title'),
+      descipcion: t('section1.list.list3.description'),
     },
     {
       id: 4,
-      titulo: 'Digital Communications',
-      descipcion:
-        'We build and strengthen your digital footprint, from webpages to your social media strategy, creating communities and communication according to your goals.',
+      titulo: t('section1.list.list4.title'),
+      descipcion: t('section1.list.list4.description'),
     },
     {
       id: 5,
-      titulo: 'Graphic Design and Creativity',
-      descipcion:
-        'We turn your ideas into visual communication and creative concepts that reach your audience and strategically connect with them.',
+      titulo: t('section1.list.list5.title'),
+      descipcion: t('section1.list.list5.description'),
     },
     {
       id: 6,
-      titulo: 'Audiovisual production, animation and video editing',
-      descipcion:
-        'We create multimedia content that connects with your audiences through sound, visuals, and effects, effectively conveying messages or stories.',
+      titulo: t('section1.list.list6.title'),
+      descipcion: t('section1.list.list6.description'),
     },
     {
       id: 7,
-      titulo: 'Streaming production',
-      descipcion:
-        'We help you reach your audience anywhere, in real-time, through high-quality and tailor-made streamings in one or many languages, using a wide variety of platforms.',
+      titulo: t('section1.list.list7.title'),
+      descipcion: t('section1.list.list7.description'),
     },
     {
       id: 8,
-      titulo: 'Leadership Positioning and Thought Leadership',
-      descipcion:
-        'We design and execute positioning strategies for top leaders, turning them into authorities in a particular field by providing valuable insights and innovative ideas for shaping the conversation.',
+      titulo: t('section1.list.list8.title'),
+      descipcion: t('section1.list.list8.description'),
     },
     {
       id: 9,
-      titulo: 'Production and BTL activations',
-      descipcion:
-        'We turn communication into tangible materials, from flyers, magazines, or brochures to big-scale printing, videos, stands, or activations.',
+      titulo: t('section1.list.list9.title'),
+      descipcion: t('section1.list.list9.description'),
     },
-  ];
+  ]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -109,12 +105,21 @@
       modal.mostrar = false;
     }, 300);
   };
+
+  watch(idioma, (nuevoIdioma) => {
+    servicios.forEach((servicio, index) => {
+      servicios[index].titulo = t(`section1.list.list${index + 1}.title`);
+      servicios[index].descipcion = t(
+        `section1.list.list${index + 1}.description`
+      );
+    });
+  });
 </script>
 
 <template>
   <!-- Header -->
+  <!-- <Menu></Menu> -->
   <header>
-    <!-- <Menu></Menu> -->
     <div class="fixed md:absolute z-30 w-full px-5">
       <nav
         class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white">
@@ -126,54 +131,54 @@
             alt="Logo tolko"
             class="w-full" />
         </a>
-        <input
-          type="checkbox"
-          id="menu"
-          class="peer hidden" />
-        <label
-          for="menu"
-          class="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-10 md:hidden"></label>
-        <div
-          class="fixed inset-0 bg-gradient-to-b from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none">
-          <ul
-            class="absolute inset-x-0 top-24 p-10 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white">
-            <li>
-              <a
-                href="#about"
-                @click="scrollToSection(1)"
-                >{{ $t('menu.about_us') }}</a
-              >
-            </li>
-            <li>
-              <a
-                href="#services"
-                @click="scrollToSection(2)"
-                >{{ $t('menu.our_services') }}</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                @click="scrollToSection(3)"
-                >{{ $t('menu.join_our_team') }}</a
-              >
-            </li>
-            <li>
-              <a
-                href="#contact"
-                class="btn btn-red text-white"
-                @click="scrollToSection(4)"
-                >{{ $t('menu.get_in_touch_with_us') }}</a
-              >
-            </li>
-            <!-- <li>
-            <select v-model="$i18n.locale" class="bg-transparent">
-              <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale" class="bg-black">{{ locale }}</option>
-            </select>
-          </li> -->
-          </ul>
+        <div class="flex items-center justify-end gap-2">
+          <input
+            type="checkbox"
+            id="menu"
+            class="peer hidden" />
+          <label
+            for="menu"
+            class="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-10 md:hidden"></label>
+          <div
+            class="fixed inset-0 bg-gradient-to-b from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none">
+            <ul
+              class="absolute inset-x-0 top-24 p-10 items-center bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white md:shadow-none">
+              <li>
+                <a
+                  href="#about"
+                  @click="scrollToSection(1)"
+                  >{{ $t('menu.about_us') }}</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  @click="scrollToSection(2)"
+                  >{{ $t('menu.our_services') }}</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  @click="scrollToSection(3)"
+                  >{{ $t('menu.join_our_team') }}</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="btn btn-red text-white"
+                  @click="scrollToSection(4)"
+                  >{{ $t('menu.get_in_touch_with_us') }}</a
+                >
+              </li>
+              <!-- <li>
+              <Lenguaje />
+            </li> -->
+            </ul>
+          </div>
+          <Lenguaje />
         </div>
-        <Lenguaje />
       </nav>
     </div>
     <button
@@ -223,20 +228,33 @@
   </div>
   <main>
     <!-- <section class="container">
-      <div>
-        <select v-model="$i18n.locale" class="bg-transparent">
-          <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale" class="bg-transparent">{{ locale }}</option>
-        </select>
-      </div>
-      <h1>{{ $t("messages.hello", {name:username}) }}</h1>
-      <p>{{ $t("messages.content") }}</p>
-      <img v-if="$i18n.locale === 'es'" src="./assets/img/certificaciones/01.png" alt="">
-      <img v-else-if="$i18n.locale === 'en'" src="./assets/img/certificaciones/02.png" alt="">
+    <div>
+      <select
+      v-model="$i18n.locale"
+      class="bg-transparent">
+      <option
+      v-for="locale in $i18n.availableLocales"
+      :key="`locale-${locale}`"
+      :value="locale"
+      class="bg-transparent">
+      {{ locale }}
+    </option>
+  </select>
+</div>
+<h1>{{ $t('messages.hello', { name: username }) }}</h1>
+<p>{{ $t('messages.content') }}</p>
+<img
+        v-if="$i18n.locale === 'es'"
+        src="./assets/img/certificaciones/01.png"
+        alt="" />
+      <img
+      v-else-if="$i18n.locale === 'en'"
+      src="./assets/img/certificaciones/02.png"
+      alt="" />
     </section> -->
     <section
       id="section1"
       class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2">
-      <!-- <img src="./assets/img/illustration-working.svg" alt="" /> -->
       <div>
         <h1
           class="text-3xl md:text-6xl font-SemiBoldItalic texto-con-bordes ml-3"
@@ -264,7 +282,6 @@
                 class="cursor-pointer hover:text-tolko-red"
                 @click="mostrarModal(servicio)">
                 {{ servicio.titulo }}
-                <!-- {{ $t("section1.list1", {list1:username}) }} -->
               </span>
             </p>
           </li>
@@ -367,7 +384,7 @@
         <a
           class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
           <img
-            src="./assets/img/logo-tolko.png"
+            src="./assets/img/logo-tolko.svg"
             alt="" />
         </a>
         <!-- Social Icons -->

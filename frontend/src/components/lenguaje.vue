@@ -1,12 +1,24 @@
 <template>
   <select
     v-model="$i18n.locale"
-    class="!bg-transparent uppercase focus-visible:none select-css">
+    class="!bg-transparent uppercase focus-visible:none select-css z-10">
     <option
       v-for="locale in $i18n.availableLocales"
       :key="`locale-${locale}`"
       :value="locale"
       class="!bg-transparent text-black">
+      <span class="w-8 z-10">
+        <img
+          v-if="$i18n.locale === 'es'"
+          src="../assets/img/lenguaje/mexico.png"
+          alt=""
+          class="h-4 w-6" />
+        <img
+          v-else-if="$i18n.locale === 'en'"
+          src="../assets/img/lenguaje/united-states-of-america.png"
+          alt=""
+          class="h-4 w-6" />
+      </span>
       {{ locale }}
     </option>
   </select>
@@ -21,7 +33,6 @@
   .select-css {
     display: block;
     font-size: 16px;
-    font-family: 'Arial', sans-serif;
     font-weight: 400;
     color: #444;
     line-height: 1.3;

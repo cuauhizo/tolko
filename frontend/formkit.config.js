@@ -1,5 +1,5 @@
 import { generateClasses } from '@formkit/themes';
-import { es } from '@formkit/i18n';
+import { en, es } from '@formkit/i18n';
 const config = {
   config: {
     classes: generateClasses({
@@ -18,10 +18,11 @@ const config = {
     }),
   },
   locales: {
+    en,
     es,
   },
-  // locale: 'es'
-  locale: navigator.language.startsWith('es') ? 'es' : 'en',
+  locale: 'en',
+  // locale: navigator.language.startsWith('es') ? 'es' : 'en',
 };
 
 export default config;

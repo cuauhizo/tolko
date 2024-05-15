@@ -1,116 +1,95 @@
 <template>
-  <div class="fixed md:absolute z-30 w-full px-5">
-    <nav
-      class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white"
-    >
-      <a href="./" class="w-1/3 max-w-[60px]">
-        <img
-          src="../assets/img/logo-tolko.svg"
-          alt="Logo tolko"
-          class="w-full"
-        />
-      </a>
-      <input type="checkbox" id="menu" class="peer hidden" />
-      <label
-        for="menu"
-        class="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-10 md:hidden"
-      ></label>
-      <div
-        class="fixed inset-0 bg-gradient-to-b  from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none"
-      >
-        <ul
-          class="absolute inset-x-0 top-24 p-10 bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-5 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white"
-        >
-          <li><a href="#about" @click="scrollToSection(1)">About Us</a></li>
-          <li>
-            <a href="#services" @click="scrollToSection(2)">Our services</a>
-          </li>
-          <li><a href="#" @click="scrollToSection(3)">Join our time!</a></li>
-          <li>
-            <a href="#contact" class="btn btn-red" @click="scrollToSection(4)"
-              >Get in touch with us</a>
-          </li>
-        </ul>
+  <header
+    :class="[
+      scrolledFromTop
+        ? 'fixed z-50 bg-white bg-opacity-80 dark:bg-dark shadow-sm backdrop-blur-sm'
+        : 'absolute',
+    ]"
+    class="left-0 top-0 z-50 w-full absolute">
+    <div class="container mx-auto">
+      <div class="relative z-40 -mx-4 flex items-center justify-between">
+        <div class="w-60 max-w-full px-4">
+          <a
+            href="javascript:void(0)"
+            class="block w-full py-5">
+            <img
+              src="../assets/img/logo_tolkoWhite.svg"
+              alt="logo"
+              class="block w-full dark:hidden" />
+            <img
+              src="../assets/img/logo_tolkoWhite.svg"
+              alt="logo"
+              class="hidden w-full dark:block" />
+          </a>
+        </div>
+        <div class="flex w-full items-center justify-end px-4">
+          <div>
+            <button
+              @click="navbarOpen = !navbarOpen"
+              :class="{ navbarTogglerActive: navbarOpen }"
+              id="navbarToggler"
+              class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden">
+              <span
+                class="relative my-[6px] block h-[2px] w-[30px] bg-body-color"></span>
+              <span
+                class="relative my-[6px] block h-[2px] w-[30px] bg-body-color"></span>
+              <span
+                class="relative my-[6px] block h-[2px] w-[30px] bg-body-color"></span>
+            </button>
+            <nav
+              :class="{ hidden: !navbarOpen }"
+              id="navbarCollapse"
+              class="dark:bg-dark-2 absolute right-4 top-full z-40 w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:shadow-none lg:dark:bg-transparent hidden">
+              <ul class="blcok lg:flex">
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="dark:text-dark-6 flex py-2 text-base font-medium text-body-color hover:text-dark dark:hover:text-white lg:ml-12 lg:inline-flex">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="dark:text-dark-6 flex py-2 text-base font-medium text-body-color hover:text-dark dark:hover:text-white lg:ml-12 lg:inline-flex">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="dark:text-dark-6 flex py-2 text-base font-medium text-body-color hover:text-dark dark:hover:text-white lg:ml-12 lg:inline-flex">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="javascript:void(0)"
+                    class="dark:text-dark-6 flex py-2 text-base font-medium text-body-color hover:text-dark dark:hover:text-white lg:ml-12 lg:inline-flex">
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
+            <a
+              href="javascript:void(0)"
+              class="dark:bg-dark-2 dark:hover:bg-dark-3 rounded-md bg-dark px-7 py-3 text-base font-medium text-white hover:bg-body-color">
+              Get Started
+            </a>
+          </div>
+        </div>
       </div>
-    </nav>
-  </div>
-  <button @click="scrollToTop" v-show="showScrollTopButton">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="m4.5 18.75 7.5-7.5 7.5 7.5"
-      />
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="m4.5 12.75 7.5-7.5 7.5 7.5"
-      />
-    </svg>
-  </button>
+    </div>
+  </header>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-const showScrollTopButton = ref(false);
+  import { ref } from 'vue';
 
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
-const handleScroll = () => {
-  const scrollTop = window.scrollY;
-  showScrollTopButton.value = scrollTop > 0;
-};
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
-
-const scrollToSection = (index) => {
-  const element = document.getElementById(`section${index}`);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
+  const navbarOpen = ref(false);
+  const scrolledFromTop = ref(false);
 </script>
 
-<style scoped>
-nav {
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Estilos opcionales para el botón de ir arriba */
-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #cc0032;
-  border: 1px solid #000;
-  padding: 15px;
-  z-index: 50;
-  border-radius: 50%;
-}
-.btn {
-  padding: 10px;
-  border-radius: 15px;
-}
-.btn:hover {
-  opacity: .8;
-}
-.btn-red {
-  background-color: #cc0032;
-  border: 1px solid #ba0331;
-}
-</style>
+<style scoped></style>

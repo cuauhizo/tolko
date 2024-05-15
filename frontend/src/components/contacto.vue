@@ -1,95 +1,118 @@
 <script setup>
-import { ref } from 'vue'
-import axios from 'axios'
-import { reset } from '@formkit/vue'
+  import { ref, watch } from 'vue';
+  import axios from 'axios';
+  import { reset } from '@formkit/vue';
+  import { useI18n } from 'vue-i18n';
 
+  const { locale } = useI18n();
+  const idioma = ref(locale);
 
-const nombre = ref('')
-const telefono = ref('')
-const email = ref('')
-const servicio = ref('')
-const mensaje = ref('')
+  const nombre = ref('');
+  const telefono = ref('');
+  const email = ref('');
+  const servicio = ref('');
+  const mensaje = ref('');
 
-const onSubmit = async () => {
-  const form = {
-  nombre: nombre.value,
-  telefono: telefono.value,
-  servicio: servicio.value,
-  email: email.value,
-  mensaje: mensaje.value
-};
+  const onSubmit = async () => {
+    const form = {
+      nombre: nombre.value,
+      telefono: telefono.value,
+      servicio: servicio.value,
+      email: email.value,
+      mensaje: mensaje.value,
+    };
 
-  try {
-    await axios.post('http://localhost:3001/emails', form)
-    // console.log(form);
-    alert('Correo electrónico enviado con éxito');
-    // Limpiar el formulario después del envío exitoso
-    reset('frmContacto')
-  } catch (error) {
-    alert('Error al enviar el correo electrónico');
-    console.error(error);
-  }
-};
+    try {
+      await axios.post('http://localhost:3001/emails', form);
+      // console.log(form);
+      alert('Correo electrónico enviado con éxito');
+      // alert(t('section5.form.sendSuccess'));
 
+      // Limpiar el formulario después del envío exitoso
+      reset('frmContacto');
+    } catch (error) {
+      alert('Error al enviar el correo electrónico');
+      // alert("t('section5.form.sendError')");
+      console.error(error);
+    }
+  };
+
+  // Observar el cambio de idioma
+  watch(
+    () => idioma,
+    (newVal, oldVal) => {
+      // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
+    }
+  );
 </script>
 
 <template>
-    <section id="section4" class="container py-12 text-black">
-      <div class="md:w-2/3 md:mx-auto">
+  <section
+    id="section4"
+    class="container py-12 text-black">
+    <div class="md:w-2/3 md:mx-auto">
       <h2 class="text-white text-3xl font-bold md:text-4xl text-center mb-10">
-        {{ $t("section5.title") }}
+        {{ $t('section5.title') }}
       </h2>
       <FormKit
         type="form"
         id="frmContacto"
         :actions="false"
-        @submit="onSubmit"
-      >
+        @submit="onSubmit">
         <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
           <FormKit
             v-model.trim="nombre"
             type="text"
             id="nombre"
             name="nombre"
-            placeholder="Name *"
-            validation="required|name"
-          />
+            :placeholder="$t('section5.form.placeholderName')"
+            validation="required"
+            :validationMessages="{
+              required: $t('section5.form.requiredName'),
+            }" />
           <FormKit
             v-model.trim="telefono"
             type="text"
             id="telefono"
             name="telefono"
-            placeholder="telephone *"
-            validation="required|telefono"
-          />
+            :placeholder="$t('section5.form.placeholderTelephone')"
+            validation="required"
+            :validationMessages="{
+              required: $t('section5.form.requiredTelephone'),
+            }" />
           <div class="md:col-span-2">
             <FormKit
               v-model.trim="email"
               type="email"
               id="email"
               name="email"
-              placeholder="E-mail *"
+              :placeholder="$t('section5.form.placeholderEmail')"
               validation="required|email"
-            />
+              :validationMessages="{
+                required: $t('section5.form.requiredEmail'),
+                email: $t('section5.form.formatEmail'),
+              }" />
           </div>
           <div class="md:col-span-2">
             <FormKit
               v-model="servicio"
               type="select"
-              label="How can we support you?"
-              placeholder="Select an option *"
+              :label="$t('section5.form.labelService')"
+              :placeholder="$t('section5.form.placeholderService')"
               id="servicio"
               name="servicio"
               :options="[
-                'I want a specific quotation',
-                'I want Tolko to work on my projects',
-                'I want to know more about Tolko',
-                'I want to work for Tolko',
-                'I want more information about a service',
-                'Other'
+                $t('section5.form.serviceOptions.op1'),
+                $t('section5.form.serviceOptions.op2'),
+                $t('section5.form.serviceOptions.op3'),
+                $t('section5.form.serviceOptions.op4'),
+                $t('section5.form.serviceOptions.op5'),
+                $t('section5.form.serviceOptions.op6'),
               ]"
               validation="required"
-            />
+              :validationMessages="{
+                required: $t('section5.form.requiredService'),
+              }" />
           </div>
           <div class="md:col-span-2">
             <FormKit
@@ -98,20 +121,22 @@ const onSubmit = async () => {
               type="textarea"
               rows="5"
               cols=""
-              placeholder="Message *"
+              :placeholder="$t('section5.form.placeholderMessage')"
               maxlength="250"
               validation="required"
-            />
+              :validationMessages="{
+                required: $t('section5.form.requiredMessage'),
+              }" />
           </div>
           <div class="md:col-span-2">
-            <FormKit type="submit">Send</FormKit>
+            <FormKit type="submit">
+              {{ $t('section5.form.send') }}
+            </FormKit>
           </div>
         </div>
       </FormKit>
     </div>
-    </section>
+  </section>
 </template>
 
-
-<style scoped>
-</style>
+<style scoped></style>
