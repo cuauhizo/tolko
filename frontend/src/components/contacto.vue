@@ -1,7 +1,7 @@
 <script setup>
   import { ref, watch } from 'vue';
   import axios from 'axios';
-  import { reset, changeLocale } from '@formkit/vue';
+  import { reset } from '@formkit/vue';
   import { useI18n } from 'vue-i18n';
 
   const { locale } = useI18n();
