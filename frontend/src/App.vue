@@ -268,7 +268,7 @@
           </div>
         </div>
         <div
-          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-tolko-red h-full flex flex-col">
+          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
               Making Your Life Easier and Growing Your Business
@@ -281,7 +281,7 @@
           </div>
         </div>
         <div
-          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col">
+          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic">
               Strategic Vision, Excellence in Execution
@@ -295,7 +295,7 @@
           </div>
         </div>
         <div
-          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col">
+          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic">
               Knowledge and Experience-Based Methodology
