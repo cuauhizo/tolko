@@ -133,12 +133,14 @@ export const messages = {
       },
       list2: {
         item1: 'Location',
-        item2: 'Workshop: Manizales #184, CDMX, Mexico',
-        item3: 'Corporate: Av. Río San Joaquín #436, CDMX, Mexico',
+        item2:
+          '<span class="text-white">Workshop Contact:</span> Manizales #184, CDMX, Mexico',
+        item3:
+          '<span class="text-white">Corporate Contact:</span> Av. Río San Joaquín #436, CDMX, Mexico',
       },
       list3: {
         item1: 'Contact',
-        item2: 'climon@tolkogroup.com',
+        item2: 'tolko360@tolkogroup.com',
         item3: 'Request a Quote',
       },
       copy: 'TOLKO GROUP. All rights reserved.',
@@ -279,8 +281,10 @@ export const messages = {
       },
       list2: {
         item1: 'Ubicación',
-        item2: 'Taller: Manizales #184, CDMX, México',
-        item3: 'Corporativo: Av. Río San Joaquín #436, CDMX, México',
+        item2:
+          '<span class="text-white">Contacto Taller:</span>: Manizales #184, CDMX, México',
+        item3:
+          '<span class="text-white">Contacto Corporativo:</span>: Av. Río San Joaquín #436, CDMX, México',
       },
       list3: {
         item1: 'Contacto',
