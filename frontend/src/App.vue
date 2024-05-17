@@ -1,4 +1,5 @@
 <script setup>
+<<<<<<< HEAD
   import { ref, onMounted, onUnmounted, reactive } from 'vue';
   // import Menu from "./components/menu.vue";
   import Counter from './components/counter.vue';
@@ -108,12 +109,129 @@
   };
 
   // comentario test
+=======
+  import { ref, onMounted, onUnmounted, reactive, watch } from 'vue';
+  // import Menu from './components/menu.vue';
+  import Counter from './components/counter.vue';
+  import Contacto from './components/contacto.vue';
+  import Modal from './components/modal.vue';
+  import Lenguaje from './components/lenguaje.vue';
+  import LenguajeTest from './components/lenguajeTest.vue';
+  import { useI18n } from 'vue-i18n';
+
+  const { t, locale } = useI18n();
+  const anio = ref(new Date().getFullYear());
+  const showScrollTopButton = ref(false);
+  const idioma = ref(locale);
+
+  const servicios = reactive([
+    {
+      id: 1,
+      titulo: t('section1.list.list1.title'),
+      descipcion: t('section1.list.list1.description'),
+    },
+    {
+      id: 2,
+      titulo: t('section1.list.list2.title'),
+      descipcion: t('section1.list.list2.description'),
+    },
+    {
+      id: 3,
+      titulo: t('section1.list.list3.title'),
+      descipcion: t('section1.list.list3.description'),
+    },
+    {
+      id: 4,
+      titulo: t('section1.list.list4.title'),
+      descipcion: t('section1.list.list4.description'),
+    },
+    {
+      id: 5,
+      titulo: t('section1.list.list5.title'),
+      descipcion: t('section1.list.list5.description'),
+    },
+    {
+      id: 6,
+      titulo: t('section1.list.list6.title'),
+      descipcion: t('section1.list.list6.description'),
+    },
+    {
+      id: 7,
+      titulo: t('section1.list.list7.title'),
+      descipcion: t('section1.list.list7.description'),
+    },
+    {
+      id: 8,
+      titulo: t('section1.list.list8.title'),
+      descipcion: t('section1.list.list8.description'),
+    },
+    {
+      id: 9,
+      titulo: t('section1.list.list9.title'),
+      descipcion: t('section1.list.list9.description'),
+    },
+  ]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    showScrollTopButton.value = scrollTop > 0;
+  };
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
+
+  const scrollToSection = (index) => {
+    const element = document.getElementById(`section${index}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const username = ref('Sofia');
+
+  // ================== Modal ================
+  const modal = reactive({
+    mostrar: false,
+    animar: false,
+  });
+
+  const mostrarModal = (servicio) => {
+    modal.mostrar = true;
+    modal.servicio = servicio;
+    setTimeout(() => {
+      modal.animar = true;
+    }, 300);
+  };
+  const ocultarModal = () => {
+    modal.animar = false;
+    setTimeout(() => {
+      modal.mostrar = false;
+    }, 300);
+  };
+
+  watch(idioma, (nuevoIdioma) => {
+    servicios.forEach((servicio, index) => {
+      servicios[index].titulo = t(`section1.list.list${index + 1}.title`);
+      servicios[index].descipcion = t(
+        `section1.list.list${index + 1}.description`
+      );
+    });
+  });
+>>>>>>> lenguaje
 </script>
 
 <template>
   <!-- Header -->
+  <!-- <Menu></Menu> -->
   <header>
-    <!-- <Menu></Menu> -->
     <div class="fixed md:absolute z-30 w-full px-5">
       <nav
         class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white">
@@ -125,6 +243,7 @@
             alt="Logo tolko"
             class="w-full" />
         </a>
+<<<<<<< HEAD
         <input
           type="checkbox"
           id="menu"
@@ -166,6 +285,55 @@
               >
             </li>
           </ul>
+=======
+        <div class="flex items-center justify-end gap-2">
+          <input
+            type="checkbox"
+            id="menu"
+            class="peer hidden" />
+          <label
+            for="menu"
+            class="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-10 md:hidden"></label>
+          <div
+            class="fixed inset-0 bg-gradient-to-b from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none">
+            <ul
+              class="absolute inset-x-0 top-24 p-10 items-center bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white md:shadow-none">
+              <li>
+                <a
+                  href="#about"
+                  @click="scrollToSection(1)"
+                  >{{ $t('menu.about_us') }}</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  @click="scrollToSection(2)"
+                  >{{ $t('menu.our_services') }}</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  @click="scrollToSection(3)"
+                  >{{ $t('menu.join_our_team') }}</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="btn btn-red text-white"
+                  @click="scrollToSection(4)"
+                  >{{ $t('menu.get_in_touch_with_us') }}</a
+                >
+              </li>
+              <!-- <li>
+              <Lenguaje />
+            </li> -->
+            </ul>
+          </div>
+          <Lenguaje />
+>>>>>>> lenguaje
         </div>
       </nav>
     </div>
@@ -192,6 +360,10 @@
   </header>
   <div class="homepage-header-wrapper">
     <video
+<<<<<<< HEAD
+=======
+      v-if="$i18n.locale === 'en'"
+>>>>>>> lenguaje
       autoplay="autoplay"
       muted="muted"
       loop="loop"
@@ -200,6 +372,7 @@
       <source
         src="./assets/video/TLK_MainHeader.mp4"
         type="video/mp4" />
+<<<<<<< HEAD
     </video>
   </div>
   <main>
@@ -211,6 +384,55 @@
           class="text-3xl md:text-4xl xl:text-6xl font-SemiBoldItalic texto-con-bordes ml-3"
           data-aos="fade-right">
           At Tolko, we create unique communication for people.
+=======
+    </video>
+    <video
+      v-else-if="$i18n.locale === 'es'"
+      autoplay="autoplay"
+      muted="muted"
+      loop="loop"
+      playsinline="">
+      <!-- <source src="./assets/video/TLK_MainHeader.webm" type="video/webm" /> -->
+      <source
+        src="https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        type="video/mp4" />
+    </video>
+  </div>
+  <main>
+    <!-- <section class="container">
+    <div>
+      <select
+      v-model="$i18n.locale"
+      class="bg-transparent">
+      <option
+      v-for="locale in $i18n.availableLocales"
+      :key="`locale-${locale}`"
+      :value="locale"
+      class="bg-transparent">
+      {{ locale }}
+    </option>
+  </select>
+</div>
+<h1>{{ $t('messages.hello', { name: username }) }}</h1>
+<p>{{ $t('messages.content') }}</p>
+<img
+        v-if="$i18n.locale === 'es'"
+        src="./assets/img/certificaciones/01.png"
+        alt="" />
+      <img
+      v-else-if="$i18n.locale === 'en'"
+      src="./assets/img/certificaciones/02.png"
+      alt="" />
+    </section> -->
+    <section
+      id="section1"
+      class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2">
+      <div>
+        <h1
+          class="text-3xl md:text-6xl font-SemiBoldItalic texto-con-bordes ml-3"
+          data-aos="fade-right">
+          {{ $t('section1.title') }}
+>>>>>>> lenguaje
         </h1>
       </div>
       <Modal
@@ -224,8 +446,13 @@
         <ul
           class="mt-5 text-base mx-auto text-left font-medium leading-none md:mr-0 md:text-left">
           <li
+<<<<<<< HEAD
             v-for="(servicio, index) in servicio"
             :key="index">
+=======
+            v-for="servicio in servicios"
+            :key="servicio.id">
+>>>>>>> lenguaje
             <p class="py-3.5 w-full flex items-center md:justify-end">
               <span
                 class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"></span>
@@ -245,11 +472,19 @@
       <p
         class="container md:text-4xl pt-4 text-center max-w-5xl"
         data-aos="fade-up">
+<<<<<<< HEAD
         We help you through <br /><span
           class="font-SemiBoldItalic text-tolko-red text-3xl md:text-5xl"
           >Full 360° communication support</span
         ><br />
         in one team
+=======
+        {{ $t('section2.We_help_you_through') }} <br /><span
+          class="font-SemiBoldItalic text-tolko-red text-3xl md:text-5xl"
+          >{{ $t('section2.full_360_communication_support') }}</span
+        ><br />
+        {{ $t('section2.in_one_team') }}
+>>>>>>> lenguaje
       </p>
       <div
         class="container grid grid-cols-1 gap-5 justify-items-center items-center py-12 md:grid-cols-2"
@@ -258,52 +493,74 @@
           class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
-              Your Extended Team
+              {{ $t('section2.card1.title') }}
             </div>
             <p class="text-base">
-              We are your Communications extended team, a group of talented
-              professionals laser-focused on creating the best strategies and
-              executing them with excellence daily.
+              {{ $t('section2.card1.description') }}
             </p>
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
+=======
+          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-tolko-red h-full flex flex-col">
+>>>>>>> lenguaje
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic texto-con-bordes">
-              Making Your Life Easier and Growing Your Business
+              {{ $t('section2.card2.title') }}
             </div>
             <p class="text-base">
+<<<<<<< HEAD
               With us, you will have a tailor-made solution and a group of
               consultants committed to further anticipating your communication
               needs to grow your business and strengthen your reputation.
+=======
+              {{ $t('section2.card2.description') }}
+>>>>>>> lenguaje
             </p>
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
+=======
+          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col">
+>>>>>>> lenguaje
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic">
-              Strategic Vision, Excellence in Execution
+              {{ $t('section2.card3.title') }}
             </div>
             <p class="text-base">
+<<<<<<< HEAD
               Tolko means “unique”, and that is how we work on each project,
               treat each customer, and get involved with each company
               culture. We are based in Mexico and have an international
               perspective and reach. We create global projects.
+=======
+              {{ $t('section2.card3.description') }}
+>>>>>>> lenguaje
             </p>
           </div>
         </div>
         <div
+<<<<<<< HEAD
           class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
+=======
+          class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col">
+>>>>>>> lenguaje
           <div class="px-6 py-4 flex-1">
             <div class="text-3xl mb-5 font-SemiBoldItalic">
-              Knowledge and Experience-Based Methodology
+              {{ $t('section2.card4.title') }}
             </div>
             <p class="text-base">
+<<<<<<< HEAD
               We aim and enjoy creating alternative and innovative communication
               solutions based on our experience and an immersive approach to
               each company.
+=======
+              {{ $t('section2.card4.description') }}
+>>>>>>> lenguaje
             </p>
           </div>
         </div>
@@ -314,7 +571,11 @@
       <div class="container py-3">
         <h2
           class="text-3xl md:text-5xl text-center mb-10 font-SemiBoldItalic texto-con-bordes">
+<<<<<<< HEAD
           OUR RESULTS
+=======
+          {{ $t('section3.title') }}
+>>>>>>> lenguaje
         </h2>
         <Counter />
       </div>
@@ -325,7 +586,7 @@
         class="container py-8"
         data-aos="fade-up">
         <h2 class="text-3xl font-bold text-white text-center md:text-4xl">
-          Our Presence
+          {{ $t('section4.title') }}
         </h2>
         <img
           src="./assets/img/presencia.webp"
@@ -344,7 +605,11 @@
         <a
           class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
           <img
+<<<<<<< HEAD
             src="./assets/img/logo-tolko.png"
+=======
+            src="./assets/img/logo-tolko.svg"
+>>>>>>> lenguaje
             alt="" />
         </a>
         <!-- Social Icons -->
@@ -432,63 +697,95 @@
       <div class="mx-auto text-center md:pl-20 md:text-left">
         <h2
           class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
+<<<<<<< HEAD
           Company
+=======
+          {{ $t('footer.list1.item1') }}
+>>>>>>> lenguaje
         </h2>
         <nav class="mb-10 list-none">
           <li class="mt-3">
             <a
               class="text-gray-500 cursor-pointer hover:text-gray-200"
+<<<<<<< HEAD
               @click="scrollToSection(1)"
               >About Us</a
             >
+=======
+              @click="scrollToSection(1)">
+              {{ $t('footer.list1.item2') }}
+            </a>
+>>>>>>> lenguaje
           </li>
           <li class="mt-3">
             <a
               class="text-gray-500 cursor-pointer hover:text-gray-200"
+<<<<<<< HEAD
               @click="scrollToSection(2)"
               >Our services</a
             >
+=======
+              @click="scrollToSection(2)">
+              {{ $t('footer.list1.item3') }}
+            </a>
+>>>>>>> lenguaje
           </li>
           <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200">Blog</a>
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+              {{ $t('footer.list1.item4') }}
+            </a>
           </li>
         </nav>
       </div>
       <div class="mx-auto text-center md:text-left">
         <h2
           class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
+<<<<<<< HEAD
           Location
+=======
+          {{ $t('footer.list2.item1') }}
+>>>>>>> lenguaje
         </h2>
         <nav class="mb-10 list-none">
           <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Workshop: Manizales #184, CDMX, Mexico</a
-            >
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+              {{ $t('footer.list2.item2') }}
+            </a>
           </li>
           <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >Corporate: Av. Río San Joaquín #436, CDMX, Mexico</a
-            >
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+              {{ $t('footer.list2.item3') }}
+            </a>
           </li>
         </nav>
       </div>
       <div class="mx-auto text-center md:text-left">
         <h2
           class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
+<<<<<<< HEAD
           Contact
+=======
+          {{ $t('footer.list3.item1') }}
+>>>>>>> lenguaje
         </h2>
         <nav class="mb-10 list-none">
           <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >climon@tolkogroup.com</a
-            >
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+              climon@tolkogroup.com
+            </a>
           </li>
           <li class="mt-3">
             <a
               class="text-gray-500 cursor-pointer hover:text-gray-200"
+<<<<<<< HEAD
               @click="scrollToSection(4)"
               >Request a Quote</a
             >
+=======
+              @click="scrollToSection(4)">
+              {{ $t('footer.list3.item3') }}
+            </a>
+>>>>>>> lenguaje
           </li>
           <li class="mt-3">
             <a class="text-gray-500 cursor-pointer hover:text-gray-200"
@@ -501,7 +798,11 @@
 
     <div class="container px-5 py-4 mx-auto">
       <p class="text-sm text-white text-center">
+<<<<<<< HEAD
         © {{ anio }} TOLKO GROUP. All rights reserved.
+=======
+        © {{ anio }} {{ $t('footer.copy') }}
+>>>>>>> lenguaje
       </p>
     </div>
   </footer>
