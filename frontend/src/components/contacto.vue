@@ -22,8 +22,11 @@
       mensaje: mensaje.value,
     };
 
+    // http://208.109.233.81:3000/
+    // http://localhost:3001/emails
+
     try {
-      await axios.post('http://localhost:3001/emails', form);
+      await axios.post('http://208.109.233.81:3000/emails', form);
       // console.log(form);
       alert('Correo electrónico enviado con éxito');
       // alert(t('section5.form.sendSuccess'));
