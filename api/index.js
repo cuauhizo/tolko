@@ -1,7 +1,7 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import cors from 'cors'
-import emails from './routes/emails.js'
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import emails from './routes/emails.js';
 
 // Variables de entorno
 dotenv.config();
@@ -11,16 +11,18 @@ const app = express();
 
 // Leer datos via body (Middlewares)
 // app.use(cors());
-app.use(cors({
-  origin: process.env.FRONT_URL
-}));
-app.use(express.urlencoded({extended: false}))
+app.use(
+  cors({
+    origin: process.env.FRONT_URL,
+  })
+);
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Definir una ruta
 // app.use('/', async (req, res) => {
-//   res.send('Hola')
-// })
+//   res.send('Hola');
+// });
 
 app.use('/emails', emails);
 

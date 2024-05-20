@@ -26,8 +26,8 @@
     // http://localhost:3001/emails
 
     try {
-      await axios.post('http://208.109.233.81:3000/emails', form);
-      // console.log(form);
+      await axios.post('https://tolkogroup.com/emails', form);
+      console.log(form);
       alert('Correo electrónico enviado con éxito');
       // alert(t('section5.form.sendSuccess'));
 
