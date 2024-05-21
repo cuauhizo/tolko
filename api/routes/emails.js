@@ -44,15 +44,12 @@ router.post('/', async (req, res) => {
       // Envía una respuesta al cliente
       res.send('Mensaje enviado correctamente');
     } else {
-      console.log(info.error);
       res.send(info.error);
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).send(error);
-    // res.status(500).send('Error al enviar el mensaje');
+    res.status(500).send('Error al enviar el mensaje');
   }
+  // transporter.verify().then(() => console.log('Listo para enviar correo'));
 });
 
-transporter.verify().then(() => console.log('Listo para enviar correo'));
 export default router;

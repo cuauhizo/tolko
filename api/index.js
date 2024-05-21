@@ -20,9 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Definir una ruta
-// app.use('/', async (req, res) => {
-//   res.send('Hola');
-// });
+app.get('/', (req, res) => {
+  res.send('Servidor web ejecutandose');
+});
 
 app.use('/emails', emails);
 

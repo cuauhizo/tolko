@@ -208,7 +208,8 @@
       autoplay="autoplay"
       muted="muted"
       loop="loop"
-      playsinline="">
+      playsinline=""
+      class="lg:object-cover">
       <!-- <source src="./assets/video/TLK_MainHeader.webm" type="video/webm" /> -->
       <source
         src="./assets/video/TLK_MainHeader.mp4"
@@ -570,7 +571,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
   }
 
   nav {

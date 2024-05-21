@@ -22,11 +22,14 @@
       mensaje: mensaje.value,
     };
 
-    // http://208.109.233.81:3000/
-    // http://localhost:3001/emails
+    // const url = 'https://api.tolkogroup.com/',
+    // const url = 'http://208.109.233.81:3000/',
+    // const url = 'http://localhost:3001/emails',
+    const url = 'http://localhost:3001';
+    // const url = `${window.origin}`,
 
     try {
-      await axios.post('https://api.tolkogroup.com/emails', form);
+      await axios.post(url + '/emails', form);
       console.log(form);
       alert('Correo electrónico enviado con éxito');
       // alert(t('section5.form.sendSuccess'));
