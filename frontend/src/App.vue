@@ -1,5 +1,13 @@
 <script setup>
-  import { ref, onMounted, onUnmounted, reactive, watch } from 'vue';
+  import {
+    ref,
+    onMounted,
+    onUnmounted,
+    reactive,
+    computed,
+    watch,
+    watchEffect,
+  } from 'vue';
   // import Menu from './components/menu.vue';
   import Counter from './components/counter.vue';
   import Contacto from './components/contacto.vue';
@@ -60,6 +68,51 @@
       descipcion: t('section1.list.list9.description'),
     },
   ]);
+
+  const isMobile = ref(window.innerWidth <= 426);
+  // const currentVideoKey = ref(Date.now());
+  const videoKey = ref(`${locale.value}-${Date.now()}`);
+
+  const updateLocale = () => {
+    videoKey.value = `${locale.value}-${Date.now()}`; // Update key to force re-render
+  };
+
+  const updateIsMobile = () => {
+    isMobile.value = window.innerWidth <= 426;
+    // currentVideoKey.value = Date.now();
+    videoKey.value = `${locale.value}-${Date.now()}`;
+  };
+
+  // Add event listener on mounted and remove it on unmounted
+  onMounted(() => {
+    window.addEventListener('resize', updateIsMobile);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', updateIsMobile);
+  });
+
+  watchEffect(() => {
+    updateLocale(); // Watch locale changes
+  });
+
+  const currentVideo = computed(() => {
+    if (isMobile.value) {
+      return {
+        en: 'src/assets/video/TLK_MainHeaderMovil.webm',
+        enMp4: 'src/assets/video/TLK_MainHeaderMovil.mp4',
+        es: 'src/assets/video/TLK_MainHeaderMovilEs.webm',
+        esMp4: 'src/assets/video/TLK_MainHeaderMovilEs.mp4',
+      };
+    } else {
+      return {
+        en: 'src/assets/video/TLK_MainHeader.webm',
+        enMp4: 'src/assets/video/TLK_MainHeader.mp4',
+        es: 'src/assets/video/TLK_MainHeaderEs.webm',
+        esMp4: 'src/assets/video/TLK_MainHeaderEs.mp4',
+      };
+    }
+  });
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -173,8 +226,8 @@
                 >
               </li>
               <!-- <li>
-              <Lenguaje />
-            </li> -->
+                <LenguajeTest />
+              </li> -->
             </ul>
           </div>
           <!-- <Lenguaje /> -->
@@ -202,15 +255,16 @@
       </svg>
     </button>
   </header>
-  <div class="homepage-header-wrapper">
+  <!-- <div class="homepage-header-wrapper">
     <video
       v-if="$i18n.locale === 'en'"
       autoplay="autoplay"
       muted="muted"
       loop="loop"
-      playsinline=""
-      class="lg:object-cover">
-      <!-- <source src="./assets/video/TLK_MainHeader.webm" type="video/webm" /> -->
+      playsinline="">
+      <source
+        src="./assets/video/TLK_MainHeader.webm"
+        type="video/webm" />
       <source
         src="./assets/video/TLK_MainHeader.mp4"
         type="video/mp4" />
@@ -221,11 +275,45 @@
       muted="muted"
       loop="loop"
       playsinline="">
-      <!-- <source src="./assets/video/TLK_MainHeader.webm" type="video/webm" /> -->
       <source
-        src="https://2050today.org/wp-content/uploads/2020/07/Video-Placeholder.mp4?_=6"
+        src="./assets/video/TLK_MainHeaderEs.webm"
+        type="video/webm" />
+      <source
+        src="./assets/video/TLK_MainHeaderEs.mp4"
         type="video/mp4" />
     </video>
+  </div> -->
+  <div class="homepage-header-wrapper">
+    <div class="contenedor-video">
+      <video
+        v-if="$i18n.locale === 'en'"
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+        playsinline=""
+        :key="videoKey">
+        <source
+          :src="currentVideo.enMp4"
+          type="video/mp4" />
+        <source
+          :src="currentVideo.en"
+          type="video/webm" />
+      </video>
+      <video
+        v-else-if="$i18n.locale === 'es'"
+        autoplay="autoplay"
+        muted="muted"
+        loop="loop"
+        playsinline=""
+        :key="videoKey">
+        <source
+          :src="currentVideo.es"
+          type="video/webm" />
+        <source
+          :src="currentVideo.esMp4"
+          type="video/mp4" />
+      </video>
+    </div>
   </div>
   <main>
     <!-- <section class="container">
@@ -561,17 +649,43 @@
 </template>
 
 <style scoped>
-  .homepage-header-wrapper {
+  /* .homepage-header-wrapper {
     background: #000;
     height: 100vh;
     overflow: hidden;
     position: relative;
   }
+
   video {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    /* object-fit: cover; */
+    object-fit: cover;
+  } */
+
+  .homepage-header-wrapper {
+    position: relative;
+    height: 100vh;
+  }
+  .contenedor-video {
+    position: absolute;
+    background: #000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .contenedor-video video {
+    position: relative;
+    /* top: 50%;
+    left: 50%; */
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    /* transform: translate(-50%, -50%); */
   }
 
   nav {

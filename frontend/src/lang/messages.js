@@ -153,79 +153,79 @@ export const messages = {
       content: 'Estamos usando el paquete i18n.',
     },
     menu: {
-      about_us: 'Sobre nosotros',
-      our_services: 'Nuestros servicios',
-      join_our_team: '¡Unete a nuestro equipo!',
+      about_us: 'Nosotros',
+      our_services: 'Servicios',
+      join_our_team: '¡Únete al equipo!',
       get_in_touch_with_us: 'Contáctanos',
     },
     section1: {
-      title: 'En Tolko, creamos una comunicación única para las personas.',
+      title: 'En Tolko, creamos comunicaciones únicas para personas.',
       list: {
         list1: {
-          title: 'Comunicaciones Internas',
+          title: 'Comunicación interna',
           description:
             'Conectamos empresas y empleados (equipos administrativos y operativos), alineamos al grupo con los objetivos comerciales, construimos la cultura y mejoramos el compromiso de los asociados.',
         },
         list2: {
-          title: 'Relaciones Públicas',
+          title: 'Relaciones públicas',
           description:
             'Construimos y fortalecemos su reputación conectando a su empresa con audiencias críticas, como medios de comunicación, líderes de opinión, comunidades, autoridades y ONG.',
         },
         list3: {
-          title: 'Campañas de Marketing',
+          title: 'Campañas de marketing',
           description:
             'Creamos iniciativas estratégicas para promocionar productos, servicios o marcas para lograr objetivos comerciales y ganar en el mercado.',
         },
         list4: {
-          title: 'Comunicaciones Digitales',
+          title: 'Comunicaciones digitales',
           description:
             'Construimos y fortalecemos tu huella digital, desde páginas web hasta tu estrategia de redes sociales, creando comunidades y comunicación acorde a tus objetivos.',
         },
         list5: {
-          title: 'Diseño Gráfico y Creatividad',
+          title: 'Diseño gráfico y creatividad',
           description:
             'Convertimos tus ideas en comunicación visual y conceptos creativos que lleguen a tu audiencia y conecten estratégicamente con ella.',
         },
         list6: {
-          title: 'Producción audiovisual, animación y edición de vídeo.',
+          title: 'Producción audiovisual, animación y edición de video',
           description:
             'Creamos contenido multimedia que conecta con tus audiencias a través de sonido, imágenes y efectos, transmitiendo mensajes o historias de manera efectiva.',
         },
         list7: {
-          title: 'Producción en streaming',
+          title: 'Producción Streaming',
           description:
             'Te ayudamos a llegar a tu audiencia en cualquier lugar, en tiempo real, a través de streamings de alta calidad y personalizados en uno o varios idiomas, utilizando una amplia variedad de plataformas.',
         },
         list8: {
-          title: 'Posicionamiento de liderazgo y liderazgo intelectual',
+          title: 'Posicionamiento y pensamiento de liderazgo',
           description:
             'Diseñamos y ejecutamos estrategias de posicionamiento para los principales líderes, convirtiéndolos en autoridades en un campo particular al brindarles conocimientos valiosos e ideas innovadoras para dar forma a la conversación.',
         },
         list9: {
-          title: 'Activaciones de producción y BTL',
+          title: 'Producción y activaciones BTL',
           description:
             'Convertimos la comunicación en materiales tangibles, desde flyers, revistas o folletos hasta impresiones a gran escala, vídeos, stands o activaciones.',
         },
       },
     },
     section2: {
-      We_help_you_through: 'Te ayudamos a través de',
-      full_360_communication_support: 'Soporte de comunicación total de 360°',
-      in_one_team: 'en un solo equipo',
+      We_help_you_through: 'Te ayudamos a través de una ',
+      full_360_communication_support: 'completa comunicación 360°',
+      in_one_team: 'en un único equipo',
       card1: {
-        title: 'Tu equipo ampliado',
+        title: 'Tu equipo extendido',
         description:
-          'Somos su equipo ampliado de Comunicaciones, un grupo de profesionales talentosos enfocados en crear las mejores estrategias y ejecutarlas con excelencia diariamente.',
+          'Somos tu equipo de comunicación extendido, con talento profesional con visión dirigida en crear las mejores estrategias y ejecutar la excelencia diaria.',
       },
       card2: {
-        title: 'Haciendo su vida más fácil y haciendo crecer su negocio',
+        title: 'Haciendo tu vida fácil y creciendo tu negocio.',
         description:
-          'Con nosotros, tendrá una solución hecha a medida y un grupo de consultores comprometidos a anticiparse aún más a sus necesidades de comunicación para hacer crecer su negocio y fortalecer su reputación.',
+          'Con nosotros tendrás una solución a la medida y un grupo de consultores comprometidos en anticipar las necesidades de comunicación de tu negocio y fortalecer tu reputación.',
       },
       card3: {
-        title: 'Visión Estratégica, Excelencia en la Ejecución',
+        title: 'Visión estratégica, Excelencia en ejecución',
         description:
-          'Tolko significa “único”, y así trabajamos en cada proyecto, tratamos a cada cliente y nos involucramos con cada cultura de empresa. Estamos basados ​​en México y tenemos una perspectiva y alcance internacional. Creamos proyectos globales.',
+          'El significado de Tolko es "único" y esa es la forma en que trabajamos en cada proyecto tratando cada consumidor e involucrándonos en cada cultura organizacional. Nuestra base está en México y tenemos proyección internacional.',
       },
       card4: {
         title: 'Metodología basada en el conocimiento y la experiencia',
@@ -275,8 +275,8 @@ export const messages = {
     footer: {
       list1: {
         item1: 'Compañia',
-        item2: 'Sobre nosotros',
-        item3: 'Nuestros servicios',
+        item2: 'Nosotros',
+        item3: 'Servicios',
         item4: 'Blog',
       },
       list2: {

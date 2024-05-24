@@ -1,89 +1,206 @@
-<script setup lang="ts">
-  import { onMounted, onUnmounted, ref } from 'vue';
+<template>
+  <div class="selectbox">
+    <div
+      class="select"
+      id="select"
+      @click="toggleOptions">
+      <div class="contenido-select">
+        <img
+          v-if="selectedImg"
+          :src="selectedImg"
+          alt="" />
+        <!-- <h1 class="titulo">{{ selectedTitle }}</h1>
+        <p class="descripcion">{{ selectedDescription }}</p> -->
+      </div>
+      <i class="fas fa-angle-down"></i>
+    </div>
 
-  const dropdownOpen = ref(false);
-  const dropdownButtonRef = ref<HTMLButtonElement | null>(null);
+    <div
+      class="opciones"
+      id="opciones"
+      :class="{ active: optionsActive }">
+      <a
+        href="#"
+        class="opcion"
+        v-for="(option, index) in options"
+        :key="index"
+        @click.prevent="selectOption(option)">
+        <div class="contenido-opcion">
+          <img
+            :src="option.img"
+            alt="" />
+          <!-- <div class="textos">
+            <h1 class="titulo">{{ option.title }}</h1>
+            <p class="descripcion">{{ option.description }}</p>
+          </div> -->
+        </div>
+      </a>
+    </div>
+  </div>
+  <input
+    type="hidden"
+    name="pais"
+    id="inputSelect"
+    :value="selectedTitle" />
+</template>
 
-  const toggleDropdown = () => {
-    dropdownOpen.value = !dropdownOpen.value;
-  };
+<script setup>
+  import { ref } from 'vue';
 
-  const dropdownItems = ref([
-    { text: 'Dashboard', href: 'javascript:void(0)' },
-    { text: 'Settings', href: 'javascript:void(0)' },
-    { text: 'Earnings', href: 'javascript:void(0)' },
-    { text: 'Logout', href: 'javascript:void(0)' },
+  const options = ref([
+    {
+      img: 'src/assets/img/lenguaje/mexico.png',
+      title: 'Mexico',
+      description: 'Lorem ipsum dolor sit.',
+    },
+    {
+      img: 'src/assets/img/lenguaje/france.png',
+      title: 'España',
+      description: 'Consectetur adipiscing elit.',
+    },
+    {
+      img: 'src/assets/img/lenguaje/united-states-of-america.png',
+      title: 'Colombia',
+      description: 'Suspendisse eleifend venenatis.',
+    },
   ]);
 
-  // Custom composition function to handle click outside
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      dropdownButtonRef.value &&
-      !dropdownButtonRef.value.contains(event.target as Node)
-    ) {
-      dropdownOpen.value = false;
-    }
+  const selectedTitle = ref('Mexico');
+  const selectedDescription = ref('Lorem ipsum dolor sit.');
+  const selectedImg = ref('src/assets/img/lenguaje/mexico.png');
+  const optionsActive = ref(false);
+
+  const toggleOptions = () => {
+    optionsActive.value = !optionsActive.value;
   };
 
-  onMounted(() => {
-    document.addEventListener('click', handleClickOutside);
-  });
-
-  onUnmounted(() => {
-    document.removeEventListener('click', handleClickOutside);
-  });
+  const selectOption = (option) => {
+    selectedTitle.value = option.title;
+    selectedDescription.value = option.description;
+    selectedImg.value = option.img;
+    optionsActive.value = false;
+  };
 </script>
 
-<template>
-  <!-- ====== Dropdowns Section Start -->
-  <div class="flex flex-wrap -mx-4">
-    <!-- one -->
-    <div
-      ref="domNode"
-      class="w-full px-4 sm:w-1/2 lg:w-1/4">
-      <div class="py-8 text-center">
-        <div class="relative inline-block mb-8 text-left">
-          <button
-            @click="toggleDropdown"
-            ref="dropdownButtonRef"
-            class="bg-primary flex items-center rounded-[5px] px-5 py-[13px] text-base font-medium text-white">
-            Dropdown Button
-            <span class="pl-4">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                class="fill-current">
-                <path
-                  d="M10 14.25C9.8125 14.25 9.65625 14.1875 9.5 14.0625L2.3125 7C2.03125 6.71875 2.03125 6.28125 2.3125 6C2.59375 5.71875 3.03125 5.71875 3.3125 6L10 12.5312L16.6875 5.9375C16.9688 5.65625 17.4063 5.65625 17.6875 5.9375C17.9687 6.21875 17.9687 6.65625 17.6875 6.9375L10.5 14C10.3437 14.1563 10.1875 14.25 10 14.25Z" />
-              </svg>
-            </span>
-          </button>
-          <div
-            v-show="dropdownOpen"
-            class="shadow-1 dark:shadow-box-dark absolute left-0 z-40 mt-2 w-full rounded-md bg-white dark:bg-dark-2 py-[10px] transition-all"
-            :class="{
-              'top-full opacity-100 visible': dropdownOpen,
-              'top-[110%] invisible opacity-0': !dropdownOpen,
-            }">
-            <template
-              v-for="(item, index) in dropdownItems"
-              :key="index">
-              <a
-                v-if="item.href"
-                :href="item.href"
-                class="text-body-color dark:text-dark-6 hover:bg-[#F5F7FD] dark:hover:bg-primary/5 hover:text-primary block px-5 py-2 text-base">
-                {{ item.text }}
-              </a>
-            </template>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End -->
-  </div>
+<style scoped>
+  .selectbox {
+    /* width: 50%; */
+    margin: auto;
+    position: relative;
+  }
 
-  <!-- ====== Dropdowns Section End -->
-</template>
+  .select {
+    /* background: #fff; */
+    width: 100%;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s ease all;
+    /* margin-bottom: 30px; */
+    margin-bottom: 10px;
+    padding: 15px;
+    position: relative;
+    z-index: 200;
+    /* border: 2px solid transparent; */
+  }
+
+  .select.active,
+  .select:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
+    /* border: 2px solid #cc0032; */
+  }
+
+  .select.active:before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 15px solid #cc0032;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid transparent;
+    position: absolute;
+    bottom: -15px;
+    left: calc(50% - 15px);
+  }
+
+  .select i {
+    font-size: 15px;
+    margin-left: 5px;
+    color: #fff;
+  }
+
+  .titulo {
+    margin-bottom: 10px;
+    color: #000;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .descripcion {
+    font-size: 18px;
+    color: #434343;
+  }
+
+  .opciones {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
+    max-height: 400px;
+    overflow: auto;
+    z-index: 100;
+    width: 100%;
+    display: none;
+  }
+
+  .opciones.active {
+    display: block;
+    animation: fadeIn 0.3s forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      transform: translateY(-200px) scale(0.5);
+    }
+    to {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .contenido-opcion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease all;
+  }
+
+  .opciones .contenido-opcion {
+    padding: 15px;
+    justify-content: center;
+  }
+
+  .contenido-select img,
+  .contenido-opcion img {
+    width: 40px;
+    height: 20px;
+    /* margin-right: 30px; */
+  }
+
+  .opciones .contenido-opcion:hover {
+    background: #cc0032;
+  }
+
+  .opciones .contenido-opcion:hover .titulo,
+  .opciones .contenido-opcion:hover .descripcion {
+    color: #fff;
+  }
+
+  @media screen and (max-width: 800px) {
+    .selectbox {
+      width: 100%;
+    }
+  }
+</style>

@@ -10,7 +10,7 @@
       <span class="w-8 z-10">
         <img
           v-if="$i18n.locale === 'es'"
-          src="../assets/img/lenguaje/mexico.png"
+          src="/src/assets/img/lenguaje/mexico.png"
           alt=""
           class="h-4 w-6" />
         <img
