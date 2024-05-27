@@ -8,12 +8,10 @@
     watch,
     watchEffect,
   } from 'vue';
-  // import Menu from './components/menu.vue';
   import Counter from './components/counter.vue';
   import Contacto from './components/contacto.vue';
   import Modal from './components/modal.vue';
   import Lenguaje from './components/lenguaje.vue';
-  import LenguajeTest from './components/lenguajeTest.vue';
   import { useI18n } from 'vue-i18n';
 
   const { t, locale } = useI18n();
@@ -70,7 +68,6 @@
   ]);
 
   const isMobile = ref(window.innerWidth <= 426);
-  // const currentVideoKey = ref(Date.now());
   const videoKey = ref(`${locale.value}-${Date.now()}`);
 
   const updateLocale = () => {
@@ -79,7 +76,6 @@
 
   const updateIsMobile = () => {
     isMobile.value = window.innerWidth <= 426;
-    // currentVideoKey.value = Date.now();
     videoKey.value = `${locale.value}-${Date.now()}`;
   };
 
@@ -171,7 +167,6 @@
 
 <template>
   <!-- Header -->
-  <!-- <Menu></Menu> -->
   <header>
     <div class="fixed md:absolute z-30 w-full px-5">
       <nav
@@ -225,12 +220,9 @@
                   >{{ $t('menu.get_in_touch_with_us') }}</a
                 >
               </li>
-              <!-- <li>
-                <LenguajeTest />
-              </li> -->
             </ul>
           </div>
-          <!-- <Lenguaje /> -->
+          <Lenguaje />
         </div>
       </nav>
     </div>
@@ -255,34 +247,6 @@
       </svg>
     </button>
   </header>
-  <!-- <div class="homepage-header-wrapper">
-    <video
-      v-if="$i18n.locale === 'en'"
-      autoplay="autoplay"
-      muted="muted"
-      loop="loop"
-      playsinline="">
-      <source
-        src="./assets/video/TLK_MainHeader.webm"
-        type="video/webm" />
-      <source
-        src="./assets/video/TLK_MainHeader.mp4"
-        type="video/mp4" />
-    </video>
-    <video
-      v-else-if="$i18n.locale === 'es'"
-      autoplay="autoplay"
-      muted="muted"
-      loop="loop"
-      playsinline="">
-      <source
-        src="./assets/video/TLK_MainHeaderEs.webm"
-        type="video/webm" />
-      <source
-        src="./assets/video/TLK_MainHeaderEs.mp4"
-        type="video/mp4" />
-    </video>
-  </div> -->
   <div class="homepage-header-wrapper">
     <div class="contenedor-video">
       <video
@@ -649,22 +613,6 @@
 </template>
 
 <style scoped>
-  /* .homepage-header-wrapper {
-    background: #000;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-  }
-
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
-
   .homepage-header-wrapper {
     position: relative;
     height: 100vh;
@@ -680,12 +628,12 @@
   }
   .contenedor-video video {
     position: relative;
-    /* top: 50%;
-    left: 50%; */
+    top: 50%;
+    left: 50%;
     object-fit: cover;
     width: 100%;
     height: 100%;
-    /* transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
   }
 
   nav {

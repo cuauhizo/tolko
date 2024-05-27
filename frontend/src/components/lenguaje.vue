@@ -1,73 +1,160 @@
 <template>
-  <select
-    v-model="$i18n.locale"
-    class="!bg-transparent uppercase focus-visible:none select-css z-10">
-    <option
-      v-for="locale in $i18n.availableLocales"
-      :key="`locale-${locale}`"
-      :value="locale"
-      class="!bg-transparent text-black">
-      <span class="w-8 z-10">
+  <div class="selectbox">
+    <div
+      class="select"
+      id="select"
+      @click="toggleOptions">
+      <div class="contenido-select">
         <img
-          v-if="$i18n.locale === 'es'"
-          src="/src/assets/img/lenguaje/mexico.png"
-          alt=""
-          class="h-4 w-6" />
-        <img
-          v-else-if="$i18n.locale === 'en'"
-          src="../assets/img/lenguaje/united-states-of-america.png"
-          alt=""
-          class="h-4 w-6" />
-      </span>
-      {{ locale }}
-    </option>
-  </select>
+          v-if="selectedImg"
+          :src="selectedImg"
+          alt="" />
+      </div>
+      <i class="fas fa-angle-down"></i>
+    </div>
+
+    <div
+      class="opciones"
+      id="opciones"
+      :class="{ active: optionsActive }">
+      <a
+        href="#"
+        class="opcion"
+        v-for="locale in $i18n.availableLocales"
+        :key="`locale-${locale}`"
+        @click.prevent="selectOption(locale)">
+        <div class="contenido-opcion">
+          <img
+            :src="getFlag(locale)"
+            alt="" />
+        </div>
+      </a>
+    </div>
+  </div>
+  <input
+    type="hidden"
+    name="pais"
+    id="inputSelect"
+    :value="$i18n.locale" />
 </template>
-<script setup></script>
+
+<script setup>
+  import { ref, watch } from 'vue';
+  import { useI18n } from 'vue-i18n';
+
+  const { t, availableLocales, locale } = useI18n();
+  const idioma = ref(locale);
+
+  const flags = {
+    es: '/src/assets/img/lenguaje/mexico.png',
+    en: '/src/assets/img/lenguaje/united-states-of-america.png',
+  };
+
+  const selectedImg = ref(flags[locale.value] || '');
+  const optionsActive = ref(false);
+
+  const toggleOptions = () => {
+    optionsActive.value = !optionsActive.value;
+  };
+
+  const selectOption = (locale) => {
+    idioma.value = locale;
+    selectedImg.value = flags[locale];
+    optionsActive.value = false;
+  };
+
+  const getFlag = (locale) => flags[locale] || '';
+
+  watch(
+    () => idioma,
+    (newLocale) => {
+      selectedImg.value = getFlag(newLocale);
+    }
+  );
+</script>
 
 <style scoped>
-  select:focus-visible {
-    outline: 0px;
+  .selectbox {
+    margin: auto;
+    position: relative;
   }
 
-  .select-css {
-    display: block;
-    font-size: 16px;
-    font-weight: 400;
-    color: #444;
-    line-height: 1.3;
-    padding: 0.4em 1.4em 0.3em 0.8em;
-    width: 65px;
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    border: 1px solid #aaa;
-    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
-    border-radius: 0.3em;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: #fff;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='20' height='21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m5 7.61 5 5 5-5' stroke='%23667085' stroke-width='1.667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
-      linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%);
-    background-repeat: no-repeat, repeat;
-    background-position: right 0.5em top 50%, 0 0;
-    background-size: 1em auto, 100%;
+  .select {
+    width: 100%;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s ease all;
+    padding: 0 15px;
+    position: relative;
+    z-index: 200;
   }
-  .select-css::-ms-expand {
+
+  .select.active,
+  .select:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
+  }
+
+  .select i {
+    font-size: 15px;
+    margin-left: 5px;
+    color: #fff;
+  }
+
+  .opciones {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.16);
+    margin-top: 10px;
+    max-height: 400px;
+    overflow: auto;
+    z-index: 100;
+    position: fixed;
     display: none;
   }
-  .select-css:hover {
-    border-color: #888;
+
+  .opciones.active {
+    display: block;
+    animation: fadeIn 0.3s forwards;
   }
-  .select-css:focus {
-    border-color: #aaa;
-    box-shadow: none;
-    box-shadow: none;
-    color: #222;
-    outline: none;
+
+  @keyframes fadeIn {
+    from {
+      transform: translateY(-200px) scale(0.5);
+    }
+    to {
+      transform: translateY(0) scale(1);
+    }
   }
-  .select-css option {
-    font-weight: normal;
+
+  .contenido-opcion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease all;
+  }
+
+  .opciones .contenido-opcion {
+    padding: 15px;
+    justify-content: center;
+  }
+
+  .contenido-select img,
+  .contenido-opcion img {
+    width: 35px;
+    height: 20px;
+  }
+
+  .opciones .contenido-opcion:hover {
+    background: #cc0032;
+  }
+
+  @media screen and (max-width: 800px) {
+    .selectbox {
+      width: 100%;
+    }
   }
 </style>
