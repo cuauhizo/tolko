@@ -16,6 +16,7 @@ app.use(
     origin: process.env.FRONT_URL,
   })
 );
+console.log(process.env.FRONT_URL);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -30,6 +31,8 @@ app.use('/emails', emails);
 const PORT = process.env.PORT || 3000;
 
 // Arrancar app
-app.listen(PORT, () =>
-  console.log(`escuchando desde http://localhost:${PORT}`)
+app.listen(
+  PORT,
+  () => console.log(`escuchando desde http://localhost:${PORT}`)
+  // console.log(`escuchando desde ${process.env.FRONT_URL}:${PORT}`)
 );

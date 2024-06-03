@@ -281,29 +281,29 @@
   </div>
   <main>
     <!-- <section class="container">
-    <div>
-      <select
-      v-model="$i18n.locale"
-      class="bg-transparent">
-      <option
-      v-for="locale in $i18n.availableLocales"
-      :key="`locale-${locale}`"
-      :value="locale"
-      class="bg-transparent">
-      {{ locale }}
-    </option>
-  </select>
-</div>
-<h1>{{ $t('messages.hello', { name: username }) }}</h1>
-<p>{{ $t('messages.content') }}</p>
-<img
+      <div>
+        <select
+          v-model="$i18n.locale"
+          class="bg-transparent">
+          <option
+            v-for="locale in $i18n.availableLocales"
+            :key="`locale-${locale}`"
+            :value="locale"
+            class="bg-transparent">
+            {{ locale }}
+          </option>
+        </select>
+      </div>
+      <h1>{{ $t('messages.hello', { name: username }) }}</h1>
+      <p>{{ $t('messages.content') }}</p>
+      <img
         v-if="$i18n.locale === 'es'"
         src="./assets/img/certificaciones/01.png"
         alt="" />
       <img
-      v-else-if="$i18n.locale === 'en'"
-      src="./assets/img/certificaciones/02.png"
-      alt="" />
+        v-else-if="$i18n.locale === 'en'"
+        src="./assets/img/certificaciones/02.png"
+        alt="" />
     </section> -->
     <section
       id="section1"
@@ -438,7 +438,7 @@
           class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
           <img
             src="./assets/img/logo-tolko.svg"
-            alt="" />
+            alt="Logo tolko" />
         </a>
         <!-- Social Icons -->
         <div class="mt-4">
@@ -447,6 +447,7 @@
             <a
               class="text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://www.facebook.com/tolkogroup/"
+              alt="Facebook"
               target="_blank">
               <svg
                 fill="currentColor"
@@ -462,6 +463,7 @@
             <a
               class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://twitter.com/tolkogroup"
+              alt="Twitter"
               target="_blank">
               <svg
                 fill="currentColor"
@@ -477,6 +479,7 @@
             <a
               class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://www.instagram.com/grupo_tolko"
+              alt="Instagram"
               target="_blank">
               <svg
                 fill="none"
@@ -500,6 +503,7 @@
             <a
               class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://www.linkedin.com/company/tolko/"
+              alt="Linkedin"
               target="_blank">
               <svg
                 fill="currentColor"
