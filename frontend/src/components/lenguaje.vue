@@ -46,8 +46,8 @@
   const idioma = ref(locale);
 
   const flags = {
-    es: '/src/assets/img/lenguaje/mexico.png',
-    en: '/src/assets/img/lenguaje/united-states-of-america.png',
+    es: '/img/lenguaje/mexico.png',
+    en: '/img/lenguaje/united-states-of-america.png',
   };
 
   const selectedImg = ref(flags[locale.value] || '');
