@@ -29,10 +29,11 @@ app.use('/emails', emails);
 
 // Definir puerto
 const PORT = process.env.PORT || 3000;
+const FRONT_URL = process.env.FRONT_URL || 'localhost';
 
 // Arrancar app
 app.listen(
   PORT,
-  () => console.log(`escuchando desde http://localhost:${PORT}`)
-  // console.log(`escuchando desde ${process.env.FRONT_URL}:${PORT}`)
+  // () => console.log(`escuchando desde http://localhost:${PORT}`)
+  console.log(`escuchando desde ${FRONT_URL}:${PORT}`)
 );

@@ -43,11 +43,14 @@ router.post('/', async (req, res) => {
     if (!info) {
       // Envía una respuesta al cliente
       res.send('Mensaje enviado correctamente');
+      console.log('Mensaje enviado correctamente');
     } else {
       res.send(info.error);
+      console.log(info.error);
     }
   } catch (error) {
     res.status(500).send('Error al enviar el mensaje');
+    console.log(error);
   }
   // transporter.verify().then(() => console.log('Listo para enviar correo'));
 });
