@@ -1,13 +1,5 @@
 <script setup>
-  import {
-    ref,
-    onMounted,
-    onUnmounted,
-    reactive,
-    computed,
-    watch,
-    watchEffect,
-  } from 'vue';
+  import { ref, onMounted, onUnmounted, reactive, computed, watch, watchEffect } from 'vue';
   import Counter from './components/counter.vue';
   import Contacto from './components/contacto.vue';
   import Modal from './components/modal.vue';
@@ -95,17 +87,17 @@
   const currentVideo = computed(() => {
     if (isMobile.value) {
       return {
-        en: 'src/assets/video/TLK_MainHeaderMovil.webm',
-        enMp4: 'src/assets/video/TLK_MainHeaderMovil.mp4',
-        es: 'src/assets/video/TLK_MainHeaderMovilEs.webm',
-        esMp4: 'src/assets/video/TLK_MainHeaderMovilEs.mp4',
+        en: '/video/TLK_MainHeaderMovil.webm',
+        enMp4: '/video/TLK_MainHeaderMovil.mp4',
+        es: '/video/TLK_MainHeaderMovilEs.webm',
+        esMp4: '/video/TLK_MainHeaderMovilEs.mp4',
       };
     } else {
       return {
-        en: 'src/assets/video/TLK_MainHeader.webm',
-        enMp4: 'src/assets/video/TLK_MainHeader.mp4',
-        es: 'src/assets/video/TLK_MainHeaderEs.webm',
-        esMp4: 'src/assets/video/TLK_MainHeaderEs.mp4',
+        en: '/video/TLK_MainHeader.webm',
+        enMp4: '/video/TLK_MainHeader.mp4',
+        es: '/video/TLK_MainHeaderEs.webm',
+        esMp4: '/video/TLK_MainHeaderEs.mp4',
       };
     }
   });
@@ -158,9 +150,7 @@
   watch(idioma, (nuevoIdioma) => {
     servicios.forEach((servicio, index) => {
       servicios[index].titulo = t(`section1.list.list${index + 1}.title`);
-      servicios[index].descipcion = t(
-        `section1.list.list${index + 1}.description`
-      );
+      servicios[index].descipcion = t(`section1.list.list${index + 1}.description`);
     });
   });
 </script>
@@ -169,8 +159,7 @@
   <!-- Header -->
   <header>
     <div class="fixed md:absolute z-30 w-full px-5">
-      <nav
-        class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white">
+      <nav class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white">
         <a
           href="./"
           class="w-1/3 max-w-[60px]">
@@ -323,14 +312,12 @@
       <article
         class="space-y-6 md:space-y-8"
         data-aos="fade-left">
-        <ul
-          class="mt-5 text-base mx-auto text-left font-medium leading-none md:mr-0 md:text-left">
+        <ul class="mt-5 text-base mx-auto text-left font-medium leading-none md:mr-0 md:text-left">
           <li
             v-for="servicio in servicios"
             :key="servicio.id">
             <p class="py-3.5 w-full flex items-center md:justify-end">
-              <span
-                class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"></span>
+              <span class="ml-5 mr-2.5 w-1 h-7 bg-tolko-red rounded-r-md"></span>
               <span
                 class="cursor-pointer hover:text-tolko-red"
                 @click="mostrarModal(servicio)">
@@ -405,8 +392,7 @@
     <!-- Counter -->
     <section class="bg-tolko-red py-10">
       <div class="container py-3">
-        <h2
-          class="text-3xl md:text-5xl text-center mb-10 font-SemiBoldItalic texto-con-bordes">
+        <h2 class="text-3xl md:text-5xl text-center mb-10 font-SemiBoldItalic texto-con-bordes">
           {{ $t('section3.title') }}
         </h2>
         <Counter />
@@ -434,16 +420,14 @@
     <div
       class="container grid grid-cols-1 md:grid-cols-4 gap-4 px-5 py-12 mx-auto md:items-center md:py-12 lg:items-start">
       <div class="mx-auto text-center md:mx-0 md:text-left">
-        <a
-          class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
+        <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
           <img
             src="./assets/img/logo-tolko.svg"
             alt="Logo tolko" />
         </a>
         <!-- Social Icons -->
         <div class="mt-4">
-          <span
-            class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
+          <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
             <a
               class="text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://www.facebook.com/tolkogroup/"
@@ -456,8 +440,7 @@
                 stroke-width="2"
                 class="w-5 h-5"
                 viewBox="0 0 24 24">
-                <path
-                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
               </svg>
             </a>
             <a
@@ -496,8 +479,7 @@
                   y="2"
                   rx="5"
                   ry="5"></rect>
-                <path
-                  d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
               </svg>
             </a>
             <a
@@ -527,8 +509,7 @@
         </div>
       </div>
       <div class="mx-auto text-center md:pl-20 md:text-left">
-        <h2
-          class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
+        <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
           {{ $t('footer.list1.item1') }}
         </h2>
         <nav class="mb-10 list-none">
@@ -554,8 +535,7 @@
         </nav>
       </div>
       <div class="mx-auto text-center md:text-left">
-        <h2
-          class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
+        <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
           {{ $t('footer.list2.item1') }}
         </h2>
         <nav class="mb-10 list-none">
@@ -578,8 +558,7 @@
         </nav>
       </div>
       <div class="mx-auto text-center md:text-left">
-        <h2
-          class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
+        <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
           {{ $t('footer.list3.item1') }}
         </h2>
         <nav class="mb-10 list-none">
@@ -609,9 +588,7 @@
     </div>
 
     <div class="container px-5 py-4 mx-auto">
-      <p class="text-sm text-white text-center">
-        © {{ anio }} {{ $t('footer.copy') }}
-      </p>
+      <p class="text-sm text-white text-center">© {{ anio }} {{ $t('footer.copy') }}</p>
     </div>
   </footer>
 </template>
