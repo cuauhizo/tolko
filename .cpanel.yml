@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/tolkogroup/public_html/
-    - /bin/cp -av dist/ $DEPLOYPATH
+    - /bin/cp dist/ $DEPLOYPATH
