@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/tolkogroup/public_html/
-    - /bin/rsync -av frontend/dist/ $DEPLOYPATH
+    - /bin/cp * frontend/dist/ $DEPLOYPATH
