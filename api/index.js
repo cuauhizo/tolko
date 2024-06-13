@@ -35,5 +35,5 @@ const FRONT_URL = process.env.FRONT_URL || 'localhost';
 app.listen(
   PORT,
   // () => console.log(`escuchando desde http://localhost:${PORT}`)
-  console.log(`escuchando desde ${FRONT_URL}:${PORT}`)
+  () => console.log(`escuchando desde ${FRONT_URL}:${PORT}`)
 );
