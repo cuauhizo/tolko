@@ -31,7 +31,7 @@
     // const url = 'https://tolkogroup.com:3001';
     // const url = 'http://208.109.233.81:3000/api';
 
-    const url = 'http://tolkogroup.com/api';
+    const url = 'https://tolkogroup.com/api';
 
     try {
       await axios.post(url + '/emails', form);

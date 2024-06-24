@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
     res.status(500).send('Error al enviar el mensaje');
     console.log(error);
   }
-  // transporter.verify().then(() => console.log('Listo para enviar correo'));
+  transporter.verify().then(() => console.log('Listo para enviar correo'));
 });
 
 export default router;
