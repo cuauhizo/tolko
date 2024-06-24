@@ -30,7 +30,7 @@
     // const url = `${window.origin}`,
     // const url = 'https://tolkogroup.com:3001';
     // const url = 'http://208.109.233.81:3000/api';
-    // test
+    // test de prueba
 
     const url = 'https://tolkogroup.com/api';
 
