@@ -22,7 +22,7 @@
       mensaje: mensaje.value,
     };
 
-    // const url = 'http://localhost:3001';
+    const url = 'http://localhost:3001';
 
     // const url = 'https://api.tolkogroup.com/',
     // const url = 'http://208.109.233.81:3000/',
@@ -32,7 +32,7 @@
     // const url = 'http://208.109.233.81:3000/api';
     // test de prueba
 
-    const url = 'https://tolkogroup.com/api';
+    // const url = 'https://tolkogroup.com/api';
 
     try {
       await axios.post(url + '/emails', form);
