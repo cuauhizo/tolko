@@ -1,5 +1,14 @@
+# deployment:
+#   tasks:
+#     - export DEPLOYPATH=/home/tolkogroup/public_html/
+#     - /bin/cp -r frontend/dist/* $DEPLOYPATH
+#     - /bin/cp -r api/* $DEPLOYPATH
+
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/tolkogroup/public_html/
-    - /bin/cp -r frontend/dist/* $DEPLOYPATH
-    - /bin/cp -r api/* $DEPLOYPATH
+    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
+    - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
+    - mkdir -p $FRONTEND_DEPLOYPATH
+    - mkdir -p $API_DEPLOYPATH
+    - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH
+    - /bin/cp -r api/* $API_DEPLOYPATH
