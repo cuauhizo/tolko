@@ -133,10 +133,8 @@ export const messages = {
       },
       list2: {
         item1: 'Location',
-        item2:
-          '<span class="text-white">Workshop Contact:</span> Manizales #184, CDMX, Mexico',
-        item3:
-          '<span class="text-white">Corporate Contact:</span> Av. Río San Joaquín #436, CDMX, Mexico',
+        item2: '<span class="text-white">Workshop Contact:</span> Manizales #184, CDMX, Mexico',
+        item3: '<span class="text-white">Corporate Contact:</span> Av. Río San Joaquín #436, CDMX, Mexico',
       },
       list3: {
         item1: 'Contact',
@@ -246,7 +244,7 @@ export const messages = {
       title: 'Nuestra Presencia',
     },
     section5: {
-      title: 'Póngase en contacto con nosotros',
+      title: 'Ponte en contacto con nosotros',
       form: {
         placeholderName: 'Nombre *',
         requiredName: 'Nombre es requerido.',
@@ -254,9 +252,8 @@ export const messages = {
         requiredTelephone: 'Teléfono es requerido.',
         placeholderEmail: 'E-mail *',
         requiredEmail: 'E-mail es requerido',
-        formatEmail:
-          'Por favor, introduce una dirección de correo electrónico válida.',
-        labelService: '¿En que podemos ayudarte?',
+        formatEmail: 'Por favor, introduce una dirección de correo electrónico válida.',
+        labelService: '¿En qué podemos ayudarte?',
         placeholderService: 'Selecciona una opción *',
         requiredService: 'Por favor, selecciona una opción',
         serviceOptions: {
@@ -281,10 +278,8 @@ export const messages = {
       },
       list2: {
         item1: 'Ubicación',
-        item2:
-          '<span class="text-white">Contacto Taller:</span>: Manizales #184, CDMX, México',
-        item3:
-          '<span class="text-white">Contacto Corporativo:</span>: Av. Río San Joaquín #436, CDMX, México',
+        item2: '<span class="text-white">Contacto Taller:</span>: Manizales #184, CDMX, México',
+        item3: '<span class="text-white">Contacto Corporativo:</span>: Av. Río San Joaquín #436, CDMX, México',
       },
       list3: {
         item1: 'Contacto',
