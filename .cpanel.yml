@@ -15,7 +15,7 @@
 
 deployment:
   tasks:
-    - echo "Compilando el frontend..."
+    # - echo "Compilando el frontend..."
     - cd frontend
     - npm install
     - npm run build
@@ -24,7 +24,7 @@ deployment:
     - /bin/cp -r dist/* $FRONTEND_DEPLOYPATH
     - cd ..
 
-    - echo "Compilando la API..."
+    # - echo "Compilando la API..."
     - cd api
     - npm install # Si tu API utiliza npm, de lo contrario ajusta este comando según sea necesario
     - npm run build # Si tu API tiene un paso de compilación, de lo contrario omite este comando
