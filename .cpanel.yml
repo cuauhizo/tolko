@@ -22,34 +22,45 @@ deployment:
   tasks:
     - echo "Iniciando el despliegue..."
 
+    - echo "Instalando NVM..."
+    - 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash'
+    - 'source $HOME/.nvm/nvm.sh'
+
+    - echo "Instalando y utilizando Node.js 20.14.0..."
+    - 'source $HOME/.nvm/nvm.sh && nvm install 20.14.0'
+    - 'source $HOME/.nvm/nvm.sh && nvm use 20.14.0'
+
+    - echo "Verificando la versión de Node.js..."
+    - 'source $HOME/.nvm/nvm.sh && node -v'
+    - 'source $HOME/.nvm/nvm.sh && which node'
+
     - echo "Estableciendo rutas de despliegue..."
     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
 
+    - echo "Estableciendo opciones de memoria para Node.js..."
+    - export NODE_OPTIONS="--max-old-space-size=4096"
+
     # Compilar y desplegar el frontend
     - echo "Compilando el frontend..."
-    - cd frontend || { echo "Error: No se pudo cambiar al directorio frontend"; exit 1; }
-    - npm install || { echo "Error: npm install falló en el frontend"; exit 1; }
-    - npm run build || { echo "Error: npm run build falló en el frontend"; exit 1; }
-    - cd .. || { echo "Error: No se pudo volver al directorio raíz"; exit 1; }
+    - 'source $HOME/.nvm/nvm.sh && cd frontend && npm install && npm run build'
+    - 'cd ..'
 
     - echo "Creando directorio de despliegue del frontend..."
-    - mkdir -p $FRONTEND_DEPLOYPATH || { echo "Error: No se pudo crear el directorio de despliegue del frontend"; exit 1; }
+    - 'mkdir -p $FRONTEND_DEPLOYPATH'
 
     - echo "Copiando archivos del frontend..."
-    - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH || { echo "Error: No se pudieron copiar los archivos del frontend"; exit 1; }
+    - '/bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH'
 
     # Compilar y desplegar la API
     - echo "Compilando la API..."
-    - cd api || { echo "Error: No se pudo cambiar al directorio api"; exit 1; }
-    - npm install || { echo "Error: npm install falló en la API"; exit 1; }
-    - npm run build || { echo "Error: npm run build falló en la API"; exit 1; }
-    - cd .. || { echo "Error: No se pudo volver al directorio raíz"; exit 1; }
+    - 'source $HOME/.nvm/nvm.sh && cd api && npm install && npm run build'
+    - 'cd ..'
 
     - echo "Creando directorio de despliegue de la API..."
-    - mkdir -p $API_DEPLOYPATH || { echo "Error: No se pudo crear el directorio de despliegue de la API"; exit 1; }
+    - 'mkdir -p $API_DEPLOYPATH'
 
     - echo "Copiando archivos de la API..."
-    - /bin/cp -r api/* $API_DEPLOYPATH || { echo "Error: No se pudieron copiar los archivos de la API"; exit 1; }
+    - '/bin/cp -r api/* $API_DEPLOYPATH'
 
     - echo "Despliegue completado."
