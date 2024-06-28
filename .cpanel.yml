@@ -42,7 +42,7 @@
 ---
 deployment:
   tasks:
-    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
+    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
 
     # Compilar y desplegar el frontend
