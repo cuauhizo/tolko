@@ -24,18 +24,22 @@ deployment:
 
     - echo "Instalando NVM..."
     - 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash'
-    - 'source $HOME/.nvm/nvm.sh'
+
+    - echo "Cargando NVM..."
+    - 'export NVM_DIR="$HOME/.nvm"'
+    - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+    - '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
 
     - echo "Instalando y utilizando Node.js 20.14.0..."
-    - 'source $HOME/.nvm/nvm.sh && nvm install 20.14.0'
-    - 'source $HOME/.nvm/nvm.sh && nvm use 20.14.0'
+    - 'nvm install 20.14.0'
+    - 'nvm use 20.14.0'
 
     - echo "Verificando la versión de Node.js..."
-    - 'source $HOME/.nvm/nvm.sh && node -v'
-    - 'source $HOME/.nvm/nvm.sh && which node'
+    - 'node -v'
+    - 'which node'
 
     - echo "Estableciendo rutas de despliegue..."
-    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
+    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
 
     - echo "Estableciendo opciones de memoria para Node.js..."
@@ -43,7 +47,7 @@ deployment:
 
     # Compilar y desplegar el frontend
     - echo "Compilando el frontend..."
-    - 'source $HOME/.nvm/nvm.sh && cd frontend && npm install && npm run build'
+    - 'cd frontend && npm install && npm run build'
     - 'cd ..'
 
     - echo "Creando directorio de despliegue del frontend..."
@@ -54,7 +58,7 @@ deployment:
 
     # Compilar y desplegar la API
     - echo "Compilando la API..."
-    - 'source $HOME/.nvm/nvm.sh && cd api && npm install && npm run build'
+    - 'cd api && npm install && npm run build'
     - 'cd ..'
 
     - echo "Creando directorio de despliegue de la API..."
