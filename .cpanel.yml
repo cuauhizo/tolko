@@ -22,24 +22,20 @@ deployment:
   tasks:
     - echo "Iniciando el despliegue..."
 
-    - echo "Instalando NVM..."
-    - 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash'
-
     - echo "Cargando NVM..."
     - 'export NVM_DIR="$HOME/.nvm"'
     - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
     - '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
 
-    - echo "Instalando y utilizando Node.js 20.14.0..."
-    - 'nvm install 20.14.0'
-    - 'nvm use 20.14.0'
+    - echo "Utilizando Node.js v22..."
+    - 'nvm use 22'
 
     - echo "Verificando la versión de Node.js..."
     - 'node -v'
     - 'which node'
 
     - echo "Estableciendo rutas de despliegue..."
-    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
+    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
 
     - echo "Estableciendo opciones de memoria para Node.js..."
