@@ -17,48 +17,42 @@
 
 ###################################################################
 
-# deployment:
-#   tasks:
-#     - echo "Compilando el frontend..."
-#     - cd frontend
-#     - npm install
-#     - npm run build
-#     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
-#     - mkdir -p $FRONTEND_DEPLOYPATH
-#     - /bin/cp -r dist/* $FRONTEND_DEPLOYPATH
-#     - cd ..
-
-#     - echo "Compilando la API..."
-#     - cd api
-#     - npm install # Si tu API utiliza npm, de lo contrario ajusta este comando según sea necesario
-#     - npm run build # Si tu API tiene un paso de compilación, de lo contrario omite este comando
-#     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
-#     - mkdir -p $API_DEPLOYPATH
-#     - /bin/cp -r * $API_DEPLOYPATH
-#     - cd ..
-
-###################################################################
-
 ---
 deployment:
   tasks:
+    - echo "Iniciando el despliegue..."
+
+    - echo "Verificando la versión de Node.js..."
+    - 'node -v'
+    - 'which node'
+
+    - echo "Estableciendo rutas de despliegue..."
     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
+
+    - echo "Estableciendo opciones de memoria para Node.js..."
+    - export NODE_OPTIONS="--max-old-space-size=4096"
 
     # Compilar y desplegar el frontend
     - echo "Compilando el frontend..."
     - 'cd frontend && npm install && npm run build'
+    - cd .. || { echo "Error: No se pudo volver al directorio raíz"; exit 1; }
+
     - echo "Creando directorio de despliegue del frontend..."
-    - 'mkdir -p $FRONTEND_DEPLOYPATH'
+    - mkdir -p $FRONTEND_DEPLOYPATH || { echo "Error: No se pudo crear el directorio de despliegue del frontend"; exit 1; }
+
     - echo "Copiando archivos del frontend..."
-    - '/bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH'
+    - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH || { echo "Error: No se pudieron copiar los archivos del frontend"; exit 1; }
 
     # Compilar y desplegar la API
     - echo "Compilando la API..."
     - 'cd api && npm install && npm run build'
+    - cd .. || { echo "Error: No se pudo volver al directorio raíz"; exit 1; }
+
     - echo "Creando directorio de despliegue de la API..."
-    - 'mkdir -p $API_DEPLOYPATH'
+    - mkdir -p $API_DEPLOYPATH || { echo "Error: No se pudo crear el directorio de despliegue de la API"; exit 1; }
+
     - echo "Copiando archivos de la API..."
-    - '/bin/cp -r api/* $API_DEPLOYPATH'
+    - /bin/cp -r api/* $API_DEPLOYPATH || { echo "Error: No se pudieron copiar los archivos de la API"; exit 1; }
 
     - echo "Despliegue completado."
