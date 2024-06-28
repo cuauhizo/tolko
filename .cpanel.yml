@@ -22,9 +22,6 @@ deployment:
   tasks:
     - echo "Iniciando el despliegue..."
 
-    - echo "Instalando Node.js v22..."
-    - 'nvm install 22'
-
     - echo "Utilizando Node.js v22..."
     - 'nvm use 22'
 
