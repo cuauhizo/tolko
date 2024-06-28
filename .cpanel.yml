@@ -22,9 +22,11 @@ deployment:
   tasks:
     - echo "Iniciando el despliegue..."
 
+    # Asegurar el uso de Node.js v22.3.0
+    - nvm use v22.3.0
+
     - echo "Verificando la versión de Node.js..."
-    - 'node -v'
-    - 'which node'
+    - node -v
 
     - echo "Estableciendo rutas de despliegue..."
     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
