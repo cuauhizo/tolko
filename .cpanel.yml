@@ -4,15 +4,14 @@
 #     - /bin/cp -r frontend/dist/* $DEPLOYPATH
 #     - /bin/cp -r api/* $DEPLOYPATH
 
-# deployment:
-#   tasks:
-#     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
-#     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
-#     - mkdir -p $FRONTEND_DEPLOYPATH
-#     - mkdir -p $API_DEPLOYPATH
-#     - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH
-#     - /bin/cp -r api/* $API_DEPLOYPATH
-
+deployment:
+  tasks:
+    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
+    - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
+    - mkdir -p $FRONTEND_DEPLOYPATH
+    - mkdir -p $API_DEPLOYPATH
+    - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH
+    - /bin/cp -r api/* $API_DEPLOYPATH
 # deployment:
 #   tasks:
 #     - echo "Compilando el frontend..."
@@ -33,26 +32,26 @@
 #     - /bin/cp -r * $API_DEPLOYPATH
 #     - cd ..
 
----
-deployment:
-  tasks:
-    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
-    - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
+# ---
+# deployment:
+#   tasks:
+#     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
+#     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
 
-    # Compilar y desplegar el frontend
-    - echo "Compilando el frontend..."
-    - 'cd frontend && npm install && npm run build'
-    - echo "Creando directorio de despliegue del frontend..."
-    - 'mkdir -p $FRONTEND_DEPLOYPATH'
-    - echo "Copiando archivos del frontend..."
-    - '/bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH'
+#     # Compilar y desplegar el frontend
+#     - echo "Compilando el frontend..."
+#     - 'cd frontend && npm install && npm run build'
+#     - echo "Creando directorio de despliegue del frontend..."
+#     - 'mkdir -p $FRONTEND_DEPLOYPATH'
+#     - echo "Copiando archivos del frontend..."
+#     - '/bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH'
 
-    # Compilar y desplegar la API
-    - echo "Compilando la API..."
-    - 'cd api && npm install && npm run build'
-    - echo "Creando directorio de despliegue de la API..."
-    - 'mkdir -p $API_DEPLOYPATH'
-    - echo "Copiando archivos de la API..."
-    - '/bin/cp -r api/* $API_DEPLOYPATH'
+#     # Compilar y desplegar la API
+#     - echo "Compilando la API..."
+#     - 'cd api && npm install && npm run build'
+#     - echo "Creando directorio de despliegue de la API..."
+#     - 'mkdir -p $API_DEPLOYPATH'
+#     - echo "Copiando archivos de la API..."
+#     - '/bin/cp -r api/* $API_DEPLOYPATH'
 
-    - echo "Despliegue completado."
+#     - echo "Despliegue completado."
