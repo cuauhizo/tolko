@@ -6,15 +6,14 @@
 
 ###################################################################
 
-# deployment:
-#   tasks:
-#     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
-#     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
-#     - mkdir -p $FRONTEND_DEPLOYPATH
-#     - mkdir -p $API_DEPLOYPATH
-#     - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH
-#     - /bin/cp -r api/* $API_DEPLOYPATH
-
+deployment:
+  tasks:
+    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
+    - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
+    - mkdir -p $FRONTEND_DEPLOYPATH
+    - mkdir -p $API_DEPLOYPATH
+    - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH
+    - /bin/cp -r api/* $API_DEPLOYPATH
 ###################################################################
 
 # ---
@@ -58,26 +57,3 @@
 #     - '/bin/cp -r api/* $API_DEPLOYPATH'
 
 #     - echo "Despliegue completado."
-
-
-
-echo "Iniciando el despliegue..."
-
-# Cargar NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Usar la versión específica de Node.js
-nvm use v22.3.0
-
-# Verificar la versión de Node.js activa
-node -v
-
-# Resto de comandos de despliegue aquí
-echo "Estableciendo rutas de despliegue..."
-export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
-export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
-echo "Estableciendo opciones de memoria para Node.js..."
-export NODE_OPTIONS="--max-old-space-size=4096"
-echo "Compilando el frontend..."
-cd frontend && npm install && npm run build
