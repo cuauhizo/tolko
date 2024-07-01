@@ -6,6 +6,7 @@
 
 ###################################################################
 
+---
 deployment:
   tasks:
     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
