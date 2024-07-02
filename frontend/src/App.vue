@@ -294,6 +294,7 @@
         src="./assets/img/certificaciones/02.png"
         alt="" />
     </section> -->
+    <section class="hidden">test</section>
     <section
       id="section1"
       class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2">
