@@ -17,44 +17,84 @@
 #     - /bin/cp -r api/* $API_DEPLOYPATH
 ###################################################################
 
----
-deployment:
-  tasks:
-    - echo "Iniciando el despliegue..."
+# ---
+# deployment:
+#   tasks:
+#     - echo "Iniciando el despliegue..."
 
-    # Asegurar el uso de Node.js v22.3.0
-    - nvm use v22.3.0
+#     # Asegurar el uso de Node.js v22.3.0
+#     - nvm use v22.3.0
 
-    - echo "Verificando la versión de Node.js..."
-    - node -v
+#     - echo "Verificando la versión de Node.js..."
+#     - node -v
 
-    - echo "Estableciendo rutas de despliegue..."
-    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
-    - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
+#     - echo "Estableciendo rutas de despliegue..."
+#     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
+#     - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
 
-    - echo "Estableciendo opciones de memoria para Node.js..."
-    - export NODE_OPTIONS="--max-old-space-size=4096"
+#     - echo "Estableciendo opciones de memoria para Node.js..."
+#     - export NODE_OPTIONS="--max-old-space-size=4096"
 
-    # Compilar y desplegar el frontend
-    - echo "Compilando el frontend..."
-    - 'cd frontend && npm install && npm run build'
-    - 'cd ..'
+#     # Compilar y desplegar el frontend
+#     - echo "Compilando el frontend..."
+#     - 'cd frontend && npm install && npm run build'
+#     - 'cd ..'
 
-    - echo "Creando directorio de despliegue del frontend..."
-    - 'mkdir -p $FRONTEND_DEPLOYPATH'
+#     - echo "Creando directorio de despliegue del frontend..."
+#     - 'mkdir -p $FRONTEND_DEPLOYPATH'
 
-    - echo "Copiando archivos del frontend..."
-    - '/bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH'
+#     - echo "Copiando archivos del frontend..."
+#     - '/bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH'
 
-    # Compilar y desplegar la API
-    - echo "Compilando la API..."
-    - 'cd api && npm install && npm run build'
-    - 'cd ..'
+#     # Compilar y desplegar la API
+#     - echo "Compilando la API..."
+#     - 'cd api && npm install && npm run build'
+#     - 'cd ..'
 
-    - echo "Creando directorio de despliegue de la API..."
-    - 'mkdir -p $API_DEPLOYPATH'
+#     - echo "Creando directorio de despliegue de la API..."
+#     - 'mkdir -p $API_DEPLOYPATH'
 
-    - echo "Copiando archivos de la API..."
-    - '/bin/cp -r api/* $API_DEPLOYPATH'
+#     - echo "Copiando archivos de la API..."
+#     - '/bin/cp -r api/* $API_DEPLOYPATH'
 
-    - echo "Despliegue completado."
+#     - echo "Despliegue completado."
+
+
+# ===================================================================
+
+# # !/bin/bash
+
+echo "Iniciando el despliegue..."
+
+# Cargar NVM
+export NVM_DIR="$HOME/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    . "$NVM_DIR/nvm.sh"
+    echo "NVM cargado correctamente."
+else
+    echo "No se encontró NVM en $NVM_DIR. Asegúrate de que NVM está instalado."
+    exit 1
+fi
+
+# Verificar que NVM está disponible
+if command -v nvm >/dev/null 2>&1; then
+    echo "NVM está disponible."
+else
+    echo "NVM no está disponible. Verifica la instalación de NVM."
+    exit 1
+fi
+
+# Usar la versión específica de Node.js
+nvm use v22.3.0
+
+# Verificar la versión de Node.js activa
+node -v
+
+# Continuar con el despliegue
+echo "Estableciendo rutas de despliegue..."
+export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/frontend/
+export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
+echo "Estableciendo opciones de memoria para Node.js..."
+export NODE_OPTIONS="--max-old-space-size=4096"
+echo "Compilando el frontend..."
+cd frontend && npm install && npm run build
