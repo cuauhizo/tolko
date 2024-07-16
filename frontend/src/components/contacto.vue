@@ -41,7 +41,7 @@
       console.log(form);
       alert('Correo electrónico enviado con éxito');
       // alert(t('section5.form.sendSuccess'));
-
+      console.log('enviado exitosamente');
       // Limpiar el formulario después del envío exitoso
       reset('frmContacto');
     } catch (error) {
