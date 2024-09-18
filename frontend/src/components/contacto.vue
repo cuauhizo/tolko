@@ -36,6 +36,7 @@
       // test de prueba
 
       // const url = 'https://tolkogroup.com/api';
+      console.log('url a usar:' + url);
 
       await axios.post(url + '/emails', form);
       console.log(form);

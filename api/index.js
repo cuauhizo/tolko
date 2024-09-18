@@ -10,12 +10,12 @@ dotenv.config();
 const app = express();
 
 // Leer datos via body (Middlewares)
-// app.use(cors());
-app.use(
-  cors({
-    origin: process.env.FRONT_URL,
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: process.env.FRONT_URL,
+//   })
+// );
 console.log(process.env.FRONT_URL);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -28,8 +28,8 @@ app.use(express.json());
 app.use('/emails', emails);
 
 // Definir puerto
-const PORT = process.env.PORT || 3000;
-const FRONT_URL = process.env.FRONT_URL || 'localhost';
+const PORT = process.env.PORT || process.env.PORT_TEST;
+const FRONT_URL = process.env.FRONT_URL || process.env.FRONT_URL_TEST;
 
 // Arrancar app
 app.listen(
