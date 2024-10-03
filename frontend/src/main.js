@@ -10,6 +10,8 @@ import 'aos/dist/aos.css';
 
 import App from './App.vue';
 
+//test
+
 const i18n = createI18n({
   // opciones
   // locale: navigator.language.startsWith('es') ? 'es' : 'en',
