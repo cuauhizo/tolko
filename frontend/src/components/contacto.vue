@@ -23,7 +23,7 @@
     };
 
     try {
-      const test = false;
+      const test = true;
 
       const url = test ? 'http://localhost:3001' : 'https://tolkogroup.com/api';
 
