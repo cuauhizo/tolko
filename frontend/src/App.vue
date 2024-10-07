@@ -10,6 +10,7 @@
   const anio = ref(new Date().getFullYear());
   const showScrollTopButton = ref(false);
   const idioma = ref(locale);
+  const isScrolled = ref(false);
 
   const servicios = reactive([
     {
@@ -74,10 +75,12 @@
   // Add event listener on mounted and remove it on unmounted
   onMounted(() => {
     window.addEventListener('resize', updateIsMobile);
+    window.addEventListener('scroll', handleScroll);
   });
 
   onUnmounted(() => {
     window.removeEventListener('resize', updateIsMobile);
+    window.removeEventListener('scroll', handleScroll);
   });
 
   watchEffect(() => {
@@ -109,6 +112,7 @@
   const handleScroll = () => {
     const scrollTop = window.scrollY;
     showScrollTopButton.value = scrollTop > 0;
+    isScrolled.value = scrollTop > 50;
   };
   onMounted(() => {
     window.addEventListener('scroll', handleScroll);
@@ -158,8 +162,12 @@
 <template>
   <!-- Header -->
   <header>
-    <div class="fixed md:absolute z-30 w-full px-5">
-      <nav class="container h-30 flex items-center justify-between py-3 bg-transparent relative text-white">
+    <div class="fixed md:absolute z-30 w-full">
+      <nav
+        class="container h-30 flex items-center justify-between px-5 py-3 bg-transparent relative text-white"
+        :class="[{ 'bg-scrolled': isScrolled }]">
+        <!-- <nav
+        class="container h-30 flex items-center justify-between px-5 py-3 bg-transparent relative text-white"> -->
         <a
           href="./"
           class="w-1/3 max-w-[60px]">
@@ -179,7 +187,7 @@
           <div
             class="fixed inset-0 bg-gradient-to-b from-white/20 to-tolko-red/70 translate-x-full peer-checked:translate-x-0 transition-transform md:static md:translate-x-0 md:bg-none">
             <ul
-              class="absolute inset-x-0 top-24 p-10 items-center bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white md:shadow-none">
+              class="absolute inset-x-0 top-24 p-10 items-center bg-white text-black w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold shadow-2xl md:static md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:text-white md:shadow-none text-base md:text-sm lg:text-base">
               <li>
                 <a
                   href="#about"
@@ -257,8 +265,7 @@
         autoplay="autoplay"
         muted="muted"
         loop="loop"
-        playsinline=""
-        :key="videoKey">
+        playsinline="">
         <source
           :src="currentVideo.es"
           type="video/webm" />
@@ -342,7 +349,7 @@
         {{ $t('section2.in_one_team') }}
       </p>
       <div
-        class="container grid grid-cols-1 gap-5 justify-items-center items-center py-12 md:grid-cols-2 md:w-[60%]"
+        class="container grid grid-cols-1 gap-5 justify-items-center items-center py-12 md:grid-cols-2 lg:w-[60%]"
         data-aos="fade-up">
         <div
           class="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-[#181818] h-full flex flex-col hover:bg-tolko-red hover:transition-all">
@@ -419,8 +426,8 @@
   <!-- Footer -->
   <footer class="w-full text-gray-700 bg-[#181818]">
     <div
-      class="container grid grid-cols-1 md:grid-cols-4 gap-4 px-5 py-12 mx-auto md:items-center md:py-12 lg:items-start">
-      <div class="mx-auto text-center md:mx-0 md:text-left">
+      class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-5 py-12 mx-auto md:items-start md:py-12 lg:items-start">
+      <div class="text-center md:mx-0 md:text-left">
         <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
           <img
             src="./assets/img/logo-tolko.svg"
@@ -509,7 +516,7 @@
           </span>
         </div>
       </div>
-      <div class="mx-auto text-center md:pl-20 md:text-left">
+      <div class="text-center xl:pl-20 md:text-left">
         <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
           {{ $t('footer.list1.item1') }}
         </h2>
@@ -535,15 +542,17 @@
           </li>
         </nav>
       </div>
-      <div class="mx-auto text-center md:text-left">
+      <div class="text-center md:text-left">
         <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
           {{ $t('footer.list2.item1') }}
         </h2>
         <nav class="mb-10 list-none">
           <li class="mt-3">
-            <a
-              class="text-gray-500 cursor-pointer hover:text-gray-200"
-              v-html="$t('footer.list2.item2')"></a>
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+              <span class="text-white">{{ $t('footer.list2.item2') }}</span
+              ><br />
+              {{ $t('footer.list2.item2_1') }}
+            </a>
             <br />
             <a
               class="text-gray-500 cursor-pointer hover:text-gray-200"
@@ -552,13 +561,15 @@
             >
           </li>
           <li class="mt-3">
-            <a
-              class="text-gray-500 cursor-pointer hover:text-gray-200"
-              v-html="$t('footer.list2.item3')"></a>
+            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+              <span class="text-white">{{ $t('footer.list2.item3') }}</span
+              ><br />
+              {{ $t('footer.list2.item3_1') }}
+            </a>
           </li>
         </nav>
       </div>
-      <div class="mx-auto text-center md:text-left">
+      <div class="text-center md:text-left">
         <h2 class="mb-3 text-sm font-medium tracking-widest text-white uppercase title-font">
           {{ $t('footer.list3.item1') }}
         </h2>
@@ -645,4 +656,19 @@
     background-color: #cc0032;
     border: 1px solid #ba0331;
   }
+
+  /* Estilos para el estado scrolled */
+  .bg-scrolled {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+  }
+
+  /* .backdrop-blur-md {
+    backdrop-filter: blur(4px);
+  } */
+
+  /* Asegura transiciones suaves */
+  /* nav {
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  } */
 </style>

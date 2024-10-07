@@ -133,8 +133,10 @@ export const messages = {
       },
       list2: {
         item1: 'Location',
-        item2: '<span class="text-white">Workshop Contact:</span> Manizales #184, CDMX, Mexico',
-        item3: '<span class="text-white">Corporate Contact:</span> Av. Río San Joaquín #436, CDMX, Mexico',
+        item2: 'Workshop Contact: ',
+        item2_1: 'Manizales #184, CDMX, México',
+        item3: 'Corporate Contact: ',
+        item3_1: 'Av. Río San Joaquín #436, CDMX, Mexico',
       },
       list3: {
         item1: 'Contact',
@@ -278,8 +280,10 @@ export const messages = {
       },
       list2: {
         item1: 'Ubicación',
-        item2: '<span class="text-white">Contacto Taller:</span>: Manizales #184, CDMX, México',
-        item3: '<span class="text-white">Contacto Corporativo:</span>: Av. Río San Joaquín #436, CDMX, México',
+        item2: 'Contacto Taller: ',
+        item2_1: 'Manizales #184, CDMX, México',
+        item3: 'Contacto Corporativo: ',
+        item3_1: 'Av. Río San Joaquín #436, CDMX, México',
       },
       list3: {
         item1: 'Contacto',
