@@ -6,11 +6,21 @@ dotenv.config();
 const router = express.Router();
 
 // Crear el transporter una vez
+// const transporter = nodemailer.createTransport({
+//   host: 'smtp.gmail.com',
+//   port: 465,
+//   secure: true,
+//   auth: {
+//     user: process.env.TRASNSPORTER_USER,
+//     pass: process.env.TRASNSPORTER_PASS,
+//   },
+// });
+
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
+  service: 'gmail',
   auth: {
+    // user: 'cuauhizo@gmail.com',
+    // pass: 'hcdtlbuzuwvqoyzo',
     user: process.env.TRASNSPORTER_USER,
     pass: process.env.TRASNSPORTER_PASS,
   },
