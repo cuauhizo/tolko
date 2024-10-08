@@ -28,4 +28,4 @@ app.use(i18n);
 AOS.init();
 app.use(VueNumberFormat, { prefix: '$ ', decimal: '.', thousand: ',' });
 app.mount('#app');
-console.log('Este es el nuevo');
+console.log('Este es el nuevo2');
