@@ -44,12 +44,12 @@
   };
 
   // Observar el cambio de idioma
-  watch(
-    () => idioma,
-    (newVal, oldVal) => {
-      // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
-    }
-  );
+  // watch(
+  //   () => idioma,
+  //   (newVal, oldVal) => {
+  //     // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
+  //   }
+  // );
   watch(idioma, () => {
     // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
     reset('frmContacto');
