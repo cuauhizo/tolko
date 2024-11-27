@@ -40,24 +40,24 @@ export const messages = {
             'We turn your ideas into visual communication and creative concepts that reach your audience and strategically connect with them.',
         },
         list6: {
-          title: 'Audiovisual production, animation and video editing',
-          description:
-            'We create multimedia content that connects with your audiences through sound, visuals, and effects, effectively conveying messages or stories.',
-        },
-        list7: {
-          title: 'Streaming production',
-          description:
-            'We help you reach your audience anywhere, in real-time, through high-quality and tailor-made streamings in one or many languages, using a wide variety of platforms.',
-        },
-        list8: {
           title: 'Leadership Positioning and Thought Leadership',
           description:
             'We design and execute positioning strategies for top leaders, turning them into authorities in a particular field by providing valuable insights and innovative ideas for shaping the conversation.',
         },
-        list9: {
+        list7: {
           title: 'Production and BTL activations',
           description:
             'We turn communication into tangible materials, from flyers, magazines, or brochures to big-scale printing, videos, stands, or activations.',
+        },
+        list8: {
+          title: 'Audiovisual production, animation and video editing',
+          description:
+            'We create multimedia content that connects with your audiences through sound, visuals, and effects, effectively conveying messages or stories.',
+        },
+        list9: {
+          title: 'Streaming production',
+          description:
+            'We help you reach your audience anywhere, in real-time, through high-quality and tailor-made streamings in one or many languages, using a wide variety of platforms.',
         },
       },
     },
@@ -187,24 +187,24 @@ export const messages = {
             'Convertimos tus ideas en comunicación visual y conceptos creativos que lleguen a tu audiencia y conecten estratégicamente con ella.',
         },
         list6: {
-          title: 'Producción audiovisual, animación y edición de video',
-          description:
-            'Creamos contenido multimedia que conecta con tus audiencias a través de sonido, imágenes y efectos, transmitiendo mensajes o historias de manera efectiva.',
-        },
-        list7: {
-          title: 'Producción Streaming',
-          description:
-            'Te ayudamos a llegar a tu audiencia en cualquier lugar, en tiempo real, a través de streamings de alta calidad y personalizados en uno o varios idiomas, utilizando una amplia variedad de plataformas.',
-        },
-        list8: {
           title: 'Posicionamiento y pensamiento de liderazgo',
           description:
             'Diseñamos y ejecutamos estrategias de posicionamiento para los principales líderes, convirtiéndolos en autoridades en un campo particular al brindarles conocimientos valiosos e ideas innovadoras para dar forma a la conversación.',
         },
-        list9: {
+        list7: {
           title: 'Producción y activaciones BTL',
           description:
             'Convertimos la comunicación en materiales tangibles, desde flyers, revistas o folletos hasta impresiones a gran escala, vídeos, stands o activaciones.',
+        },
+        list8: {
+          title: 'Producción audiovisual, animación y edición de video',
+          description:
+            'Creamos contenido multimedia que conecta con tus audiencias a través de sonido, imágenes y efectos, transmitiendo mensajes o historias de manera efectiva.',
+        },
+        list9: {
+          title: 'Producción Streaming',
+          description:
+            'Te ayudamos a llegar a tu audiencia en cualquier lugar, en tiempo real, a través de streamings de alta calidad y personalizados en uno o varios idiomas, utilizando una amplia variedad de plataformas.',
         },
       },
     },

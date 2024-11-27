@@ -48,16 +48,16 @@
       titulo: t('section1.list.list7.title'),
       descipcion: t('section1.list.list7.description'),
     },
-    {
-      id: 8,
-      titulo: t('section1.list.list8.title'),
-      descipcion: t('section1.list.list8.description'),
-    },
-    {
-      id: 9,
-      titulo: t('section1.list.list9.title'),
-      descipcion: t('section1.list.list9.description'),
-    },
+    // {
+    //   id: 8,
+    //   titulo: t('section1.list.list8.title'),
+    //   descipcion: t('section1.list.list8.description'),
+    // },
+    // {
+    //   id: 9,
+    //   titulo: t('section1.list.list9.title'),
+    //   descipcion: t('section1.list.list9.description'),
+    // },
   ]);
 
   const isMobile = ref(window.innerWidth <= 426);
@@ -301,7 +301,6 @@
         src="./assets/img/certificaciones/02.png"
         alt="" />
     </section> -->
-    <section class="hidden">test</section>
     <section
       id="section1"
       class="container grid gap-5 justify-items-center items-center py-12 lg:grid-cols-2">
@@ -336,7 +335,6 @@
         </ul>
       </article>
     </section>
-
     <!-- Especializaciones -->
     <section id="section2">
       <p
