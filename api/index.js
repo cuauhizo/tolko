@@ -10,12 +10,22 @@ dotenv.config();
 const app = express();
 
 // Leer datos via body (Middlewares)
-app.use(cors());
+// app.use(cors());
+
 // app.use(
 //   cors({
 //     origin: process.env.FRONT_URL,
 //   })
 // );
+
+app.use(
+  cors({
+    origin: process.env.FRONT_URL,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+
 console.log(process.env.FRONT_URL);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
