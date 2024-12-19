@@ -25,7 +25,7 @@
     try {
       const test = false;
 
-      const url = test ? 'http://localhost:3001' : 'https://tolkogroup.com/api';
+      const url = test ? 'http://localhost:3001' : 'https://www.tolkogroup.com/api';
 
       console.log('url a usar:' + url);
 
