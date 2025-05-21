@@ -176,6 +176,7 @@
             alt="Logo tolko"
             width="60"
             height="60"
+            fetchpriority="high"
             class="w-full" />
         </a>
         <div class="flex items-center justify-end gap-2">
@@ -431,6 +432,8 @@
         <a class="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
           <img
             src="./assets/img/logo-tolko.svg"
+            width="128"
+            height="128"
             alt="Logo tolko" />
         </a>
         <!-- Social Icons -->
@@ -440,6 +443,7 @@
               class="text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://www.facebook.com/tolkogroup/"
               alt="Facebook"
+              aria-label="Facebook"
               target="_blank">
               <svg
                 fill="currentColor"
@@ -455,6 +459,7 @@
               class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://twitter.com/tolkogroup"
               alt="Twitter"
+              aria-label="Twitter"
               target="_blank">
               <svg
                 fill="currentColor"
@@ -471,6 +476,7 @@
               class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://www.instagram.com/grupo_tolko"
               alt="Instagram"
+              aria-label="Instagram"
               target="_blank">
               <svg
                 fill="none"
@@ -494,6 +500,7 @@
               class="ml-3 text-gray-500 cursor-pointer hover:text-gray-700"
               href="https://www.linkedin.com/company/tolko/"
               alt="Linkedin"
+              aria-label="Linkedin"
               target="_blank">
               <svg
                 fill="currentColor"
