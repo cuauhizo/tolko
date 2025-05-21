@@ -519,25 +519,27 @@
           {{ $t('footer.list1.item1') }}
         </h2>
         <nav class="mb-10 list-none">
-          <li class="mt-3">
-            <a
-              class="text-gray-500 cursor-pointer hover:text-gray-200"
-              @click="scrollToSection(1)">
-              {{ $t('footer.list1.item2') }}
-            </a>
-          </li>
-          <li class="mt-3">
-            <a
-              class="text-gray-500 cursor-pointer hover:text-gray-200"
-              @click="scrollToSection(2)">
-              {{ $t('footer.list1.item3') }}
-            </a>
-          </li>
-          <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
-              {{ $t('footer.list1.item4') }}
-            </a>
-          </li>
+          <ul>
+            <li class="mt-3">
+              <a
+                class="text-gray-500 cursor-pointer hover:text-gray-200"
+                @click="scrollToSection(1)">
+                {{ $t('footer.list1.item2') }}
+              </a>
+            </li>
+            <li class="mt-3">
+              <a
+                class="text-gray-500 cursor-pointer hover:text-gray-200"
+                @click="scrollToSection(2)">
+                {{ $t('footer.list1.item3') }}
+              </a>
+            </li>
+            <li class="mt-3">
+              <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+                {{ $t('footer.list1.item4') }}
+              </a>
+            </li>
+          </ul>
         </nav>
       </div>
       <div class="text-center md:text-left">
@@ -545,26 +547,34 @@
           {{ $t('footer.list2.item1') }}
         </h2>
         <nav class="mb-10 list-none">
-          <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
-              <span class="text-white">{{ $t('footer.list2.item2') }}</span
-              ><br />
-              {{ $t('footer.list2.item2_1') }}
-            </a>
-            <br />
-            <a
-              class="text-gray-500 cursor-pointer hover:text-gray-200"
-              href="mailto:tolko360@tolkogroup.com"
-              >tolko360@tolkogroup.com</a
-            >
-          </li>
-          <li class="mt-3">
-            <a class="text-gray-500 cursor-pointer hover:text-gray-200">
-              <span class="text-white">{{ $t('footer.list2.item3') }}</span
-              ><br />
-              {{ $t('footer.list2.item3_1') }}
-            </a>
-          </li>
+          <ul>
+            <li class="mt-3">
+              <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+                <span class="text-white">{{ $t('footer.list2.item2') }}</span
+                ><br />
+                {{ $t('footer.list2.item2_1') }}
+              </a>
+              <br />
+              <a
+                class="text-gray-500 cursor-pointer hover:text-gray-200"
+                href="mailto:tolko360@tolkogroup.com"
+                >tolko360@tolkogroup.com</a
+              >
+              <br />
+              <a
+                class="text-gray-500 cursor-pointer hover:text-gray-200"
+                href="https://tolkoproducciones.com/" target="_blank"
+                >tolkoproducciones.com</a
+              >
+            </li>
+            <li class="mt-3">
+              <a class="text-gray-500 cursor-pointer hover:text-gray-200">
+                <span class="text-white">{{ $t('footer.list2.item3') }}</span
+                ><br />
+                {{ $t('footer.list2.item3_1') }}
+              </a>
+            </li>
+          </ul>
         </nav>
       </div>
       <div class="text-center md:text-left">
@@ -572,27 +582,29 @@
           {{ $t('footer.list3.item1') }}
         </h2>
         <nav class="mb-10 list-none">
-          <li class="mt-3">
-            <a
-              href="mailto:tolko360@tolkogroup.com"
-              class="text-gray-500 cursor-pointer hover:text-gray-200">
-              tolko360@tolkogroup.com
-            </a>
-          </li>
-          <li class="mt-3">
-            <a
-              class="text-gray-500 cursor-pointer hover:text-gray-200"
-              @click="scrollToSection(4)">
-              {{ $t('footer.list3.item3') }}
-            </a>
-          </li>
-          <li class="mt-3">
-            <a
-              href="tel:+525567260647"
-              class="text-gray-500 cursor-pointer hover:text-gray-200"
-              >+52 55 6726 0647</a
-            >
-          </li>
+          <ul>
+            <li class="mt-3">
+              <a
+                href="mailto:tolko360@tolkogroup.com"
+                class="text-gray-500 cursor-pointer hover:text-gray-200">
+                tolko360@tolkogroup.com
+              </a>
+            </li>
+            <li class="mt-3">
+              <a
+                class="text-gray-500 cursor-pointer hover:text-gray-200"
+                @click="scrollToSection(4)">
+                {{ $t('footer.list3.item3') }}
+              </a>
+            </li>
+            <li class="mt-3">
+              <a
+                href="tel:+525567260647"
+                class="text-gray-500 cursor-pointer hover:text-gray-200"
+                >+52 55 6726 0647</a
+              >
+            </li>
+          </ul>
         </nav>
       </div>
     </div>
