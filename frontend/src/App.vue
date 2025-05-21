@@ -174,6 +174,8 @@
           <img
             src="./assets/img/logo-tolko.svg"
             alt="Logo tolko"
+            width="60"
+            height="60"
             class="w-full" />
         </a>
         <div class="flex items-center justify-end gap-2">
