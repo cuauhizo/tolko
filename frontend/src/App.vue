@@ -63,6 +63,12 @@
   const isMobile = ref(window.innerWidth <= 426);
   const videoKey = ref(`${locale.value}-${Date.now()}`);
 
+  const cerrarMenu = () => {
+    const checkbox = document.getElementById("menu");
+    if (checkbox) checkbox.checked = false;
+  };
+
+
   const updateLocale = () => {
     videoKey.value = `${locale.value}-${Date.now()}`; // Update key to force re-render
   };
@@ -194,21 +200,21 @@
               <li>
                 <a
                   href="#about"
-                  @click="scrollToSection(1)"
+                  @click="scrollToSection(1); cerrarMenu()"
                   >{{ $t('menu.about_us') }}</a
                 >
               </li>
               <li>
                 <a
                   href="#services"
-                  @click="scrollToSection(2)"
+                  @click="scrollToSection(2); cerrarMenu()"
                   >{{ $t('menu.our_services') }}</a
                 >
               </li>
               <li>
                 <a
                   href="#"
-                  @click="scrollToSection(3)"
+                  @click="scrollToSection(3); cerrarMenu()"
                   >{{ $t('menu.join_our_team') }}</a
                 >
               </li>
@@ -216,7 +222,7 @@
                 <a
                   href="#contact"
                   class="btn btn-red text-white"
-                  @click="scrollToSection(4)"
+                  @click="scrollToSection(4); cerrarMenu()"
                   >{{ $t('menu.get_in_touch_with_us') }}</a
                 >
               </li>
