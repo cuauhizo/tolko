@@ -534,7 +534,7 @@
           {{ $t('footer.list1.item1') }}
         </h2>
         <nav class="mb-10 list-none">
-          <ul>
+          <ul class="cuauhizo">
             <li class="mt-3">
               <a
                 class="text-gray-500 cursor-pointer hover:text-gray-200"
