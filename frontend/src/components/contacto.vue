@@ -23,9 +23,10 @@
     };
 
     try {
-      const test = false;
+      const test = true;
 
-      const url = test ? 'http://localhost:3001' : 'https://www.tolkogroup.com/api';
+      // const url = test ? 'http://localhost:3000' : 'https://www.tolkogroup.com/api';
+      const url = test ? 'http://localhost:3000' : 'https://api.tolkogroup.com/';
 
       console.log('url a usar:' + url);
 
