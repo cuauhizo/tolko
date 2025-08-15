@@ -16,16 +16,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     // user: 'cuauhizo@gmail.com',
-//     // pass: 'hcdtlbuzuwvqoyzo',
-//     user: process.env.TRASNSPORTER_USER,
-//     pass: process.env.TRASNSPORTER_PASS,
-//   },
-// });
-
 // Verificar el transporter al iniciar la aplicación
 transporter.verify((error, success) => {
   if (error) {
