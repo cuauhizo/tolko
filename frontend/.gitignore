@@ -13,7 +13,7 @@ dist-ssr
 *.local
 
 # Ignorar videos en /frontend/public/video/
-/frontend/public/video/
+frontend/public/video/
 
 # Editor directories and files
 .vscode/*
