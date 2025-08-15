@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-# Ignorar videos en la carpeta public
+# Ignorar videos en /frontend/public/video/
 /frontend/public/video/
 
 # Editor directories and files
