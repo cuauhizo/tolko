@@ -10,30 +10,16 @@ dotenv.config();
 const app = express();
 
 // Leer datos via body (Middlewares)
-// app.use(cors());
-
-// app.use(
-//   cors({
-//     origin: process.env.FRONT_URL,
-//   })
-// );s
-
-app.use(
-  cors({
-    origin: process.env.FRONT_URL,
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
+app.use(cors());
 
 console.log(process.env.FRONT_URL);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Definir una ruta
-// app.get('/', (req, res) => {
-//   res.send('Servidor web ejecutandose');
-// });
+app.get('/', (req, res) => {
+  res.send('Servidor web tolko ejecutandose');
+});
 
 app.use('/emails', emails);
 
