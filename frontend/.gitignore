@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Ignorar videos en la carpeta public
+/frontend/public/video/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
