@@ -16,6 +16,9 @@ dist-ssr
 frontend/public/video/
 /frontend/public/video/
 
+# Ignorar carpeta de videos del frontend
+frontend/public/video
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
