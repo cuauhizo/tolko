@@ -122,6 +122,8 @@ export const messages = {
         placeholderMessage: 'Message *',
         requiredMessage: 'Message is required.',
         send: 'Send',
+        sendError: 'Error sending the message. Please try again later.',
+        sendSuccess: 'Message sent successfully. Thank you for contacting us!',
       },
     },
     footer: {
@@ -269,6 +271,8 @@ export const messages = {
         placeholderMessage: 'Mensaje *',
         requiredMessage: 'Mensaje es requerido.',
         send: 'Enviar',
+        sendError: 'Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.',
+        sendSuccess: 'Mensaje enviado con éxito. ¡Gracias por contactarnos!',
       },
     },
     footer: {

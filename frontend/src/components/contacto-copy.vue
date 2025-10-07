@@ -1,57 +1,60 @@
 <script setup>
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   import axios from 'axios';
   import { reset } from '@formkit/vue';
   import { useI18n } from 'vue-i18n';
 
-  const { t } = useI18n(); // Para usar tus traducciones en los mensajes
+  const { locale } = useI18n();
+  const idioma = ref(locale);
 
-  // --- ESTADO PARA LA UI ---
-  // Refs para dar feedback al usuario sin usar alert()
-  const cargando = ref(false);
-  const exito = ref('');
-  const errorMsg = ref('');
+  const nombre = ref('');
+  const telefono = ref('');
+  const email = ref('');
+  const servicio = ref('');
+  const mensaje = ref('');
 
-  const handleSubmit = async (formData) => {
-    // 1. Activamos el estado de carga
-    cargando.value = true;
-    errorMsg.value = '';
-    exito.value = '';
+  const onSubmit = async () => {
+    const form = {
+      nombre: nombre.value,
+      telefono: telefono.value,
+      servicio: servicio.value,
+      email: email.value,
+      mensaje: mensaje.value,
+    };
 
     try {
-      // 2. Usamos la variable de entorno (mucho más seguro y flexible)
-      const url = `${import.meta.env.VITE_API_URL}/emails`;
+      const test = true;
 
-      // El segundo argumento de axios.post es el cuerpo de la petición.
-      // Asumo que 'formData' viene del evento @submit de FormKit, lo cual es correcto.
-      const { data } = await axios.post(url, formData);
-      console.log(data);
+      // const url = test ? 'http://localhost:3000' : 'https://www.tolkogroup.com/api';
+      const url = test ? 'http://localhost:3000' : 'https://api.tolkogroup.com/';
 
-      // 3. Manejamos el éxito
-      exito.value = data.msg; // Usamos el mensaje que viene del backend
-      exito.value = t('section5.form.sendSuccess');
+      console.log('url a usar:' + url);
 
-      reset('frmContacto'); // Tu método para limpiar el formulario es correcto
+      await axios.post(url + '/emails', form);
+      console.log(form);
+      alert('Correo electrónico enviado con éxito');
+      // alert(t('section5.form.sendSuccess'));
+      console.log('enviado exitosamente');
+      // Limpiar el formulario después del envío exitoso
+      reset('frmContacto');
     } catch (error) {
-      // 4. Manejamos el error de forma inteligente
-      // Leemos el mensaje de error específico que mandó la API
-      if (error.response && error.response.data && error.response.data.msg) {
-        errorMsg.value = error.response.data.msg;
-      } else {
-        // Mensaje genérico si la API no responde
-        errorMsg.value = t('section5.form.sendError'); // Usando tu traducción
-      }
-    } finally {
-      // 5. Desactivamos el estado de carga al terminar
-      cargando.value = false;
-
-      // Opcional: Ocultar los mensajes después de 5 segundos
-      setTimeout(() => {
-        exito.value = '';
-        errorMsg.value = '';
-      }, 5000);
+      alert('Error al enviar el correo electrónico');
+      // alert("t('section5.form.sendError')");
+      console.error(error);
     }
   };
+
+  // Observar el cambio de idioma
+  // watch(
+  //   () => idioma,
+  //   (newVal, oldVal) => {
+  //     // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
+  //   }
+  // );
+  watch(idioma, () => {
+    // Puedes realizar acciones adicionales aquí cuando cambia el idioma, si es necesario
+    reset('frmContacto');
+  });
 </script>
 
 <template>
@@ -66,7 +69,7 @@
         type="form"
         id="frmContacto"
         :actions="false"
-        @submit="handleSubmit">
+        @submit="onSubmit">
         <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
           <FormKit
             v-model.trim="nombre"
@@ -143,21 +146,6 @@
           </div>
         </div>
       </FormKit>
-      <p
-        v-if="cargando"
-        class="text-center mt-4">
-        Enviando...
-      </p>
-      <p
-        v-if="exito"
-        class="text-center mt-4 p-2 bg-green-100 text-green-700 rounded">
-        {{ exito }}
-      </p>
-      <p
-        v-if="errorMsg"
-        class="text-center mt-4 p-2 bg-red-100 text-red-700 rounded">
-        {{ errorMsg }}
-      </p>
     </div>
   </section>
 </template>

@@ -1,64 +1,61 @@
-import express from 'express';
-import dotenv from 'dotenv';
+import { Router } from 'express';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
 dotenv.config();
 
-const router = express.Router();
+const router = Router();
 
-// Crear el transporter una vez
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.TRASNSPORTER_USER,
-    pass: process.env.TRASNSPORTER_PASS,
-  },
-});
+router.post('/', (req, res) => {
+  const { nombre, email, telefono, servicio, mensaje } = req.body;
 
-// Verificar el transporter al iniciar la aplicación
-transporter.verify((error, success) => {
-  if (error) {
-    console.log('Error en la configuración de Nodemailer:', error);
-  } else {
-    console.log('Listo para enviar correos');
-  }
-});
-
-// Función para construir el contenido del correo
-const buildEmailContent = ({ nombre, telefono, email, servicio, mensaje }) => `
-  <h2>Mensaje de Contacto</h2>
-  <p><strong>Nombre:</strong> ${nombre}</p>
-  <p><strong>Teléfono:</strong> ${telefono}</p>
-  <p><strong>Email:</strong> ${email}</p>
-  <p><strong>Servicio:</strong> ${servicio}</p>
-  <p><strong>Mensaje:</strong> ${mensaje}</p>
-`;
-
-router.post('/', async (req, res) => {
-  const { nombre, telefono, email, servicio, mensaje } = req.body;
-
-  // Validar los campos
-  if (!nombre || !telefono || !email || !servicio || !mensaje) {
-    return res.status(400).json({ mensaje: 'Todos los campos son obligatorios' });
+  // --- AJUSTE 1: Validación de campos ---
+  if (!nombre || !email || !telefono || !servicio || !mensaje) {
+    // Si falta algún campo, devuelve un error 400 (Bad Request)
+    return res.status(400).json({ msg: 'Todos los campos son obligatorios.' });
   }
 
-  try {
-    const content = buildEmailContent({ nombre, telefono, email, servicio, mensaje });
+  const contentHTML = `
+        <h1>Información del usuario</h1>
+        <ul>
+            <li>Nombre: ${nombre}</li>
+            <li>Email: ${email}</li>
+            <li>Teléfono: ${telefono}</li>
+            <li>Servicio: ${servicio}</li>
+        </ul>
+        <p>${mensaje}</p>
+    `;
 
-    const info = await transporter.sendMail({
-      from: 'Tolko Group <info@tolkogroup.com>',
-      to: 'frodriguez@tolkogroup.com, cuauhizo@gmail.com',
-      subject: 'Nuevo mensaje de contacto',
-      html: content,
-    });
+  const transporter = nodemailer.createTransport({
+    host: process.env.HOST_EMAIL,
+    port: process.env.PORT_EMAIL,
+    secure: true,
+    auth: {
+      user: process.env.USER_EMAIL,
+      pass: process.env.PASS_EMAIL,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
 
-    console.log('Correo enviado:', info.response);
-    res.status(200).json({ mensaje: 'Mensaje enviado correctamente' });
-  } catch (error) {
-    console.error('Error al enviar el correo:', error);
-    res.status(500).json({ mensaje: 'Hubo un error al enviar el correo', error });
-  }
+  const info = {
+    from: 'Tolko Group <info@tolkogroup.com>',
+    to: 'frodriguez@tolkogroup.com, cuauhizo@gmail.com',
+    subject: 'Formulario de contacto',
+    html: contentHTML,
+  };
+
+  transporter.sendMail(info, (error, info) => {
+    // --- AJUSTE 2: Manejo de respuesta de éxito y error ---
+    if (error) {
+      console.log(error);
+      return res.status(500).json({ msg: 'Error, el correo no pudo ser enviado.' });
+    } else {
+      console.log('Email sent: ' + info.response);
+      return res.status(200).json({ msg: 'Correo enviado exitosamente.' });
+    }
+  });
 });
 
 export default router;

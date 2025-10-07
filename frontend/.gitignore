@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 
+.env
+
 # Ignorar videos en /frontend/public/video/
 frontend/public/video/
 /frontend/public/video/

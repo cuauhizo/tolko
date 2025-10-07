@@ -18,11 +18,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Definir una ruta
+app.use('/emails', emails);
+
 app.get('/', (req, res) => {
   res.send('Servidor web tolko ejecutandose');
 });
-
-app.use('/emails', emails);
 
 // Definir puerto
 const PORT = process.env.PORT || 3000;
