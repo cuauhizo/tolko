@@ -9,11 +9,26 @@ dotenv.config();
 // Configurar la app
 const app = express();
 
-// Leer datos via body (Middlewares)
-app.use(cors());
-// app.use(cors({ origin: process.env.FRONT_URL }));
+// 1. Define los orígenes permitidos (la "lista de invitados")
+const whitelist = [process.env.FRONTEND_URL, 'http://localhost:5173'];
 
-// console.log(process.env.FRONT_URL);
+const corsOptions = {
+  origin: function (origin, callback) {
+    // 2. Comprueba si el origen de la petición está en nuestra lista
+    if (whitelist.includes(origin)) {
+      // Si está permitido, permite la petición
+      callback(null, true);
+    } else {
+      // Si no, recházala
+      callback(new Error('Error de CORS: Origen no permitido'));
+    }
+  },
+};
+
+// 3. Usa la configuración de CORS personalizada
+app.use(cors(corsOptions));
+
+// Middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
