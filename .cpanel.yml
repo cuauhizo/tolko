@@ -6,11 +6,23 @@
 
 ###################################################################
 
+# ---
+# deployment:
+#   tasks:
+#     - export FRONTEND_DEPLOYPATH=/home/tolkogroup/www/
+#     - export API_DEPLOYPATH=/home/tolkogroup/www/api/
+#     - mkdir -p $FRONTEND_DEPLOYPATH
+#     - mkdir -p $API_DEPLOYPATH
+#     - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH
+#     - /bin/cp -r api/* $API_DEPLOYPATH
+
+###################################################################
+
 ---
 deployment:
   tasks:
-    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/www/
-    - export API_DEPLOYPATH=/home/tolkogroup/www/api/
+    - export FRONTEND_DEPLOYPATH=/home/tolkogroup/public_html/
+    - export API_DEPLOYPATH=/home/tolkogroup/public_html/api/
     - mkdir -p $FRONTEND_DEPLOYPATH
     - mkdir -p $API_DEPLOYPATH
     - /bin/cp -r frontend/dist/* $FRONTEND_DEPLOYPATH
