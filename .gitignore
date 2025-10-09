@@ -22,5 +22,6 @@ lerna-debug.log*
 # Ignorar carpeta de videos del frontend
 frontend/public/video
 
-.cpanel
-.cpanel/*
+
+#.cpanel
+#.cpanel/*
