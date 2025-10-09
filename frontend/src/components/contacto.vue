@@ -29,7 +29,7 @@
 
       // 3. Manejamos el éxito
       exito.value = data.msg; // Usamos el mensaje que viene del backend
-      exito.value = t('section5.form.sendSuccess');
+      // exito.value = t('section5.form.sendSuccess');
 
       reset('frmContacto'); // Tu método para limpiar el formulario es correcto
     } catch (error) {
@@ -39,7 +39,8 @@
         errorMsg.value = error.response.data.msg;
       } else {
         // Mensaje genérico si la API no responde
-        errorMsg.value = t('section5.form.sendError'); // Usando tu traducción
+        // errorMsg.value = t('section5.form.sendError'); // Usando tu traducción
+        errorMsg.value = error.response.data.msg; // Usando tu traducción
       }
     } finally {
       // 5. Desactivamos el estado de carga al terminar
