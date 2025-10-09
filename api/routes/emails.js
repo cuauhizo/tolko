@@ -50,10 +50,10 @@ router.post('/', (req, res) => {
     // --- AJUSTE 2: Manejo de respuesta de éxito y error ---
     if (error) {
       console.log(error);
-      return res.status(500).json({ msg: 'Error, el correo no pudo ser enviado.' });
+      return res.status(500).json({ msg: 'Error, el correo no pudo ser enviado. :(' });
     } else {
       console.log('Email sent: ' + info.response);
-      return res.status(200).json({ msg: 'Correo enviado exitosamente.' });
+      return res.status(200).json({ msg: 'Correo enviado exitosamente. :)' });
     }
   });
 });

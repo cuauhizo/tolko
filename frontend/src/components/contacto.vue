@@ -146,7 +146,7 @@
       <p
         v-if="cargando"
         class="text-center mt-4">
-        Enviando...
+        Enviando....
       </p>
       <p
         v-if="exito"
