@@ -10,16 +10,26 @@ dotenv.config();
 const app = express();
 
 // 1. Define los orígenes permitidos (la "lista de invitados")
-const whitelist = [process.env.FRONTEND_URL, 'http://localhost:5173'];
-
+const whitelist = [
+  process.env.FRONTEND_URL,
+  'http://localhost:5173',
+  'https://tolkogroup.com',
+  'https://www.tolkogroup.com',
+];
 const corsOptions = {
   origin: function (origin, callback) {
+    // Permitir peticiones sin origen (como las de Postman o de servidor a servidor)
+    if (!origin) {
+      return callback(null, true);
+    }
+
     // 2. Comprueba si el origen de la petición está en nuestra lista
     if (whitelist.includes(origin)) {
       // Si está permitido, permite la petición
       callback(null, true);
     } else {
       // Si no, recházala
+      console.log(`🛑 Bloqueado por CORS: ${origin}`);
       callback(new Error('Error de CORS: Origen no permitido'));
     }
   },
