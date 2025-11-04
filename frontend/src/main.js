@@ -1,30 +1,52 @@
-import './assets/main.css'
-import { createApp } from 'vue'
-import { plugin, defaultConfig } from '@formkit/vue'
-import config from '../formkit.config'
-import VueNumberFormat from 'vue-number-format'
-import { createI18n } from 'vue-i18n'
-import { messages } from './lang/messages'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { ViteSSG } from 'vite-ssg'
+import { createHead } from '@vueuse/head'
 
 import App from './App.vue'
+import router from './router'
+import AOS from 'aos'
+// Importa tus estilos y configuraciones
+import './assets/main.css'
+import 'aos/dist/aos.css'
+import { plugin, defaultConfig } from '@formkit/vue'
+import { createI18n } from 'vue-i18n'
+import VueNumberFormat from 'vue-number-format'
+import { messages } from '@/lang/messages.js'
 
-//test
-
+// Configura i18n
 const i18n = createI18n({
-  // opciones
-  // locale: navigator.language.startsWith('es') ? 'es' : 'en',
-  locale: 'en',
-  fallbackLocale: 'en',
-  messages,
   legacy: false,
+  locale: 'es',
+  fallbackLocale: 'es',
+  messages,
 })
 
-const app = createApp(App)
+// Crea la instancia de @vueuse/head
+const head = createHead()
 
-app.use(plugin, defaultConfig(config))
-app.use(i18n)
-AOS.init()
-app.use(VueNumberFormat, { prefix: '$ ', decimal: '.', thousand: ',' })
-app.mount('#app')
+// Configura ViteSSG
+export const createApp = ViteSSG(
+  // El componente raíz de la app
+  App,
+  // Opciones del router
+  {
+    routes: router.options.routes, // Pasamos las rutas del router
+    // Puedes configurar la base de la URL si es necesario
+    // base: import.meta.env.BASE_URL,
+  },
+  // Función de configuración (se ejecuta en ambos lados, cliente y build)
+  ({ app, router, routes, isClient }) => {
+    // Instala todos tus plugins de Vue aquí
+    app.use(router)
+    app.use(i18n)
+    app.use(head)
+    app.use(plugin, defaultConfig)
+    app.use(VueNumberFormat, { prefix: '$ ', decimal: '.', thousand: ',' })
+
+    // Inicializa AOS solo en el lado del cliente
+    if (isClient) {
+      import('aos').then(AOS => {
+        AOS.init()
+      })
+    }
+  }
+)
