@@ -13,6 +13,7 @@ dist-ssr
 *.local
 
 .env
+*-copy.*
 
 # Ignorar videos en /frontend/public/video/
 frontend/public/video/
@@ -31,3 +32,4 @@ frontend/public/video
 *.njsproj
 *.sln
 *.sw?
+
