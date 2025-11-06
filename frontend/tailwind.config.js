@@ -1,29 +1,31 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
+const colors = require('tailwindcss/colors')
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
-    "./formkit.config.js"
+    './index.html',
+    './src/**/*.{vue,js,ts,jsx,tsx}',
+    // CRÍTICO: Incluir archivos de FormKit para que Tailwind procese sus clases
+    './src/formkit.config.js',
+    './node_modules/@formkit/themes/dist/tailwindcss/genesis/index.js',
   ],
   theme: {
     extend: {
       fontFamily: {
-        "principal": ['"Josefin Sans"', 'sans-serif'],
-        "Black": ['"Franie-Black"', 'sans-serif'],
-        "Light": ['"Franie-Light"', 'sans-serif'],
-        "SemiBold": ['"Franie-SemiBold"', 'sans-serif'],
-        "SemiBoldItalic": ['"Franie-SemiBoldItalic"', 'sans-serif']
-        
+        principal: ['"Josefin Sans"', 'sans-serif'],
+        Black: ['"Franie-Black"', 'sans-serif'],
+        Light: ['"Franie-Light"', 'sans-serif'],
+        SemiBold: ['"Franie-SemiBold"', 'sans-serif'],
+        SemiBoldItalic: ['"Franie-SemiBoldItalic"', 'sans-serif'],
       },
       colors: {
-        "tolko-red": "rgb(204, 0, 50)"
+        'tolko-red': 'rgb(204, 0, 50)',
       },
       backgroundImage: {
-        "close-menu": "url('../assets/img/icon-close.svg')",
-        "open-menu": "url('../assets/img/icon-hamburger.svg')"
-      }
+        'close-menu': "url('../assets/img/icon-close.svg')",
+        'open-menu': "url('../assets/img/icon-hamburger.svg')",
+      },
     },
   },
   plugins: [],
+  mode: 'jit',
 }
