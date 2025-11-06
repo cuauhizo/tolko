@@ -8,7 +8,9 @@ import routerOptions from './router'
 // Importa tus estilos y configuraciones
 import './assets/main.css'
 import 'aos/dist/aos.css'
-import { plugin, defaultConfig } from '@formkit/vue'
+// import { plugin, defaultConfig } from '@formkit/vue'
+import { plugin } from '@formkit/vue'
+import formKitConfig from '../formkit.config.js'
 import { createI18n } from 'vue-i18n'
 import VueNumberFormat from 'vue-number-format'
 
@@ -35,8 +37,9 @@ export const createApp = ViteSSG(
     // Instala todos tus plugins de Vue aquí
     // app.use(router) // <-- ¡ELIMINA ESTA LÍNEA!
     app.use(i18n)
-    app.use(head)
-    app.use(plugin, defaultConfig)
+    // app.use(head)
+    // app.use(plugin, defaultConfig)
+    app.use(plugin, formKitConfig)
     app.use(VueNumberFormat, { prefix: '$ ', decimal: '.', thousand: ',' })
 
     if (isClient) {

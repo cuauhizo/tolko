@@ -1,16 +1,36 @@
 <script setup>
+import { useHead } from '@vueuse/head';
+import { useI18n } from 'vue-i18n';
 import { ref, onMounted, onUnmounted, reactive, computed, watch, watchEffect } from 'vue';
+import Lenguaje from '@/components/lenguaje.vue';
 import Counter from '@/components/counter.vue';
 import Contacto from '@/components/contacto.vue';
 import Modal from '@/components/modal.vue';
-import Lenguaje from '@/components/lenguaje.vue';
-import { useI18n } from 'vue-i18n';
 
 const { t, locale } = useI18n();
 const anio = ref(new Date().getFullYear());
 const showScrollTopButton = ref(false);
 const idioma = ref(locale);
 const isScrolled = ref(false);
+
+useHead({
+  title: computed(() => t('meta.title')),
+  meta: [
+    {
+      name: 'description',
+      content: computed(() => t('meta.description')),
+    }, {
+
+      name: 'keywords',
+      content: computed(() => t('meta.keywords'))
+    },
+    {
+      property: 'og:title',
+      content: computed(() => t('meta.title'))
+    },
+  ],
+})
+
 
 const servicios = reactive([
   {
